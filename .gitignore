@@ -1,0 +1,5 @@
+# 不添加到git的一些文章和书籍
+/article-ignore
+
+# vim编辑器产生的临时文件
+*.swp

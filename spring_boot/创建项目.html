@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>创建项目.md</title>
+    <style>body { padding: 0; margin: 0; }
+.markdown-preview-plus-view:not([data-use-github-style]) {
+  padding: 2em;
+  font-size: 1.2em;
+  color: #abb2bf;
+  background-color: #282c34;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) span.critic.comment > span {
+  background-color: #282c34;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) > :first-child {
+  margin-top: 0;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) h1,
+.markdown-preview-plus-view:not([data-use-github-style]) h2,
+.markdown-preview-plus-view:not([data-use-github-style]) h3,
+.markdown-preview-plus-view:not([data-use-github-style]) h4,
+.markdown-preview-plus-view:not([data-use-github-style]) h5,
+.markdown-preview-plus-view:not([data-use-github-style]) h6 {
+  line-height: 1.2;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: #ffffff;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) h1 {
+  font-size: 2.4em;
+  font-weight: 300;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) h2 {
+  font-size: 1.8em;
+  font-weight: 400;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) h3 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) h4 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) h5 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) h6 {
+  font-size: 1em;
+  font-weight: 600;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) strong {
+  color: #ffffff;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) del {
+  color: #7c879c;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) a,
+.markdown-preview-plus-view:not([data-use-github-style]) a code {
+  color: #528bff;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) img {
+  max-width: 100%;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) > p {
+  margin-top: 0;
+  margin-bottom: 1.5em;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) > ul,
+.markdown-preview-plus-view:not([data-use-github-style]) > ol {
+  margin-bottom: 1.5em;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) blockquote {
+  margin: 1.5em 0;
+  font-size: inherit;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) hr {
+  margin: 3em 0;
+  border-top: 2px dashed #4b5362;
+  background: none;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) table {
+  margin: 1.5em 0;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) th {
+  color: #ffffff;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) th,
+.markdown-preview-plus-view:not([data-use-github-style]) td {
+  padding: 0.66em 1em;
+  border: 1px solid #4b5362;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) pre,
+.markdown-preview-plus-view:not([data-use-github-style]) code {
+  color: #ffffff;
+  background-color: #3a3f4b;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) pre,
+.markdown-preview-plus-view:not([data-use-github-style]) pre.editor-colors {
+  margin: 1.5em 0;
+  padding: 1em;
+  font-size: 0.92em;
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.markdown-preview-plus-view:not([data-use-github-style]) kbd {
+  color: #ffffff;
+  border: 1px solid #4b5362;
+  border-bottom: 2px solid #3e4451;
+  background-color: #3a3f4b;
+}
+
+@include 'style-variables';
+.markdown-preview-plus-view {
+  display: block;
+  overflow-x: hidden;
+}
+.markdown-preview-plus-view .emoji {
+  max-width: 1em !important;
+}
+.markdown-preview-plus-view del {
+  text-decoration: none;
+  position: relative;
+}
+.markdown-preview-plus-view del::after {
+  border-bottom: 1px solid black;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+.markdown-preview-plus-view ul.contains-task-list li.task-list-item {
+  position: relative;
+  list-style-type: none;
+}
+.markdown-preview-plus-view ul.contains-task-list li.task-list-item input.task-list-item-checkbox {
+  position: absolute;
+  transform: translateX(-100%);
+  width: 30px;
+}
+.markdown-preview-plus-view span.critic.comment {
+  position: relative;
+}
+.markdown-preview-plus-view span.critic.comment::before {
+  content: '\1f4ac';
+  position: initial;
+}
+.markdown-preview-plus-view span.critic.comment > span {
+  display: none;
+}
+.markdown-preview-plus-view span.critic.comment:hover > span {
+  display: initial;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 1px solid;
+  border-radius: 5px;
+  max-height: 4em;
+  overflow: auto;
+}
+.markdown-preview-plus-view span.critic.comment:focus > span {
+  display: initial;
+  text-decoration: underline;
+  position: initial;
+  top: auto;
+  left: auto;
+  border: initial;
+  border-radius: initial;
+}
+
+body.markdown-preview-plus-view[data-use-github-style] {
+  overflow: initial !important;
+}
+.markdown-preview-plus-view[data-use-github-style] {
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  line-height: 1.6;
+  word-wrap: break-word;
+  padding: 30px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+}
+.markdown-preview-plus-view[data-use-github-style] > *:first-child {
+  margin-top: 0 !important;
+}
+.markdown-preview-plus-view[data-use-github-style] > *:last-child {
+  margin-bottom: 0 !important;
+}
+.markdown-preview-plus-view[data-use-github-style] a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.markdown-preview-plus-view[data-use-github-style] .absent {
+  color: #c00;
+}
+.markdown-preview-plus-view[data-use-github-style] .anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+.markdown-preview-plus-view[data-use-github-style] .anchor:focus {
+  outline: none;
+}
+.markdown-preview-plus-view[data-use-github-style] h1,
+.markdown-preview-plus-view[data-use-github-style] h2,
+.markdown-preview-plus-view[data-use-github-style] h3,
+.markdown-preview-plus-view[data-use-github-style] h4,
+.markdown-preview-plus-view[data-use-github-style] h5,
+.markdown-preview-plus-view[data-use-github-style] h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+.markdown-preview-plus-view[data-use-github-style] h1 .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h2 .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h3 .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h4 .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h5 .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+.markdown-preview-plus-view[data-use-github-style] h1:hover .anchor,
+.markdown-preview-plus-view[data-use-github-style] h2:hover .anchor,
+.markdown-preview-plus-view[data-use-github-style] h3:hover .anchor,
+.markdown-preview-plus-view[data-use-github-style] h4:hover .anchor,
+.markdown-preview-plus-view[data-use-github-style] h5:hover .anchor,
+.markdown-preview-plus-view[data-use-github-style] h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  text-decoration: none;
+}
+.markdown-preview-plus-view[data-use-github-style] h1:hover .anchor .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h2:hover .anchor .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h3:hover .anchor .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h4:hover .anchor .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h5:hover .anchor .octicon-link,
+.markdown-preview-plus-view[data-use-github-style] h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+.markdown-preview-plus-view[data-use-github-style] h1 tt,
+.markdown-preview-plus-view[data-use-github-style] h2 tt,
+.markdown-preview-plus-view[data-use-github-style] h3 tt,
+.markdown-preview-plus-view[data-use-github-style] h4 tt,
+.markdown-preview-plus-view[data-use-github-style] h5 tt,
+.markdown-preview-plus-view[data-use-github-style] h6 tt,
+.markdown-preview-plus-view[data-use-github-style] h1 code,
+.markdown-preview-plus-view[data-use-github-style] h2 code,
+.markdown-preview-plus-view[data-use-github-style] h3 code,
+.markdown-preview-plus-view[data-use-github-style] h4 code,
+.markdown-preview-plus-view[data-use-github-style] h5 code,
+.markdown-preview-plus-view[data-use-github-style] h6 code {
+  font-size: inherit;
+}
+.markdown-preview-plus-view[data-use-github-style] h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+.markdown-preview-plus-view[data-use-github-style] h1 .anchor {
+  line-height: 1;
+}
+.markdown-preview-plus-view[data-use-github-style] h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+.markdown-preview-plus-view[data-use-github-style] h2 .anchor {
+  line-height: 1;
+}
+.markdown-preview-plus-view[data-use-github-style] h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+.markdown-preview-plus-view[data-use-github-style] h3 .anchor {
+  line-height: 1.2;
+}
+.markdown-preview-plus-view[data-use-github-style] h4 {
+  font-size: 1.25em;
+}
+.markdown-preview-plus-view[data-use-github-style] h4 .anchor {
+  line-height: 1.2;
+}
+.markdown-preview-plus-view[data-use-github-style] h5 {
+  font-size: 1em;
+}
+.markdown-preview-plus-view[data-use-github-style] h5 .anchor {
+  line-height: 1.1;
+}
+.markdown-preview-plus-view[data-use-github-style] h6 {
+  font-size: 1em;
+  color: #777;
+}
+.markdown-preview-plus-view[data-use-github-style] h6 .anchor {
+  line-height: 1.1;
+}
+.markdown-preview-plus-view[data-use-github-style] p,
+.markdown-preview-plus-view[data-use-github-style] blockquote,
+.markdown-preview-plus-view[data-use-github-style] ul,
+.markdown-preview-plus-view[data-use-github-style] ol,
+.markdown-preview-plus-view[data-use-github-style] dl,
+.markdown-preview-plus-view[data-use-github-style] table,
+.markdown-preview-plus-view[data-use-github-style] pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.markdown-preview-plus-view[data-use-github-style] hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+.markdown-preview-plus-view[data-use-github-style] ul,
+.markdown-preview-plus-view[data-use-github-style] ol {
+  padding-left: 2em;
+}
+.markdown-preview-plus-view[data-use-github-style] ul.no-list,
+.markdown-preview-plus-view[data-use-github-style] ol.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+.markdown-preview-plus-view[data-use-github-style] ul ul,
+.markdown-preview-plus-view[data-use-github-style] ul ol,
+.markdown-preview-plus-view[data-use-github-style] ol ol,
+.markdown-preview-plus-view[data-use-github-style] ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.markdown-preview-plus-view[data-use-github-style] li > p {
+  margin-top: 16px;
+}
+.markdown-preview-plus-view[data-use-github-style] dl {
+  padding: 0;
+}
+.markdown-preview-plus-view[data-use-github-style] dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+.markdown-preview-plus-view[data-use-github-style] dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.markdown-preview-plus-view[data-use-github-style] blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+.markdown-preview-plus-view[data-use-github-style] blockquote > :first-child {
+  margin-top: 0;
+}
+.markdown-preview-plus-view[data-use-github-style] blockquote > :last-child {
+  margin-bottom: 0;
+}
+.markdown-preview-plus-view[data-use-github-style] table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+.markdown-preview-plus-view[data-use-github-style] table th {
+  font-weight: bold;
+}
+.markdown-preview-plus-view[data-use-github-style] table th,
+.markdown-preview-plus-view[data-use-github-style] table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+.markdown-preview-plus-view[data-use-github-style] table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+.markdown-preview-plus-view[data-use-github-style] table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+.markdown-preview-plus-view[data-use-github-style] img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.markdown-preview-plus-view[data-use-github-style] .emoji {
+  max-width: none;
+}
+.markdown-preview-plus-view[data-use-github-style] span.frame {
+  display: block;
+  overflow: hidden;
+}
+.markdown-preview-plus-view[data-use-github-style] span.frame > span {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px;
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+.markdown-preview-plus-view[data-use-github-style] span.frame span img {
+  display: block;
+  float: left;
+}
+.markdown-preview-plus-view[data-use-github-style] span.frame span span {
+  display: block;
+  padding: 5px 0 0;
+  clear: both;
+  color: #333;
+}
+.markdown-preview-plus-view[data-use-github-style] span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+.markdown-preview-plus-view[data-use-github-style] span.align-center > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: center;
+}
+.markdown-preview-plus-view[data-use-github-style] span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+.markdown-preview-plus-view[data-use-github-style] span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+.markdown-preview-plus-view[data-use-github-style] span.align-right > span {
+  display: block;
+  margin: 13px 0 0;
+  overflow: hidden;
+  text-align: right;
+}
+.markdown-preview-plus-view[data-use-github-style] span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+.markdown-preview-plus-view[data-use-github-style] span.float-left {
+  display: block;
+  float: left;
+  margin-right: 13px;
+  overflow: hidden;
+}
+.markdown-preview-plus-view[data-use-github-style] span.float-left span {
+  margin: 13px 0 0;
+}
+.markdown-preview-plus-view[data-use-github-style] span.float-right {
+  display: block;
+  float: right;
+  margin-left: 13px;
+  overflow: hidden;
+}
+.markdown-preview-plus-view[data-use-github-style] span.float-right > span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: right;
+}
+.markdown-preview-plus-view[data-use-github-style] code,
+.markdown-preview-plus-view[data-use-github-style] tt {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+}
+.markdown-preview-plus-view[data-use-github-style] code:before,
+.markdown-preview-plus-view[data-use-github-style] tt:before,
+.markdown-preview-plus-view[data-use-github-style] code:after,
+.markdown-preview-plus-view[data-use-github-style] tt:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+.markdown-preview-plus-view[data-use-github-style] code br,
+.markdown-preview-plus-view[data-use-github-style] tt br {
+  display: none;
+}
+.markdown-preview-plus-view[data-use-github-style] del code {
+  text-decoration: inherit;
+}
+.markdown-preview-plus-view[data-use-github-style] pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.markdown-preview-plus-view[data-use-github-style] .highlight {
+  margin-bottom: 16px;
+}
+.markdown-preview-plus-view[data-use-github-style] .highlight pre,
+.markdown-preview-plus-view[data-use-github-style] pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+.markdown-preview-plus-view[data-use-github-style] .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.markdown-preview-plus-view[data-use-github-style] pre {
+  word-wrap: normal;
+}
+.markdown-preview-plus-view[data-use-github-style] pre code,
+.markdown-preview-plus-view[data-use-github-style] pre tt {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+.markdown-preview-plus-view[data-use-github-style] pre code:before,
+.markdown-preview-plus-view[data-use-github-style] pre tt:before,
+.markdown-preview-plus-view[data-use-github-style] pre code:after,
+.markdown-preview-plus-view[data-use-github-style] pre tt:after {
+  content: normal;
+}
+.markdown-preview-plus-view[data-use-github-style] kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+.markdown-preview-plus-view[data-use-github-style] span.critic.comment > span {
+  background-color: #fff;
+}
+.markdown-preview-plus-view[data-use-github-style] a {
+  color: #337ab7;
+}
+.markdown-preview-plus-view[data-use-github-style] pre,
+.markdown-preview-plus-view[data-use-github-style] code {
+  color: inherit;
+}
+.markdown-preview-plus-view[data-use-github-style] pre,
+.markdown-preview-plus-view[data-use-github-style] pre.editor-colors {
+  padding: 0.8em 1em;
+  margin-bottom: 1em;
+  font-size: 0.85em;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+.line-number.bracket-matcher.bracket-matcher {
+  color: #abb2bf;
+  background-color: #3a3f4b;
+}
+
+.markdown-themeable-pdf-page-break {
+  border-top: 2px dotted #0098ff;
+}
+.markdown-themeable-pdf-page-break span {
+  opacity: .35;
+}
+
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+.spell-check-corrections {
+  width: 25em !important;
+}
+
+pre.editor-colors {
+  background-color: #282c34;
+  color: #abb2bf;
+}
+pre.editor-colors .line.cursor-line {
+  background-color: rgba(153, 187, 255, 0.04);
+}
+pre.editor-colors .invisible {
+  color: #abb2bf;
+}
+pre.editor-colors .cursor {
+  border-left: 2px solid #528bff;
+}
+pre.editor-colors .selection .region {
+  background-color: #3e4451;
+}
+pre.editor-colors .bracket-matcher .region {
+  border-bottom: 1px solid #528bff;
+  box-sizing: border-box;
+}
+pre.editor-colors .invisible-character {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .indent-guide {
+  color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .wrap-guide {
+  background-color: rgba(171, 178, 191, 0.15);
+}
+pre.editor-colors .find-result .region.region.region,
+pre.editor-colors .current-result .region.region.region {
+  border-radius: 2px;
+  background-color: rgba(82, 139, 255, 0.24);
+  transition: border-color 0.4s;
+}
+pre.editor-colors .find-result .region.region.region {
+  border: 2px solid transparent;
+}
+pre.editor-colors .current-result .region.region.region {
+  border: 2px solid #528bff;
+  transition-duration: .1s;
+}
+pre.editor-colors .gutter .line-number {
+  color: #636d83;
+  -webkit-font-smoothing: antialiased;
+}
+pre.editor-colors .gutter .line-number.cursor-line {
+  color: #abb2bf;
+  background-color: #3a3f4b;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection {
+  background-color: transparent;
+}
+pre.editor-colors .gutter .line-number .icon-right {
+  color: #abb2bf;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before {
+  bottom: -3px;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 25px;
+  border-bottom: 1px dotted rgba(224, 82, 82, 0.5);
+  pointer-events: none;
+}
+pre.editor-colors .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+pre.editor-colors .fold-marker:after {
+  color: #abb2bf;
+}
+.syntax--comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.syntax--comment .syntax--markup.syntax--link {
+  color: #5c6370;
+}
+.syntax--entity.syntax--name.syntax--type {
+  color: #e5c07b;
+}
+.syntax--entity.syntax--other.syntax--inherited-class {
+  color: #98c379;
+}
+.syntax--keyword {
+  color: #c678dd;
+}
+.syntax--keyword.syntax--control {
+  color: #c678dd;
+}
+.syntax--keyword.syntax--operator {
+  color: #abb2bf;
+}
+.syntax--keyword.syntax--other.syntax--special-method {
+  color: #61afef;
+}
+.syntax--keyword.syntax--other.syntax--unit {
+  color: #d19a66;
+}
+.syntax--storage {
+  color: #c678dd;
+}
+.syntax--storage.syntax--type.syntax--annotation,
+.syntax--storage.syntax--type.syntax--primitive {
+  color: #c678dd;
+}
+.syntax--storage.syntax--modifier.syntax--package,
+.syntax--storage.syntax--modifier.syntax--import {
+  color: #abb2bf;
+}
+.syntax--constant {
+  color: #d19a66;
+}
+.syntax--constant.syntax--variable {
+  color: #d19a66;
+}
+.syntax--constant.syntax--character.syntax--escape {
+  color: #56b6c2;
+}
+.syntax--constant.syntax--numeric {
+  color: #d19a66;
+}
+.syntax--constant.syntax--other.syntax--color {
+  color: #56b6c2;
+}
+.syntax--constant.syntax--other.syntax--symbol {
+  color: #56b6c2;
+}
+.syntax--variable {
+  color: #e06c75;
+}
+.syntax--variable.syntax--interpolation {
+  color: #be5046;
+}
+.syntax--variable.syntax--parameter {
+  color: #abb2bf;
+}
+.syntax--string {
+  color: #98c379;
+}
+.syntax--string.syntax--regexp {
+  color: #56b6c2;
+}
+.syntax--string.syntax--regexp .syntax--source.syntax--ruby.syntax--embedded {
+  color: #e5c07b;
+}
+.syntax--string.syntax--other.syntax--link {
+  color: #e06c75;
+}
+.syntax--punctuation.syntax--definition.syntax--comment {
+  color: #5c6370;
+}
+.syntax--punctuation.syntax--definition.syntax--method-parameters,
+.syntax--punctuation.syntax--definition.syntax--function-parameters,
+.syntax--punctuation.syntax--definition.syntax--parameters,
+.syntax--punctuation.syntax--definition.syntax--separator,
+.syntax--punctuation.syntax--definition.syntax--seperator,
+.syntax--punctuation.syntax--definition.syntax--array {
+  color: #abb2bf;
+}
+.syntax--punctuation.syntax--definition.syntax--heading,
+.syntax--punctuation.syntax--definition.syntax--identity {
+  color: #61afef;
+}
+.syntax--punctuation.syntax--definition.syntax--bold {
+  color: #e5c07b;
+  font-weight: bold;
+}
+.syntax--punctuation.syntax--definition.syntax--italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.syntax--punctuation.syntax--section.syntax--embedded {
+  color: #be5046;
+}
+.syntax--punctuation.syntax--section.syntax--method,
+.syntax--punctuation.syntax--section.syntax--class,
+.syntax--punctuation.syntax--section.syntax--inner-class {
+  color: #abb2bf;
+}
+.syntax--support.syntax--class {
+  color: #e5c07b;
+}
+.syntax--support.syntax--type {
+  color: #56b6c2;
+}
+.syntax--support.syntax--function {
+  color: #56b6c2;
+}
+.syntax--support.syntax--function.syntax--any-method {
+  color: #61afef;
+}
+.syntax--entity.syntax--name.syntax--function {
+  color: #61afef;
+}
+.syntax--entity.syntax--name.syntax--class,
+.syntax--entity.syntax--name.syntax--type.syntax--class {
+  color: #e5c07b;
+}
+.syntax--entity.syntax--name.syntax--section {
+  color: #61afef;
+}
+.syntax--entity.syntax--name.syntax--tag {
+  color: #e06c75;
+}
+.syntax--entity.syntax--other.syntax--attribute-name {
+  color: #d19a66;
+}
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--id {
+  color: #61afef;
+}
+.syntax--meta.syntax--class {
+  color: #e5c07b;
+}
+.syntax--meta.syntax--class.syntax--body {
+  color: #abb2bf;
+}
+.syntax--meta.syntax--method-call,
+.syntax--meta.syntax--method {
+  color: #abb2bf;
+}
+.syntax--meta.syntax--definition.syntax--variable {
+  color: #e06c75;
+}
+.syntax--meta.syntax--link {
+  color: #d19a66;
+}
+.syntax--meta.syntax--require {
+  color: #61afef;
+}
+.syntax--meta.syntax--selector {
+  color: #c678dd;
+}
+.syntax--meta.syntax--separator {
+  color: #abb2bf;
+}
+.syntax--meta.syntax--tag {
+  color: #abb2bf;
+}
+.syntax--underline {
+  text-decoration: underline;
+}
+.syntax--none {
+  color: #abb2bf;
+}
+.syntax--invalid.syntax--deprecated {
+  color: #523d14 !important;
+  background-color: #e0c285 !important;
+}
+.syntax--invalid.syntax--illegal {
+  color: white !important;
+  background-color: #e05252 !important;
+}
+.syntax--markup.syntax--bold {
+  color: #d19a66;
+  font-weight: bold;
+}
+.syntax--markup.syntax--changed {
+  color: #c678dd;
+}
+.syntax--markup.syntax--deleted {
+  color: #e06c75;
+}
+.syntax--markup.syntax--italic {
+  color: #c678dd;
+  font-style: italic;
+}
+.syntax--markup.syntax--heading {
+  color: #e06c75;
+}
+.syntax--markup.syntax--heading .syntax--punctuation.syntax--definition.syntax--heading {
+  color: #61afef;
+}
+.syntax--markup.syntax--link {
+  color: #56b6c2;
+}
+.syntax--markup.syntax--inserted {
+  color: #98c379;
+}
+.syntax--markup.syntax--quote {
+  color: #d19a66;
+}
+.syntax--markup.syntax--raw {
+  color: #98c379;
+}
+.syntax--source.syntax--c .syntax--keyword.syntax--operator {
+  color: #c678dd;
+}
+.syntax--source.syntax--cpp .syntax--keyword.syntax--operator {
+  color: #c678dd;
+}
+.syntax--source.syntax--cs .syntax--keyword.syntax--operator {
+  color: #c678dd;
+}
+.syntax--source.syntax--css .syntax--property-name,
+.syntax--source.syntax--css .syntax--property-value {
+  color: #828997;
+}
+.syntax--source.syntax--css .syntax--property-name.syntax--support,
+.syntax--source.syntax--css .syntax--property-value.syntax--support {
+  color: #abb2bf;
+}
+.syntax--source.syntax--elixir .syntax--source.syntax--embedded.syntax--source {
+  color: #abb2bf;
+}
+.syntax--source.syntax--elixir .syntax--constant.syntax--language,
+.syntax--source.syntax--elixir .syntax--constant.syntax--numeric,
+.syntax--source.syntax--elixir .syntax--constant.syntax--definition {
+  color: #61afef;
+}
+.syntax--source.syntax--elixir .syntax--variable.syntax--definition,
+.syntax--source.syntax--elixir .syntax--variable.syntax--anonymous {
+  color: #c678dd;
+}
+.syntax--source.syntax--elixir .syntax--parameter.syntax--variable.syntax--function {
+  color: #d19a66;
+  font-style: italic;
+}
+.syntax--source.syntax--elixir .syntax--quoted {
+  color: #98c379;
+}
+.syntax--source.syntax--elixir .syntax--keyword.syntax--special-method,
+.syntax--source.syntax--elixir .syntax--embedded.syntax--section,
+.syntax--source.syntax--elixir .syntax--embedded.syntax--source.syntax--empty {
+  color: #e06c75;
+}
+.syntax--source.syntax--elixir .syntax--readwrite.syntax--module .syntax--punctuation {
+  color: #e06c75;
+}
+.syntax--source.syntax--elixir .syntax--regexp.syntax--section,
+.syntax--source.syntax--elixir .syntax--regexp.syntax--string {
+  color: #be5046;
+}
+.syntax--source.syntax--elixir .syntax--separator,
+.syntax--source.syntax--elixir .syntax--keyword.syntax--operator {
+  color: #d19a66;
+}
+.syntax--source.syntax--elixir .syntax--variable.syntax--constant {
+  color: #e5c07b;
+}
+.syntax--source.syntax--elixir .syntax--array,
+.syntax--source.syntax--elixir .syntax--scope,
+.syntax--source.syntax--elixir .syntax--section {
+  color: #828997;
+}
+.syntax--source.syntax--gfm .syntax--markup {
+  -webkit-font-smoothing: auto;
+}
+.syntax--source.syntax--gfm .syntax--link .syntax--entity {
+  color: #61afef;
+}
+.syntax--source.syntax--go .syntax--storage.syntax--type.syntax--string {
+  color: #c678dd;
+}
+.syntax--source.syntax--ini .syntax--keyword.syntax--other.syntax--definition.syntax--ini {
+  color: #e06c75;
+}
+.syntax--source.syntax--java .syntax--storage.syntax--modifier.syntax--import {
+  color: #e5c07b;
+}
+.syntax--source.syntax--java .syntax--storage.syntax--type {
+  color: #e5c07b;
+}
+.syntax--source.syntax--java .syntax--keyword.syntax--operator.syntax--instanceof {
+  color: #c678dd;
+}
+.syntax--source.syntax--java-properties .syntax--meta.syntax--key-pair {
+  color: #e06c75;
+}
+.syntax--source.syntax--java-properties .syntax--meta.syntax--key-pair > .syntax--punctuation {
+  color: #abb2bf;
+}
+.syntax--source.syntax--js .syntax--keyword.syntax--operator {
+  color: #56b6c2;
+}
+.syntax--source.syntax--js .syntax--keyword.syntax--operator.syntax--delete,
+.syntax--source.syntax--js .syntax--keyword.syntax--operator.syntax--in,
+.syntax--source.syntax--js .syntax--keyword.syntax--operator.syntax--of,
+.syntax--source.syntax--js .syntax--keyword.syntax--operator.syntax--instanceof,
+.syntax--source.syntax--js .syntax--keyword.syntax--operator.syntax--new,
+.syntax--source.syntax--js .syntax--keyword.syntax--operator.syntax--typeof,
+.syntax--source.syntax--js .syntax--keyword.syntax--operator.syntax--void {
+  color: #c678dd;
+}
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--string.syntax--quoted.syntax--json {
+  color: #e06c75;
+}
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--string.syntax--quoted.syntax--json > .syntax--punctuation.syntax--string {
+  color: #e06c75;
+}
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json,
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--array.syntax--json > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json,
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json > .syntax--punctuation,
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--array.syntax--json > .syntax--value.syntax--json > .syntax--string.syntax--quoted.syntax--json > .syntax--punctuation {
+  color: #98c379;
+}
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--dictionary.syntax--json > .syntax--constant.syntax--language.syntax--json,
+.syntax--source.syntax--json .syntax--meta.syntax--structure.syntax--array.syntax--json > .syntax--constant.syntax--language.syntax--json {
+  color: #56b6c2;
+}
+.syntax--source.syntax--ruby .syntax--constant.syntax--other.syntax--symbol > .syntax--punctuation {
+  color: inherit;
+}
+.syntax--source.syntax--php .syntax--class.syntax--bracket {
+  color: #abb2bf;
+}
+.syntax--source.syntax--python .syntax--keyword.syntax--operator.syntax--logical.syntax--python {
+  color: #c678dd;
+}
+.syntax--source.syntax--python .syntax--variable.syntax--parameter {
+  color: #d19a66;
+}
+</style>
+
+  </head>
+  <body class="markdown-preview-plus-view">
+    <font size="4">
+<h1>创建项目</h1>
+<hr>
+<h2>代码风格</h2>
+<ul>
+<li><strong>类名、组件和常量</strong> 以大驼峰式命名：如UserManager、ArticleTitleIndex</li>
+<li><strong>变量</strong> 以小驼峰式命名：如userManger、articleTitleIndex</li>
+<li><strong>资源文件、配置文件、文件夹</strong> 以小写英文单词加"-"命名: 如user-manger、article-title-index</li>
+<li>模块化编程，<strong>将系统功能抽取出来建立多个文件（模块），通过引用的方式进行连接</strong>，一个文件的代码尽量控制在300行以内</li>
+<li>多运用文件夹和包将代码或资源归类</li>
+</ul>
+<h2>将Maven配置于IDEA</h2>
+<p><img src="assets\markdown-img-paste-2018071022104496.png" alt="1"></p>
+<h2>创建一个spring boot项目</h2>
+<p><img src="assets\markdown-img-paste-20180710221816900.png" alt="2">
+<img src="assets\markdown-img-paste-20180711092110778.png" alt="3">
+<img src="assets\markdown-img-paste-20180711092402776.png" alt="4">
+<img src="assets\markdown-img-paste-20180711092557761.png" alt="5">
+<img src="assets\markdown-img-paste-20180711094736273.png" alt="6"></p>
+<p><strong>项目的目录如上图所示</strong></p>
+<ul>
+<li><strong>java</strong> 是我们编写和存放java代码的目录</li>
+<li><strong>xxxApplication</strong> 是spring boot程序的入口，里面包含了一个main函数，该文件的位置比较重要，不要随意改变</li>
+<li><strong>resources</strong> 是存放资源文件的目录</li>
+<li><strong>static</strong> 存放的静态资源可以直接访问</li>
+<li><strong>templates</strong> 存放动态模板资源，需要用controller跳转</li>
+<li><strong>application.properties</strong> 是spring boot的全局配置文件，该文件的位置比较重要，不要随意改变</li>
+<li><strong>pom.xml</strong> 是Maven的核心文件</li>
+</ul>
+<h2>定制我们的项目</h2>
+<h3>统一编码格式</h3>
+<p><img src="assets\markdown-img-paste-20180711102437347.png" alt="8"></p>
+<h3>pom.xml文件说明</h3>
+<p><img src="assets\markdown-img-paste-20180711113759609.png" alt="9">
+我们为pom文件中添加如下包试试，添加完毕后记得import change</p>
+<pre class="editor-colors lang-xml"><span class="syntax--text syntax--xml"><span class="syntax--comment syntax--block syntax--xml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>&lt;!--</span></span><span>自定义配置</span><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>--&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span class="syntax--comment syntax--block syntax--xml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>&lt;!--</span></span><span>boot开发辅助，热部署等</span><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>--&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>dependency</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span>    </span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>groupId</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span><span>org.springframework.boot</span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>groupId</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span>    </span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>artifactId</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span><span>spring-boot-devtools</span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>artifactId</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span>    </span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>optional</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span><span>true</span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>optional</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span>    </span><span class="syntax--comment syntax--block syntax--xml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>&lt;!--</span></span><span>&lt;scope&gt;runtime&lt;/scope&gt;</span><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>--&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>dependency</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span></span>
+</pre>
+<p><img src="assets\markdown-img-paste-20180711102800939.png" alt="9"></p>
+<p>添加完毕后记得import change</p>
+<pre class="editor-colors lang-xml"><span class="syntax--text syntax--xml"><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>configuration</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span>    </span><span class="syntax--comment syntax--block syntax--xml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>&lt;!--</span></span><span>开启热部署</span><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>--&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span>    </span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>fork</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span><span>true</span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>fork</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span>    </span><span class="syntax--comment syntax--block syntax--xml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>&lt;!--</span></span><span> spring-boot:run 中文乱码解决 </span><span class="syntax--punctuation syntax--definition syntax--comment syntax--xml"><span>--&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span>    </span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>jvmArguments</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span><span>-Dfile.encoding=UTF-8</span><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>jvmArguments</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--xml"><span class="syntax--meta syntax--tag syntax--xml"><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--localname syntax--xml"><span>configuration</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--xml"><span>&gt;</span></span></span></span>
+</pre>
+<h3>配置服务器</h3>
+<p>application.properties中可以进行spring boot的全局配置，也就是写在此处的配置必然能够生效
+我们在其中加入如下配置：</p>
+<pre class="editor-colors lang-yml"><span class="syntax--source syntax--yaml"><span class="syntax--comment syntax--line syntax--number-sign syntax--yaml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--yaml"><span>#</span></span><span>#</span></span></span>
+<span class="syntax--source syntax--yaml"><span class="syntax--comment syntax--line syntax--number-sign syntax--yaml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--yaml"><span>#</span></span><span>   服务器配置</span></span></span>
+<span class="syntax--source syntax--yaml"><span class="syntax--comment syntax--line syntax--number-sign syntax--yaml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--yaml"><span>#</span></span><span>#</span></span></span>
+<span class="syntax--source syntax--yaml"><span class="syntax--comment syntax--line syntax--number-sign syntax--yaml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--yaml"><span>#</span></span><span>服务器访问的端口号，自定义即可</span></span></span>
+<span class="syntax--source syntax--yaml"><span class="syntax--string syntax--unquoted syntax--yaml"><span>server.port=8888</span></span></span>
+<span class="syntax--source syntax--yaml"><span class="syntax--comment syntax--line syntax--number-sign syntax--yaml"><span class="syntax--punctuation syntax--definition syntax--comment syntax--yaml"><span>#</span></span><span>服务器访问的根url</span></span></span>
+<span class="syntax--source syntax--yaml"><span class="syntax--string syntax--unquoted syntax--yaml"><span>server.servlet.context-path=/</span></span></span>
+</pre>
+<h2>测试一下</h2>
+<p>至此，一个纯显示功能的spring boot框架就搭建完成了，快来测试一下吧。</p>
+<h3>在static编写两个测试页面</h3>
+<p><img src="assets\markdown-img-paste-20180711105853143.png" alt="10"></p>
+<p><strong>index.xml:</strong></p>
+<pre class="editor-colors lang-html"><span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--sgml syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;!</span></span><span class="syntax--meta syntax--tag syntax--sgml syntax--doctype syntax--html"><span>DOCTYPE</span><span> html</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--html syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--html syntax--html"><span>html</span></span><span> </span><span class="syntax--meta syntax--attribute-with-value syntax--html"><span class="syntax--entity syntax--other syntax--attribute-name syntax--html"><span>lang</span></span><span class="syntax--punctuation syntax--separator syntax--key-value syntax--html"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--html"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--html"><span>"</span></span><span>en</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--html"><span>"</span></span></span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--head syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--head syntax--html"><span>head</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span>    </span><span class="syntax--meta syntax--tag syntax--inline syntax--meta syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--inline syntax--meta syntax--html"><span>meta</span></span><span> </span><span class="syntax--meta syntax--attribute-with-value syntax--html"><span class="syntax--entity syntax--other syntax--attribute-name syntax--html"><span>charset</span></span><span class="syntax--punctuation syntax--separator syntax--key-value syntax--html"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--html"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--html"><span>"</span></span><span>UTF-8</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--html"><span>"</span></span></span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span>    </span><span class="syntax--meta syntax--tag syntax--inline syntax--title syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--inline syntax--title syntax--html"><span>title</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span><span>index</span><span class="syntax--meta syntax--tag syntax--inline syntax--title syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--inline syntax--title syntax--html"><span>title</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--head syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--head syntax--html"><span>head</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--body syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--body syntax--html"><span>body</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--block syntax--h1 syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--block syntax--h1 syntax--html"><span>h1</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span><span>Hello World</span><span class="syntax--meta syntax--tag syntax--block syntax--h1 syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--block syntax--h1 syntax--html"><span>h1</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--block syntax--hr syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--block syntax--hr syntax--html"><span>hr</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--inline syntax--a syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--inline syntax--a syntax--html"><span>a</span></span><span> </span><span class="syntax--meta syntax--attribute-with-value syntax--html"><span class="syntax--entity syntax--other syntax--attribute-name syntax--html"><span>href</span></span><span class="syntax--punctuation syntax--separator syntax--key-value syntax--html"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--html"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--html"><span>"</span></span><span>project.html</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--html"><span>"</span></span></span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span><span>页面跳转</span><span class="syntax--meta syntax--tag syntax--inline syntax--a syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--inline syntax--a syntax--html"><span>a</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--body syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--body syntax--html"><span>body</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--html syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--html syntax--html"><span>html</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+</pre>
+<p><strong>project.xml:</strong></p>
+<pre class="editor-colors lang-html"><span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--sgml syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;!</span></span><span class="syntax--meta syntax--tag syntax--sgml syntax--doctype syntax--html"><span>DOCTYPE</span><span> html</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--html syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--html syntax--html"><span>html</span></span><span> </span><span class="syntax--meta syntax--attribute-with-value syntax--html"><span class="syntax--entity syntax--other syntax--attribute-name syntax--html"><span>lang</span></span><span class="syntax--punctuation syntax--separator syntax--key-value syntax--html"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--html"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--html"><span>"</span></span><span>en</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--html"><span>"</span></span></span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--head syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--head syntax--html"><span>head</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span>    </span><span class="syntax--meta syntax--tag syntax--inline syntax--meta syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--inline syntax--meta syntax--html"><span>meta</span></span><span> </span><span class="syntax--meta syntax--attribute-with-value syntax--html"><span class="syntax--entity syntax--other syntax--attribute-name syntax--html"><span>charset</span></span><span class="syntax--punctuation syntax--separator syntax--key-value syntax--html"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--html"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--html"><span>"</span></span><span>UTF-8</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--html"><span>"</span></span></span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span>    </span><span class="syntax--meta syntax--tag syntax--inline syntax--title syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--inline syntax--title syntax--html"><span>title</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span><span>project</span><span class="syntax--meta syntax--tag syntax--inline syntax--title syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--inline syntax--title syntax--html"><span>title</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--head syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--head syntax--html"><span>head</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--body syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--body syntax--html"><span>body</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--block syntax--h1 syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;</span></span><span class="syntax--entity syntax--name syntax--tag syntax--block syntax--h1 syntax--html"><span>h1</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span><span>项目详情</span><span class="syntax--meta syntax--tag syntax--block syntax--h1 syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--begin syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--block syntax--h1 syntax--html"><span>h1</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--end syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span>项目名称：demo_boot</span></span>
+<span class="syntax--text syntax--html syntax--basic"><span>项目简介：一个spring boot 学习项目</span></span>
+<span class="syntax--text syntax--html syntax--basic"><span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--body syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--body syntax--html"><span>body</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+<span class="syntax--text syntax--html syntax--basic"><span class="syntax--meta syntax--tag syntax--structure syntax--html syntax--html"><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&lt;/</span></span><span class="syntax--entity syntax--name syntax--tag syntax--structure syntax--html syntax--html"><span>html</span></span><span class="syntax--punctuation syntax--definition syntax--tag syntax--html"><span>&gt;</span></span></span></span>
+</pre>
+<h3>将pom文件中数据库相关的包注释</h3>
+<p>由于现阶段还未连接数据库，所以mybatis会报错，我们将它注释了：
+<img src="assets\markdown-img-paste-20180711110623539.png" alt="11"></p>
+<h3>启动服务器</h3>
+<p><img src="assets\markdown-img-paste-2018071111093959.png" alt="12">
+<img src="assets\markdown-img-paste-20180711111152471.png" alt="13">
+<img src="assets\markdown-img-paste-20180711111321998.png" alt="14"></p>
+<h3>查看效果</h3>
+<p><img src="assets\markdown-img-paste-20180711111540794.png" alt="15"></p>
+<p>点击页面跳转查看效果</p>
+<p><img src="assets\markdown-img-paste-20180711111613149.png" alt="16"></p>
+</font>
+
+  </body>
+</html>
