@@ -37,4 +37,25 @@ by 菲尼莫斯 2018年11月12日
 * `git merge {分支名}` : 将目标分支合并到当前分支
 
 * `git branch -d {分支名} : 删除指定分支
+
+## 连上github
+
+1. 使用ssh_genkey命令生成本机的秘钥（windows下需使用使用git提供的MSysGit包）
+
+`ssh-keygen -t rsa -C "yourEmail@your-email.com"`
+
+2. 密钥公钥默认生成在：`~/.ssh/id\_rsa.pub` 文件中
+
+3. 如果设置了密码，则在每次使用该秘钥的时候都需要输入密码
+
+4. 将id_rsa.pub中的公钥添加到你的github账号下的ssh中
+
+ps : 记得安装git的时候配置email和name，这样在使用github的时候才会自动访问配置好的秘钥：
+
+```
+ git config --global user.name "your name"
+
+ git config --global user.email "your e-mail"
+```
+
 </font>
