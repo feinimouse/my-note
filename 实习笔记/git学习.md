@@ -26,6 +26,14 @@ by 菲尼莫斯 2018年11月12日
 
 * `git commit` : 将所add后的文件进行提交，git将进入新版本
 
+## 修改恢复
+
+* `git log` : 查看提交记录
+
+* `git reset {commit id}` : 恢复到指定提交，保留修改的文件
+
+* `git reset {commit id} --hard` : 恢复到指定提交，并删除改变的文件
+
 ## 分支
 
 * `git branch` : 查看分支
