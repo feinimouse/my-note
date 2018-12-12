@@ -34,6 +34,8 @@ by 菲尼莫斯 2018年11月12日
 
 * `git reset {commit id} --hard` : 恢复到指定提交，并删除改变的文件
 
+* `git reset HEAD` : 撤销上一次add
+
 ## 分支
 
 * `git branch` : 查看分支
