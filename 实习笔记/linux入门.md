@@ -66,9 +66,21 @@ by 菲尼莫斯 2018年10月31日
 
 ### find : 搜索
 
-`find ${path} -${type}`
+`find ${path} -${option}`
 
-* find ./path -name "学习.md"
+* path 表示要搜索的文件路径，默认为当前文件夹
+
+* 简单示例: find ./path -name "学习.md"
+
+* -name xx: 文件名符合xx的文件
+
+* -amin xx, -atime xx: 在过去xx分钟/xx天内被读取过的文件
+
+* -cmin xx, -ctime xx: 在过去xx分钟/xx天内被修改过的文件
+
+* -type 
+    * d: 匹配目录
+    * f: 一般文件 
 
 * 待补充
 
@@ -156,6 +168,8 @@ by 菲尼莫斯 2018年10月31日
 
 * ps -u {username} : 根据用户过滤进程
 
+* ps -ef : 显示所有进程，以全格式显示
+
 * pstree : 显示进程树
 
 * top : 实时显示进程对资源的运用情况，htop : 更加强版的任务管理器
@@ -163,12 +177,22 @@ by 菲尼莫斯 2018年10月31日
 * kill {pid} : 结束进程
     * -9 : 强制结束
 
-## 持续更新中.....
+## 一些实用操作
 
-在vim中 : ctrl + z 返回终端
+* 在vim中 : ctrl + z 返回终端
 
-在终端中 : jobs 查看运行中的任务
+* 在终端中 : jobs 查看运行中的任务
 
-在终端红 ： fg + 任务num 返回正在运行的任务
+* 在终端中 ： fg + 任务num 返回正在运行的任务
+
+## cat命令
+
+* cat filename: 将整个文件打印至终端
+
+* cat > filename: 将之后的键盘输入内容保存至新文件中，在空行用ctrl + c结束输入
+
+* cat file1 > file2: 将file1内容追加至file2末尾，在cat后使用-s以删除两行以上的空白行
+
+* cat file1 file2 > newfile: 将file1，file2合并至新文件file中
 
 </font>
