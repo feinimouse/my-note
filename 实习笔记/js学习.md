@@ -70,10 +70,10 @@ popipa.tae = function(){
 
 ### 方法式调用：
 
-`popipa.kasumi()`、`var love = popipa.kasumi()` 
-    
+`popipa.kasumi()`、`var love = popipa.kasumi()`
+
     * 上面的例子中，调用了popipa对象中的kasumi()函数
-   
+
     * 此时函数中的this绑定到了popipa
 
     * 对this的取值发生在函数调用this的时候
@@ -84,7 +84,7 @@ popipa.tae = function(){
 
 ```javascript
 
-// 此类函数用 大写字母 开头，表示为一个类及其构造函数 
+// 此类函数用 大写字母 开头，表示为一个类及其构造函数
 var Kasumi = function(){
     this.band = 'popipa';
 }
@@ -119,7 +119,7 @@ new Kasumi(); // 函数的返回值为一个指向新建的Kasumi对象的this
 `kasumi.call(tae,rimi,arisa)`、`popipa.kasumi.apply(saaya,[rimi,arisa])`
 
     * call和apply是Function原型链的函数
-    
+
     * call和apply可以改变当前运行函数的this指向
 
     * call和apply的第一个参数将被替换为运行函数的this
@@ -129,7 +129,7 @@ new Kasumi(); // 函数的返回值为一个指向新建的Kasumi对象的this
     * call函数的实现:
 
 ```javascript
-        
+
 Function.call(that,va) = function(){
 
     // 将this（指向调用的Function，是一个函数对象），绑定到输入的对象that上
@@ -179,11 +179,11 @@ child.prototype = father;
 
 ```js
 
-// init 类似于父类的构造函数 
+// init 类似于父类的构造函数
 var father = function(init){
-    
+
     var child = {};
-    
+
     // 这里是父类中的私有属性
     var father_attr;
 
@@ -193,12 +193,12 @@ var father = function(init){
     // 这里是公有属性
     child.attr = init.public;
 
-    // 这里是公有方法 
+    // 这里是公有方法
     child.func = function(){
         
         // 其中可以对父类中的私有成员进行操作
-        father_attr = 'father's attr';
-        
+        father_attr = 'father\'s attr';
+
         // 也可以对init中的属性进行操作，这样做的话这个init属性将会变为私有属性
         return init.private;
     }
@@ -227,7 +227,7 @@ child.func = function(){
         // 这里执行了原来的func方法，即supper操作
         // 考虑到supper_func中可能会用到this，因此必须用apply来执行
         var supper_var = supper_func(supper,arguments);
-        
+
         //可以对supper后的值进行自定义操作
         return someOperate(new_var);
     }
