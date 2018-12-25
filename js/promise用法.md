@@ -89,5 +89,18 @@ promise2
 
 ## [更多用法详见此处](https://segmentfault.com/a/1190000011652907)
 
+# 一些细节
+
+* then()、catch()会自动返回一个promise对象
+
+* then()或catch()的返回值
+
+    * 无返回值：自动返回一个成功状态的无传递参数的promise
+
+    * promise对象：返回该promise对象
+
+    * 非promise对象：返回成功状态的promise，并将传递参数置为该值
+
+    * throw err：返回失败状态的promise，并将传递参数置为err
 
 </font>
