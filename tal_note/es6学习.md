@@ -290,6 +290,72 @@ hhw(...[1, 2]);
 
 ## Proxy对象与元编程
 
+## 字符串的操作
+
+* 码元操作
+    * 对于js中的utf-16来说，一个字符可能是16位（1个码元）或是32位（2个码元）
+    * String.charCodeAt() : 返回指定字符的码元
+    * String.codePointAt() : 返回指定码元位置的码元
+    * String.fromCodePoint() : 将某个码元提取为字符
+
+* String.includes( {search}, {start} ) : 在给定文本存在于字符串中的任意位置时会返回 true ,否则返回false
+
+* String.startsWith( {search}, {start} ) & endsWith( {search}, {start} ) : 在给定文本出现在字符串起始处&结尾处时返回 true ,否则返回 false
+
+* String.repeat( {times} ) : 返回一个将String重复times次的字符串
+
+* 获取未被转义的模版字符串 : String.raw()
+
+```js
+let m1 = `Happy \n Lucky \n Smile \n Yeah`
+console.log(m1); 
+// "Happy \n Lucky \n Smile \n Yeah"
+
+let m2 = String.raw`Happy \n Lucky \n Smile \n Yeah`
+console.log(m2);
+/*
+"Happy
+ Lucky
+ Smile
+ Yeah"
+*/
+```
+
+## 函数
+
+* 块级作用域的函数
+    * 块级函数指的是在if块，for块等位置声明的函数
+    * 在严格模式下，在块中声明的函数拥有块级作用域
+    * 在非严格模式下，块中声明的函数会被提升至块的上一个合法的作用域
+
+* 对箭头函数this的再次明确：
+    * 普通函数的this在调用时进行绑定
+    * 箭头函数的this永远指向代码编写时声明函数的上下文
+
+* 创建动态函数
+
+```js
+let temp = 666;
+
+var add = new Function("a", "b", `return a + b + ${temp}`);
+
+console.log(add(1, 1)); // 2
+
+var pickFirst = new Function("...args", "return args[0]");
+
+console.log(pickFirst(1, 2, 3, 4)); // 1
+
+```
+
+## 一些新方法
+
+* Array.map(fnc(){return newItem}) : function内的返回值将组成一个新的数组
+
+* Array.sort(fnc(a,b){return c})
+    * c < 0 则a排在b前面
+    * c > 0 则b排在a前面
+    * c = 0 则a和b的相对位置不变
+
 
 ## 其他
 

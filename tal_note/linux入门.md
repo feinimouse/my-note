@@ -61,6 +61,9 @@ by 菲尼莫斯 2018年10月31日
 
 * 换行输入命令：使用"\\ + enter"
 
+* cd {文件夹名} : 打开某个文件夹
+    * cd - : 回到上一次打开的文件夹
+
 
 ## 常用命令
 
@@ -194,5 +197,9 @@ by 菲尼莫斯 2018年10月31日
 * cat file1 > file2: 将file1内容追加至file2末尾，在cat后使用-s以删除两行以上的空白行
 
 * cat file1 file2 > newfile: 将file1，file2合并至新文件file中
+
+## linux管道
+
+
 
 </font>

@@ -36,6 +36,8 @@ by 菲尼莫斯 2018年11月12日
 
 * `git reset HEAD` : 撤销上一次add
 
+* `git checkout -- {文件名}` : 将指定文件恢复为修改前（上一次commit）时的状态
+
 ## 分支
 
 * `git branch` : 查看分支
@@ -47,6 +49,22 @@ by 菲尼莫斯 2018年11月12日
 * `git merge {分支名}` : 将目标分支合并到当前分支
 
 * `git branch -d {分支名} : 删除指定分支
+
+## 拉取
+
+* `git clone {远程地址} {目标路径}` : 将远程仓库的整个拉取到本地，需要在本地还没有项目的时候使用
+
+* `git pull origin {远程分支}` : 将远程远程仓库的指定分支的commit下载到本地，并和当前分支执行merge
+
+* `git fetch origin {远程分支}` : 将远程仓库的指定分支（默认master）下载到本地仓库
+
+* `git fetch orgin {远程分支}:{新建本地分支}` : 拉取远程仓库的分支到新建的一个本地分支
+
+## 合并
+
+* `git merge {要合并的分支}` : 将指定分支内容合并当前分支，完成后本分支将成为最新
+
+* `git rebase {要rebase的分支}` : 将当前分支的所有commit重放到要rebase的分支上
 
 ## 连上github
 
