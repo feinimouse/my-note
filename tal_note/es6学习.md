@@ -218,7 +218,11 @@ const {happy, smile: lucky} = {happy: 1, lucky: 2}
 
 ```js
 // 深度解构赋值vocal和guitar两个常量
-const { name, hhw: { vocal, guitar} } = { name: 'happy', 
+const { 
+        name, 
+        hhw: { vocal, guitar },
+    } = { 
+        name: 'happy', 
         hhw: { vocal: 'kkr', guitar: 'kor' },
     }
 ```
