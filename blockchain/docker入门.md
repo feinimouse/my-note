@@ -116,6 +116,8 @@ by 菲尼莫斯 2019年01月12日
     * **-v: 文件映射，将容器的指定文件路径映射到宿主机文件路径，格式为：宿主机文件路径:容器文件路径**
 
     * **--rm: 运行结束后自动删除容器**
+
+    * **--expose:** 暴露容器的端口，可以直接访问容器ip下的该端口
      
     * --name="nginx-lb": 为容器指定一个名称；
      
@@ -135,7 +137,9 @@ by 菲尼莫斯 2019年01月12日
      
     * --net="bridge": 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；
      
-    * --link=[]: 添加链接到另一个容器；
+    * --link=[要链接容器名]: 添加链接到另一个容器；
+        * 在当前容器中可以通过 `env | grep [要链接的容器名]` 查看链接的状态
+        * link链接后当前容器会自动将 **域名** [要链接的容器名]映射到目标容器，可使用`ping [要链接的容器名]`等类似的网络操作
      
     * --expose=[]: 开放一个端口或一组端口；
 
@@ -161,9 +165,11 @@ by 菲尼莫斯 2019年01月12日
 
 ### 进入容器
 
-`docker attach [option] [容器ID]`：同步打开容器，使用crtl + q退出，并使其继续运行
+`docker attach [option] [容器ID]`：同步打开容器，使用`ctrl + p && crtl + q`退出，并使其继续运行
 
 `docker exec [option] [容器ID]`：异步打开容器
+
+`docker exec -it ftpd_server /bin/bash`：此时容器仍在运行其程序，但可以进入bash进行操作
 
 * -i,--interactive=true| false:打开标准输入接受用户输入命令,默认为false;
 
@@ -216,6 +222,7 @@ WORKDIR $GOPATH
 
 # cmd表示容器的启动命令（会被docker run的命令覆盖）
 COPY go-wrapper /usr/local/bin/
+
 ```
 
 ### 其他命令
@@ -238,5 +245,41 @@ COPY go-wrapper /usr/local/bin/
 
 `docker build [option] [路径]`
 `docker build -t feinimouse/ubuntu:first ~/workspace/docker/ubuntu` 扫描整个路径下的dockerfile并创建镜像feinimouse/ubuntu:first
+
+## docker 间的互联
+
+### 通过宿主机分配ip直连
+
+```bash
+# 服务器暴露80端口
+root@container:/$ docker run -itd --name=server --expose=80 --rm test:server /bin/bash
+# 服务器使用命令获取ip 172.17.0.2 (ifconfig命令在包net-tools中）
+root@server:/$ ifconfig
+# 客户端使用ip进行访问 (ping命令在包inetutils-ping中)
+root@client:/$ ping 172.17.0.2
+```
+### 通过`--link`桥接
+
+```bash
+# 服务器直接启动
+root@container:/$ docker run -itd --name=server --rm test:server /bin/bash
+# 客户端通过--link链接服务端容器
+root@container:/$ docker run -itd --name=client --link=server --rm test:client /bin/bash
+# 客户端使用容器名进行访问
+root@client:/$ ping server
+```
+### 通过自定义网络进行桥接
+
+```bash
+# 创建一个测试网络
+root@container:/$ docker network create test
+# 查看已有的docker网络
+root@container:/$ docker network ls
+# 将服务端和客户端都加入测试网络
+root@container:/$ docker run -itd --name=server --net=test --rm test:server /bin/bash  
+root@container:/$ docker run -itd --name=client --net=test --rm test:client /bin/bash
+# 客户端使用容器名进行访问
+root@client:/$ ping server
+```
 
 </font>
