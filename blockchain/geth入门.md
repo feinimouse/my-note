@@ -105,4 +105,44 @@ INFO [01-29|11:39:50.021] Successfully wrote genesis state         database=ligh
 
 * 该命令在kasumi下生成了一个创世区块，并将数据保存在kasumi/chain中
 
+### 启动geth
+
+`geth console` : 启动geth并打开js控制台
+
+`geth --datadir ./data --networkid 713 --nodiscover --rpccorsdomain "*" --rpcaddr 172.18.0.2 console`
+
+私有链推荐使用：
+
+* **--datadir** **若不使用该命令，将会连接到以太坊主链** "/home/etherTest" 私有链存放路径（最好跟公有链路径不同）
+
+* **--networkid** 指定你自己的私有网络的id号，需要和创世区块中一致
+
+* **--nodiscover** **使用了该命令ip会被置为127.0.0.1，从而别人无法通过搜索发现你，但能够通过ip直接连接** 使用这个参数，你的节点就不会被其他人发现，除非手动添加你的节点。否则，就只有一个被无意添加到一个陌生区块链上的可能，那就是跟你有相同的genesis文件和networkID。
+
+* **--rpcaddr** 可以指定当前geth监听的rpc ip
+
+其他：
+
+* --identity “yooliee" 用来标识你的节点的，方便在一大群节点中识别出自己的节点
+
+* --maxpeers 0 如果你不想有人连上你的测试链，就用maxpeers 0。或者，你可以调整参数，当你确切的知道有几个节点要连接上来的时候。
+
+* --rpc 允许RPC操作你的节点。这个参数在Geth上是默认的。
+
+* --rpcapi "db,eth,net,web3" 这个命令指示了允许通过RPC访问的命令。默认情况下，Geth允许web3。
+
+* --rpcport "8080"
+
+* --port "30303" 网络监听端口，用来和其他节点手动连接
+
+* --rpccorsdomain "http://chriseth.github.io/browser-solidity/" 指定可以远程访问你的节点的URL， 值为"*"时是指任何地方都可以远程访问（避免使用*）
+
+## js控制台
+
+* admin.nodeInfo : 查看当前运行geth节点的信息，其中较为重要的参数为enode，标识了该节点的身份，其他节点可以通过enode来连接本地
+
+* admin.peers : 查看当前连接的节点
+
+* admin.addPeer(enode) : 连接其他节点 
+
 </font>
