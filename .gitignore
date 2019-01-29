@@ -5,3 +5,9 @@
 
 # vim编辑器产生的临时文件
 *.swp
+
+# IDEA
+.idea
+
+# vscode
+.vscode

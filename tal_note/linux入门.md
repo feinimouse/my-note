@@ -6,22 +6,6 @@ by 菲尼莫斯 2018年10月31日
 
 ---
 
-## 推荐安装
-
-* chrome : 前端必备，官网下载，apt可能可以直接安装
-
-* 搜狗输入法 : 看个人习惯，官网下载，设置输入法为Fcitx布局
-
-* Remmina : 远程桌面Linux版，方便连接云服务器和windows电脑
-
-* vim : linux下的进行编程的IDE
-
-* atom & vscode : 方便结构浏览和代码预览，也可以直观的处理一些目录层级关系
-
-* uget : 传说中的迅雷linux版，用于加快速度下载java、python、mysql、mongodb等
-
-* ondrive-d : onedrive linux版，用于同步onedrive数据（百度云和icloud用户可以忽略）
-
 ## vim推荐插件
 
 * pathogen.vim : 可以便捷的添加和管理vim的各类插件
