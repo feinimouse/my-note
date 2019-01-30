@@ -48,6 +48,11 @@ by 菲尼莫斯 2018年10月31日
 * cd {文件夹名} : 打开某个文件夹
     * cd - : 回到上一次打开的文件夹
 
+## 后台运行
+
+* `nohup [命令]` 或 `[命令] &` : 返回一个程序运行的pid，该程序的标准输出和标准错误缺省会被重定向到 nohup.out 文件中，也可用`>[filename] 2>&1 &`来更改缺省的重定向文件名
+
+* `setsid [命令]` : 开启一个新的session运行程序，因此程序不会被当前终端的命令影响
 
 ## 常用命令
 
@@ -110,6 +115,7 @@ by 菲尼莫斯 2018年10月31日
 
 ### tar 压缩包管理
 
+* **-f**：表示对某文件进行操作，加了该参数其后才可以跟文件名。
 * -c: 建立压缩档案
 * -x：解压
 * -t：查看内容
@@ -121,8 +127,12 @@ by 菲尼莫斯 2018年10月31日
 * -v：显示所有过程
 * -O：将文件解开到标准输出
 
-**最常用参数：** -f：表示对某文件进行操作，加了该参数其后才可以跟文件名。
+* 对文件进行加密`tar -zcf - [aim floder]/* |openssl des3 -salt -k [password] | dd of=[aim name].des3`
+* 对文件进行解密`dd if=[aim file].des3 |openssl des3 -d -k [password] | tar zxf [aim place]
 
+* zip命令进行zip打包：`zip -rP [password] [target].zip [aim file or folder]`
+    * -P 加密打包
+    * -r 递归打包
 
 ### 改变权限
 
