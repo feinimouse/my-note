@@ -16,6 +16,62 @@ by 菲尼莫斯 2018年11月12日
 
 ## 对象相关
 
+* 啥是`prototype`和`__proto__`
+
+```js
+function Foo(){}
+var Boo = {name: "Boo"};
+Foo.prototype = Boo;
+var f = new Foo();
+
+f.__proto__ === Foo.prototy // true
+f.__proto__ === Boo // true
+Object.getPrototypeOf(f) === f.__proto__;   // true
+```
+
+prototype只有函数才有prototype属性（函数即类）
+
+prototype对于一个普通对象`a`来说，它是`a`的构造函数`A()`（即构造类，class声明，函数即类）生成`a`时所参照的独立对象`a'`，因此a可以共享`a'`中的方法和属性。
+
+`__proto__`是所有对象都具有的属性，通过`Object.getPrototypeOf()`方法获取
+
+`__proto__`指向了对象的直接原型（父类，即构造函数的prototype）
+
+**注意:** prototype和`__proto__`是构造函数`A()`所参照的一个独立对象，因此对象`a`本身的行为不会影响到对象`a'`，但`a`能直接访问到`a'`的属性但不能覆盖（覆盖将使该属性变为a的自有属性,即ownProperty可枚举属性）。
+
+* 使用Object.create(prototype, ownProperties)创建一个对象；
+
+* 对象的深度克隆
+
+```js
+
+function clone(o) {
+    if (o === null || typeof o !== 'object') {
+        return o;
+    }
+    switch(Object.prototype.toString.call(o).replace(/(\[object |\])/g, '')) {
+        case 'RegExp': // 正则表达式
+            return new RegExp(o.source,o.flags);
+        case 'Date': // 日期类型
+            return new Date(o.getTime());
+        case 'Function': // 函数类型(函数是特殊的对象，js可以直接进行克隆)
+            return o;
+        case 'Arrary': // 数组类型
+            return o.map(item => clone(item));
+        default:
+            const root = Object.create(Object.getPrototypeOf(o));
+            Object.getOwnPropertyNames(o).forEach(item => {
+                root[item] = clone(o[item]);
+            });
+            Object.getOwnPropertySymbols(o).forEach(item => {
+                root[item] = clone(o[item]);
+            });
+            return root;
+    };
+}
+
+```
+
 * 对象都继承于Object.prototype；
 
 * 函数都继承于Function.prototype；

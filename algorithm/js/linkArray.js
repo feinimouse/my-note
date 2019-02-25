@@ -1,8 +1,8 @@
 /**
  * js实现链表，及链表的逆序
  */
-class LinkNode {
-    value = 'HEAD';
+export default class LinkNode {
+    value = null;
     next = null;
     getLast() {
         let last = this;
@@ -16,22 +16,10 @@ class LinkNode {
         temp.value = value;
         this.getLast().next = temp;
     }
-    pop() {
-        if (!this.next) {
-            return;
-        }
-        let last = this;
-        while (last.next.next) {
-            last = last.next;
-        }
-        const result = last.next;
-        last.next = null;
-        return result;
-    }
     print() {
         if (this.next) {
             const printList = []
-            for(let cur = this.next;cur;cur = cur.next) {
+            for (let cur = this.next; cur; cur = cur.next) {
                 printList.push(cur.value);
             }
             console.log(printList);
@@ -44,7 +32,7 @@ class LinkNode {
 // 创建一个指定大小的链表
 function createLinkArrary(count) {
     const head = new LinkNode();
-    for (let i = 1; i < (count +1); i++) {
+    for (let i = 1; i < (count + 1); i++) {
         head.push(i);
     }
     return head;
@@ -67,7 +55,7 @@ function reverseByRecursive(head) {
             return nowhead;
         }
         return cur;
-    } 
+    }
     // 有头节点，直接取下一个节点做无头递归
     if (head.next) {
         // 将递归结果赋给头结点
@@ -83,7 +71,7 @@ function reverseByInsert(head) {
     }
     let cur = head.next.next;
     head.next.next = null;
-    for(let last;cur;) {
+    for (let last; cur;) {
         // 记录下一个值
         last = cur.next;
         // 将当前值指向原来的第一个值
@@ -101,8 +89,8 @@ function deleteDupNormal(head) {
     if (!head || !head.next) {
         return;
     }
-    for (let cur = head.next;cur;cur = cur.next) {
-        for (let [comp, preComp] = [cur.next, cur];comp && comp;comp = preComp.next) {
+    for (let cur = head.next; cur; cur = cur.next) {
+        for (let [comp, preComp] = [cur.next, cur]; comp && comp; comp = preComp.next) {
             if (comp.value === cur.value) {
                 // 要删除的节点失去了preComp的引用，又在下次遍历中又失去了comp的引用，节点将自动释放
                 preComp.next = comp.next;
@@ -121,7 +109,7 @@ function deleteDupBySet(head) {
     const set = new Set();
     for (let cur = head.next; cur; cur = cur.next) {
         if (!set.has(cur.value)) {
-            set.add(cur.value); 
+            set.add(cur.value);
         } else {
             cur.next = cur.next.next;
         }
@@ -141,7 +129,7 @@ function findLastK(head, k) {
         fast = fast.next;
     }
     let slow = head.next;
-    while(fast) {
+    while (fast) {
         slow = slow.next;
         fast = fast.next;
     }
@@ -156,3 +144,47 @@ function printReverse(head) {
     printReverse(head.next)
     console.log(head.value);
 }
+
+// 合并链表
+function mergeLink(head1, head2) {
+    if (!head1 || !head1.next) {
+        return head2;
+    }
+    if (!head2 || !head2.next) {
+        return head1;
+    }
+    const head = new LinkNode();
+    let cur1 = head1.next;
+    let cur2 = head2.next;
+    let temp = head;
+    while (cur1 && cur2) {
+        if (cur1.value > cur2.value) {
+            temp.next = cur2;
+            temp = cur2;
+            cur2 = cur2.next;
+        } else {
+            temp.next = cur1;
+            temp = cur1;
+            cur1 = cur1.next;
+        }
+    }
+    if (cur1 !== null) {
+        temp.next = cur1;
+    }
+    if (cur2 !== null) {
+        temp.next = cur2;
+    }
+    return head;
+}
+
+export {
+    LinkNode,
+    createLinkArrary,
+    reverseByInsert,
+    reverseByRecursive,
+    deleteDupBySet,
+    deleteDupNormal,
+    findLastK,
+    printReverse,
+    mergeLink,
+};
