@@ -30,9 +30,13 @@ by 菲尼莫斯 2018年11月12日
 
 * `git log` : 查看提交记录
 
-* `git reset {commit id}` : 恢复到指定提交，保留修改的文件
+* `git reset {commit id} {版本号}` : 将add的和commit的内容恢复到本地，保留本地修改的文件
 
-* `git reset {commit id} --hard` : 恢复到指定提交，并删除改变的文件
+* `git reset {commit id} --soft {版本号}` : 保留add的内容,将commit的内容恢复为add，保留本地修改的文件
+
+* `git reset {commit id} --hard {版本号}` : 恢复到指定提交，并删除改变的文件
+
+* `git reset {commit id} {版本号} {文件名}` : 对某个文件执行以上操作
 
 * `git reset HEAD` : 撤销上一次add
 
@@ -81,7 +85,7 @@ by 菲尼莫斯 2018年11月12日
 
 ps : 记得安装git的时候配置email和name，这样在使用github的时候才会自动访问配置好的秘钥：
 
-```
+```bash
  git config --global user.name "your name"
 
  git config --global user.email "your e-mail"
