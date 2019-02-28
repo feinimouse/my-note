@@ -6,6 +6,35 @@ by 菲尼莫斯 2018年7月29日
 
 ---
 
+## 在JSX中，触发函数的this指向问题
+
+必须谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。如果你忘记绑定this.handleClick 并把它传入 onClick, 当你调用这个函数的时候 this 的值会是 undefined。
+
+或者使用箭头函数来锁定this的指向
+
+```jsx
+class Toggle extends React.Component {
+    constructor(props) {
+        super(props);
+        // This binding is necessary to make `this` work in the callback
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        console.log(this);
+    }
+
+    handleClick2 = () => console.log(this);
+
+    render() {
+        return (
+          <button onClick={this.handleClick}>btn1</button>
+          <button onClick={this.handleClick2}>btn2</button>
+        );
+    }
+}
+```
+
 ## react router 和 mobx 同时使用的冲突
 
 数据层mobx的 **@observer** 与 react router的 **Link** 组件同时使用时，会导致router触发地址变化，但无法刷新页面的情况。具体症状就是点了连接，而页面没反应的情况，后台也无报错。

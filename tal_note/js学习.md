@@ -29,15 +29,19 @@ f.__proto__ === Boo // true
 Object.getPrototypeOf(f) === f.__proto__;   // true
 ```
 
-prototype只有函数才有prototype属性（函数即类）
+* prototype只有函数才有prototype属性（函数即类）
 
-prototype对于一个普通对象`a`来说，它是`a`的构造函数`A()`（即构造类，class声明，函数即类）生成`a`时所参照的独立对象`a'`，因此a可以共享`a'`中的方法和属性。
+* prototype对于一个普通对象`a`来说，它是`a`的构造函数`A()`（即构造类，class声明，函数即类）生成`a`时所参照的独立对象`a'`，因此a可以共享`a'`中的方法和属性。
 
-`__proto__`是所有对象都具有的属性，通过`Object.getPrototypeOf()`方法获取
+* prototype具有constructor属性，该属性指向了该原型的构造函数（即`A.prototype.constructor`指向`A`）
 
-`__proto__`指向了对象的直接原型（父类，即构造函数的prototype）
+* `__proto__`是所有对象都具有的属性，通过`Object.getPrototypeOf()`方法获取
+
+* `__proto__`指向了对象`a`的构造函数（即`A`）的prototype
 
 **注意:** prototype和`__proto__`是构造函数`A()`所参照的一个独立对象，因此对象`a`本身的行为不会影响到对象`a'`，但`a`能直接访问到`a'`的属性但不能覆盖（覆盖将使该属性变为a的自有属性,即ownProperty可枚举属性）。
+
+![prototype和__proto__](img/prototype和__proto__.png)
 
 * 使用Object.create(prototype, ownProperties)创建一个对象；
 
@@ -209,29 +213,84 @@ Function.call(that,va) = function(){
 
 ```js
 
-var Father = function(){}
+var Father = function(ooo){
+    this.ooo = ooo;
+}
 
-var Child = function(){}
+var Child = function(xxx){
+    this.xxx = xxx;
+}
 
-Child.prototype = new Father();
+Child.prototype = new Father(ooo);
 
-var child = new Child();
+var child = new Child(xxx);
+
+/**
+ * 该方法可以继承Child
+ * 缺点是父类的属性在原型链上，实例不能独享该属性
+ */
 
 ```
 
-### 原型继承
+### 寄生继承
 
 ```js
 
-var father = {};
+function Father(ooo) {
+    this.ooo = ooo
+}
+function Child(ooo,xxx) {
+    var father = new Father(ooo);
+    father.xxx = xxx;
+    return father;
+}
 
-var child = {};
+var child = new Child(ooo, xxx);
 
-child.prototype = father;
+/**
+ * 该方法可以将原型的父类属性变为自有属性
+ * 缺点是实际上构造了一个父类对象，child instanceof Child === false
+ */
 
 ```
 
-### 函数式继承
+### 构造式继承
+
+```js
+
+function Father(ooo) {
+    this.ooo = ooo
+}
+function Child(ooo, xxx) {
+    Father.call(this, ooo);
+    this.xxx = xxx;
+}
+
+var child = new Child(ooo, xxx);
+
+/**
+ * 该方法完美的继承了父类的属性给自身自有属性
+ * 缺点是原型链上没有父类，child instanceof Father === false
+ */
+
+```
+
+### 混合式继承
+
+```js
+function Father(ooo) {
+    this.ooo = ooo
+}
+function Child(ooo, xxx) {
+    Father.call(this, ooo);
+    this.xxx = xxx;
+}
+Child.prototype = new Father();
+
+var child = new Child(ooo, xxx);
+```
+
+### 闭包实现私有属性
 
 ```js
 
@@ -251,7 +310,6 @@ var father = function(init){
 
     // 这里是公有方法
     child.func = function(){
-        
         // 其中可以对父类中的私有成员进行操作
         father_attr = 'father\'s attr';
 
@@ -262,7 +320,7 @@ var father = function(init){
     return child;
 }
 
-// 通过函数创建一个子类
+// 通过函数创建一个类
 var child = father({
     public:'public',
     private:'private'
