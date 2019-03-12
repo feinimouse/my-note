@@ -6,6 +6,35 @@ by 菲尼莫斯 2018年11月06日
 
 ---
 
+## 一个html5的构成
+
+```html
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>html5</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!--响应式-->
+        <meta name=viewport content="width=device-width, initial-scale=1"/>
+        <!--设置元素的默认属性，这里将a标签的目标为打开新窗口-->
+        <base target="_blank"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css" /> 
+        <script type="text/javascript" charset="utf-8" src="index.js"></script>
+        <style>
+            body {
+                padding: 0;
+            }
+        </style>
+    </head>
+    <html>
+    <body>
+        <header></header>
+        <main></main>
+        <footer></footer>
+    </body>
+</html>
+```
+
 ## 易忽略的元素
 
 列举了一些学习中发现的，在以前的实践中很少用到，甚至根本没用到的元素

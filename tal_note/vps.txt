@@ -1,6 +1,0 @@
-Your Server IP        :  128.199.125.35
-Your Server Port      :  8888
-Your Password         :  411985/cyhde2017
-Your Protocol         :  auth_sha1_v4
-Your obfs             :  plain
-Your Encryption Method:  aes-256-cfb

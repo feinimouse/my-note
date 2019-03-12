@@ -3,6 +3,9 @@
 # 一些用不到的小品
 /readme集合
 
+# build
+build
+
 # vim编辑器产生的临时文件
 *.swp
 
