@@ -14,6 +14,8 @@ by 菲尼莫斯 2019年3月14日
 
 > 如将代码中重复的或具体的部分提取为一个组件（抽象为一个对象）
 
+* 抽象类abstract不能实例化，只能被用于extends
+
 ### 封装
 
 * 将抽象对象的数据和数据操作的方法进行隐蔽
@@ -31,6 +33,8 @@ by 菲尼莫斯 2019年3月14日
 * 解决可重用性，提高编码效率和可维护性
 
 * 一个子类只能继承一个父类（**单继承**）
+
+* final类不能继承
 
 ### 多态
 
@@ -66,36 +70,40 @@ by 菲尼莫斯 2019年3月14日
 
 * synchronized：控制多个并发线程对共享数据的访问
 
-## 其他
+## 方法
 
-### 构造函数
+* this指向了类本身，可以通过this.访问自身属性，使用this()直接调用类中的构造方法
 
-* 使用this直接调用类中的构造方法
-
-* 使用supper()调用父类的构造方法
+* supper指向了父类，可以通过supper.访问父类属性，使用supper()调用父类的构造方法
 
 * final实例变量（普通变量）需要在构造方法执行结束前完成初始化
 
-### 可变长参数
+* 子类中的属性会**隐藏**父类中的同名属性
+    * 此时只有继承到的方法可以显式访问被隐藏的属性
 
-`function([class name]... [var name])` 
+* 子类中的方法会**覆盖**父类中的同名方法
+    * 子类的方法不能比父类的更严格，如public方法不能变为private方法
+    * static 和 final 方法不能覆盖
+    * 依然可以使用 supper 访问被覆盖的方法
 
-* 可变长参数会被解析为一个数组
+* 抽象方法abstract只有抽象类才能包含，必须被重写（覆盖），该做法规定了子类的规范
 
-* 只能作为最后一个形参使用
+## Object类
 
-```java
-public void deal(int... var) {
-    int[] values = var;
-    for (int i : values) {
-        System.out.println(i);
-    }
-}
-int a = 0, b = 1, c = 3;
-// 一次放入三个参数
-deal(a, b, c);
-// 不放入参数
-deal();
-```
+* getClass()、toString()
+
+* equals(Obj obj)：比较两个指针是否指向同一处；== 运算符也判断**指针**是否指向同一处
+
+* clone()：返回对象的副本（重新申请的对象空间）
+    * 默认为protected方法，需要重写为public
+    * 使用该功能需要implement Cloneable接口
+
+* hashCode()：对象的唯一标示hash值
+
+* finalize()：回收对象时的资源释放
+
+## 泛型
+
+详见 /code/java/GenericTest.java
 
 </font>
