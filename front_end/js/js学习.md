@@ -8,6 +8,8 @@ by 菲尼莫斯 2018年11月12日
 
 ## 类型相关
 
+* 基本数据类型：null、undefined、boolean、number、string
+
 * flase: `false(boolean)`、`null`、`undefined`、`''或""`、`0`、`NaN`
 
 * a = b && c : 当b为假时返回b，否则返回c

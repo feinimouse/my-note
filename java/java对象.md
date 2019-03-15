@@ -46,17 +46,7 @@ by 菲尼莫斯 2019年3月14日
 
 4. 在构造函数中调用多态方法会出现隐患
 
-```java
-class A {
-    A() { printA(); }
-    public void printA() { System.out.println("aaa");}
-}
-class B extends A {
-    int b = 2;
-    B() { }
-    @Overwrite
-}
-```
+更多详见：/code/java/ExtendsTest.java
 
 ## 权限相关
 
@@ -121,6 +111,6 @@ class B extends A {
 
 ## 泛型
 
-详见 /code/java/GenericTest.java
+更多详见 /code/java/GenericTest.java
 
 </font>
