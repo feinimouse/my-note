@@ -16,7 +16,7 @@ by 菲尼莫斯 2018年11月06日
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <!--响应式-->
         <meta name=viewport content="width=device-width, initial-scale=1"/>
-        <!--设置元素的默认属性，这里将a标签的目标为打开新窗口-->
+        <!--设置元素的默认属性，这里将a标签的目标为打开新窗口，base还可以指定该页面相对url的基础url-->
         <base target="_blank"/>
         <link rel="stylesheet" type="text/css" href="mystyle.css" /> 
         <script type="text/javascript" charset="utf-8" src="index.js"></script>

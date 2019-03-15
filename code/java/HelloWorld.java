@@ -5,12 +5,18 @@ public class HelloWorld {
         System.out.println("Hello Happy World !!");
         System.out.println(Arrays.toString(args));
         genericTest(); 
+        extendsTest();
     }
     static void genericTest() {
         GenericTest genericTest = new GenericTest();
-        genericTest.func1();
-        genericTest.func2();
-        genericTest.func3();
-        genericTest.func4();
+        genericTest.run();
     } 
+    static void extendsTest() {
+        /**
+         * 静态方法new非静态内部类时必须先new外部类
+         */
+        ExtendsTest extendsTest = new ExtendsTest();
+        ExtendsTest.B b = extendsTest.new B();
+        b.printA();
+    }
 }

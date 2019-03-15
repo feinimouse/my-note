@@ -53,4 +53,11 @@ class GenericTest {
         data.setObj(1); 
         System.out.println(data.getObj().toString());
     }
+
+    void run() {
+        func1();
+        func2();
+        func3();
+        func4();
+    }
 }
