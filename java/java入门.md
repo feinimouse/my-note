@@ -50,7 +50,7 @@ by 菲尼莫斯 2019年3月12日
 
 ### 布尔：
 
-* **boolean**
+* **boolean**：不能和其他基本类型进行转换
 
 * **默认值为 false**
 
@@ -83,56 +83,26 @@ a = 10;
 
 * new命令为对象动态分配了一块内存，并将类进行实例化
 
-### 枚举类
+### 类型转换
 
-* 可以包括方法和变量
+* 不改变对象本身的类型，只改变引用的类型
 
-* 构造方法必须为包保护或私有
+转换前：引用类型A（指针类型） -> 对象类型A（内存中实际的类型） 
 
-* values() 获取所有枚举值
+转换后：引用类型B -> 对象类型A （此时该对象实际的表现为B的行为，即只能使用B的方法）
 
-* 在定义枚举类时自动调用私有构造方法进行构造
+* 向上转型：
+    * 从实现类转为其接口
+    * 从子类转为父类或父类实现的接口
 
-```java
-public enum GirlsBand {
-    // 此处自动调用了构造函数
-    POPIPA("pink"),
-    ROSELIA("blue");
+* 向下转型：若该对象的引用指向一个和引用类型不一致的对象类型时，只能转为该对象的引用所指向的对象的类型
 
-    private final String color;
+一般情况下是一个子类转为了父类，又可以转回来。但直接的一个父类不能转为子类
 
-    private GirlBand(color) {
-        this.color = color;
-    }
-    public String getColor() {
-        return this.color;
-    }
-}
-public static void main(String[] args) {
-    // 可以直接调用某个枚举的方法
-    System.out.println(GirlsBand.POPIPA.getColor());
-    // 遍历所有枚举
-    for (GirlsBand i : GirlsBand.values()) {
-        System.out.println(i.getColor());
-    };
-}
+* 隐式转换：
+    * 从容量小的基本类转为容量大基本类
+    * 从子类转为父类或实现的接口
 
-```
-
-## 命令行参数args
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(args));
-    }
-}
-```
-
-```bash
-$ javac Main
-$ java Main Happy Lucky Smile Yeah
-Main Happy Lucky Smile Yeah
-```
+* 显示转换以外都必须使用显式转换
 
 </font>
