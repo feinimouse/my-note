@@ -30,11 +30,23 @@ by 菲尼莫斯 2019年3月15日
     * void close()：调用flush()，并关闭流
     * void skip(int s)：往前或往后跳指定字节
     * int size()：表示已写出字节数
-    * void writeByte(byte b)：向流中写入低8位的byte的数据（1字节），size加1
+    * void write / writeByte(int b)：向流中写入int的最低位的8位的数据（1字节），size加1
     * void writeChar(char c)：向流中写入一个char数据（2字节），size加2
 
 面向字符的流：Reader、writer
 
 * 用于处理文本，使用 char 类型（两字节Unicode）
+
+## 序列化
+
+* 将内存中的对象保存在硬盘上，从而防止数据丢失
+
+* 对象若需要使用序列化功能则必须实现serializable接口
+
+* 若想实现自定义序列化过程（如加密等）需实现externalizable接口，并实现writeExternal和readExternal方法
+
+* 用transient和static修饰的成员不会被序列化
+
+* 使用 ObjectInputStream & ObjectInputStream 来实现序列化
 
 </font>
