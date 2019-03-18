@@ -1,4 +1,5 @@
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
 class ThreadTest {
     /**
@@ -15,6 +16,8 @@ class ThreadTest {
         boolean isAdded = false;
         int myTime = 0;
         int myMax = 10;
+        // 使用lock来代替synchronized，使代码更加灵活和便捷，且性能更高 ！！
+        ReentrantLock lock = new ReentrantLock();
 
         SyncData(int myNum) {
             this.myNum = myNum;
@@ -22,8 +25,11 @@ class ThreadTest {
         synchronized boolean shouldStop() {
             return myTime > myMax;
         }
-        synchronized void timeGoOn() {
+        void timeGoOn() {
+            // synchronized 此处没有使用synchronized也方便地完成了加锁操作
+            lock.lock();
             myTime ++;
+            lock.unlock();
         }
         // 若要对基本数据类型使用线程锁，则应该使用线程锁方法
         synchronized void add() throws InterruptedException {
