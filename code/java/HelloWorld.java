@@ -6,7 +6,8 @@ public class HelloWorld {
         System.out.println(Arrays.toString(args));
         genericTest(); 
         extendsTest();
-        threadTest();
+        // threadTest();
+        classTest();
     }
     static void genericTest() {
         GenericTest genericTest = new GenericTest();
@@ -24,5 +25,9 @@ public class HelloWorld {
         System.out.println("\n here is Thread test \n");
         ThreadTest threadTest = new ThreadTest();
         threadTest.run();
+    }
+    static void classTest() {
+        ClassTest classTest = new ClassTest();
+        classTest.run();
     }
 }

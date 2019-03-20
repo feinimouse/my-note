@@ -71,10 +71,11 @@ HTTP/[version] [status-code] [status-message]
 * 3：重定向（用location首部指示要转移的地址）
     * 300：multiple choices：该资源包含多个版本，并给出首选版本
     * 301：moved permanently：永久重定向
-    * 302、307：Found：临时重定向
-    * 303：see other：允许post请求响应将客户端重定向
+    * 302：Found：临时重定向
+    * 303：see other：在http1.1中，允许post请求响应将客户端重定向，即先post再get
     * 304：not modified：资源未被修改
     * 305：use proxy：必须使用某个代理才能访问本服务器，代理的位置在location中给出
+    * 307：在http 1.1中，使用该状态码取代302的临时重定向
 
 * 4：客户端错误
     * 400：bad request：发送了错误的请求
