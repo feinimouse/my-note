@@ -33,15 +33,16 @@ RTTI和反射之间的区别在于：RTTI是编译器在编译时打开和检查
 * 获取Class有三种方法，如下：
 
 ```java
-
+// 对于内部类需要使用$符号：package.ClassName$InnerClass
 Class c1 = Class.forName("Integer");
-
 // 该方法不会初始化该Class类所表示对象的静态构造函数
 Class c2 = Integer.class;
 
 Class c3 = new Integer().getClass();
 
 ```
+
+* **注意：使用一个非静态内部类的Class时，获取的构造函数必定是有参的，且第一个参数必然是一个外部类的实例**
 
 * Class类方法：
     * getName()：获取类名
@@ -50,6 +51,8 @@ Class c3 = new Integer().getClass();
     * Field[] getFields()：获取类的所有成员变量
     * Methods[] getMethods()：获取类的所有方法
     * Constructors<?>[] getDeclaredConstructors()：获取类的所有构造方法
+
+* 详细使用见 /code/java/ClassTest.java
 
 ## JAVA反射
 

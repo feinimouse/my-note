@@ -31,6 +31,7 @@ class GenericTest {
     }
     /**
      * 泛型通配符的使用
+     * 当需要调用的对象为不确定对象时使用通配符？
     */
     String show(MyData<?> o) {
         return getType(o);
@@ -43,9 +44,11 @@ class GenericTest {
     }
     /**
      * 有限制的泛型：
-     * 只有该类或继承该类的子类
-     * 或实现该接口的类才能满要求
+     * extends：只有该类或继承该类的子类，或实现该接口的类才能满要求（这里的extends即表示继承也表示implements）
+     * 使用<T extends SomeClass & interface1 & interface2 & interface3>表示多实现
+     * supper：只有该类或该类的父类或更上层才能满足要求
     */
+    // class MyChildData2<type supper Double> extends MyData<TYpe> {}
     class MySupperData1 <Type extends Number> extends MyData<Type> {}
     void func4() {
         MySupperData1<Integer> data = new MySupperData1<Integer>();

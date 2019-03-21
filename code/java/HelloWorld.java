@@ -1,13 +1,20 @@
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class HelloWorld {
     public static void main(String[] args) {
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         System.out.println("Hello Happy World !!");
         System.out.println(Arrays.toString(args));
-        genericTest(); 
-        extendsTest();
+        // genericTest(); 
+        // extendsTest();
         // threadTest();
         classTest();
+    }
+    static void classTest() {
+        ClassTest classTest = new ClassTest();
+        classTest.run();
     }
     static void genericTest() {
         GenericTest genericTest = new GenericTest();
@@ -25,9 +32,5 @@ public class HelloWorld {
         System.out.println("\n here is Thread test \n");
         ThreadTest threadTest = new ThreadTest();
         threadTest.run();
-    }
-    static void classTest() {
-        ClassTest classTest = new ClassTest();
-        classTest.run();
     }
 }
