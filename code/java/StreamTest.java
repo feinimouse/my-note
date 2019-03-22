@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,19 +15,29 @@ class StreamTest {
         // 缓冲流能够使输出更快，缓冲流需要通过一个标准流来创建
         return new BufferedWriter(createFileWriter(fileName));
     }
-    static Reader createFileReader(String fileName) throws FileNotFoundException {
-        return new FileReader(fileName);
+    static Reader createFileReader(String fileName) throws IOException {
+        // jdk1.7之后，通过try(){}语句块，能在括号中的语句出错时自动释放资源，并能够抛出真正出错的异常而不是finally中的异常
+        try (FileReader fr = new FileReader(fileName)) {
+            return fr;
+        }
     }
-    static BufferedReader creatBufferReader(String fileName) throws FileNotFoundException {
+    static BufferedReader creatBufferReader(String fileName) throws IOException {
         // 缓冲流能够使读取更快
         return new BufferedReader(createFileReader(fileName));
     }
 
     static void testWrite(String fileName, String word) throws IOException {
-        BufferedWriter writer = creatBufferWriter(fileName);
-        writer.write(word);
-        writer.newLine();
-        writer.close();
+        BufferedWriter writer = null;
+        try {
+            writer = creatBufferWriter(fileName);
+            writer.write(word);
+            writer.newLine();
+        } finally {
+            // jdk1.7之前，传统的方法在finally中释放资源的方法
+            if (writer != null) {
+                writer.close();
+            }
+        }
     }
     static void testAll(String from, String to) throws IOException {
         BufferedReader reader = creatBufferReader(from);

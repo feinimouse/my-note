@@ -1,3 +1,6 @@
+import java.util.Iterator;
+import java.util.List;
+
 class ExtendsTest {
     class A {
         A() { 
@@ -48,5 +51,49 @@ class ExtendsTest {
          */
         boolean hasVocal = true;
         String getVocal();
+    }
+    /**
+     * 接口的默认方法
+     */
+    interface LiveHouse {
+        default void getLocation() {
+            System.out.println("花咲川女子中学");
+        }
+    }
+    interface BreadShop {
+        default void getLocation() {
+            System.out.println("羽丘女子中学");
+        }
+    }
+    /**
+     * 当默认接口重复时必须进行重写，
+     * 当基类和接口中的默认方法具有相同方法签名的函数时，
+     * 子类优先继承基类中的函数实现，而不是父接口中的默认方法
+     */
+    class ShopStreet implements LiveHouse, BreadShop {
+        @Override
+        /**
+         * 指定使用某父类的默认接口
+         */
+        public void getLocation() {
+            LiveHouse.super.getLocation();
+        }
+    }
+    /**
+     * 箭头函数lambda表达式的使用
+     */
+    interface TheOperate <T> {
+        void run(T[] list);
+    }
+    <T> void opreateList(T[] list, TheOperate<T> operate) {
+        operate.run(list);
+    }
+    void testLambda() {
+        Integer[] theList = new Integer[] {1, 2, 3, 4, 5};
+        opreateList(theList, list -> {
+            for (int i = 0; i < list.length; i++) {
+                list[i] = list[i] + 1;
+            }
+        });
     }
 }

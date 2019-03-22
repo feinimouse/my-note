@@ -10,9 +10,9 @@ by 菲尼莫斯 2019年3月19日
 
 ### RTTI
 
-即识别运行时的对象是什么类型
+RTTI（Run Time Type Identification）
 
-RTTI（Run Time Type Identification）能够在Java运行时维护类的相关信息
+JVM加载一个类A并生成A对应的Class类，用于存储A的结构信息，之后便能够在Java运行时维护对A的操作
 
 RTTI是基于**Class类**来实现的，是多态的基础
 
@@ -21,6 +21,8 @@ RTTI和反射之间的区别在于：RTTI是编译器在编译时打开和检查
 RTTI可以理解为使用类、方法、属性的字面量来进行编程操作（即在编译时调用类）
 
 ### 对Class类的操作（反射）
+
+即可以在运行时加载并使用在编译时完全未知的类
 
 * Java中每个实例对象都有相应的Class类对象，该Class对象保存了实例对象在内存中真正所属的类的信息，Class对象保存在.class文件中
 
