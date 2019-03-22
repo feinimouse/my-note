@@ -2,6 +2,9 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
+import annotation.Band;
+import annotation.ResloveBand;
+
 public class HelloWorld {
     public static void main(String[] args) {
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
@@ -10,7 +13,8 @@ public class HelloWorld {
         // genericTest(); 
         // extendsTest();
         // threadTest();
-        classTest();
+        // classTest();
+        annotationTest();
     }
     static void classTest() {
         ClassTest classTest = new ClassTest();
@@ -32,5 +36,9 @@ public class HelloWorld {
         System.out.println("\n here is Thread test \n");
         ThreadTest threadTest = new ThreadTest();
         threadTest.run();
+    }
+    static void annotationTest() {
+        Band band = new Band();
+        ResloveBand.reslove(band);
     }
 }

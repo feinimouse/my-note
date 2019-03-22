@@ -96,10 +96,21 @@ class Proxy extends Orgin {
 ```
 ### 动态代理
 
-主要使用Proxy类
+主要使用Proxy类来实现动态代理
 
-* Proxy.getInvocationHandler(Objecy proxy)
+关联调用处理器：InvocationHandler（接口）
+* `InvocationHandler Proxy.getInvocationHandler(Object proxy)`：
+    * 获得指定代理对象的关联调用处理器
+* `invoke(Object proxy, Method m, Object[] args)`
+    * （代理类实例、方法、参数）用于动态代理类对象上的方法调用，实现对委托类的代理访问
 
-获得指定代理对象的关联调用处理器
+`Class Proxy.getProxyClass(ClassLoader loader, Class[] interfaces)`：
+* 获取关联于指定类装载器和一组接口的动态代理类的Class对象
+
+`boolean Proxy.isProxyClass(Class c)`：
+* 判断是否是动态代理类
+
+`Object Proxy.newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)`：
+* 生成动态代理实例，通过指定类装载器和一组接口以及调用处理器
 
 </font>

@@ -10,7 +10,7 @@ by 菲尼莫斯 2019年3月22日
 
 * 注解并不是程序，但可以对程序作出解释并能被编译器等其他程序读取，并进行相应的处理
 
-* 语法详见 /code/java/AnnotationTest.java
+* 语法详见 /code/java/Annotation/
 
 ## 内置注解
 

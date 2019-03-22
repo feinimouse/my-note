@@ -1,4 +1,5 @@
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 class ClassTest {
@@ -15,6 +16,9 @@ class ClassTest {
             return getHappy("my");
         }
     }
+    /**
+     * Class
+     */
     void runReflect() {
         try {
             // 获取一个Class对象，注意：内部类使用$标记
@@ -42,10 +46,41 @@ class ClassTest {
             e.printStackTrace();
         }
     }
+    /**
+     * 动态代理
+     */
+    class ProxyHappy implements InvocationHandler {
+        private Happy happy;
+        ProxyHappy(Happy happy) {
+            this.happy = happy;
+        }
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            System.out.println("do something before method:" + method.getName());
+            // do proxy
+            method.invoke(happy, args);
+            System.out.println("do something after method:" + method.getName());
+            return null;
+        }
+    }
+    /**
+     * TODO 动态代理，该方法目前存在问题
+     */
     void runProxy() {
-        Proxy.getInvocationHandler(Objecy proxy);
+        // 被动态代理的类实例和类对象
+        Happy happy = new Happy();
+        Class<?> hClass = happy.getClass();
+
+        // 先由被代理的类生成一个调用处理器
+        InvocationHandler happyHandler = new ProxyHappy(happy);
+
+        // 通过调用处理器生成一个代理类（其实这是一个被代理类的子类）
+        Happy pHappy = (Happy)Proxy.newProxyInstance(hClass.getClassLoader(), hClass.getInterfaces(),happyHandler);
+
+        System.out.println(pHappy.toString());
     }
     void run() {
         runReflect();
+        // runProxy();
     }
 }

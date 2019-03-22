@@ -1,16 +1,20 @@
 # 不添加到git的一些文章和书籍
-/article-ignore
-# 一些用不到的小品
-/readme集合
+/ignore
 
-# build
-build
+# build 源码编译后的内容
+/build
 
 # vim编辑器产生的临时文件
 *.swp
 
 # IDEA
 .idea
+.iml
 
 # vscode
 .vscode
+
+# eclipse
+.settings
+.classpath
+
