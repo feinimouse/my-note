@@ -8,6 +8,8 @@ by 菲尼莫斯 2019年3月19日
 
 ## 运行时对象
 
+### RTTI
+
 即识别运行时的对象是什么类型
 
 RTTI（Run Time Type Identification）能够在Java运行时维护类的相关信息
@@ -15,6 +17,10 @@ RTTI（Run Time Type Identification）能够在Java运行时维护类的相关�
 RTTI是基于**Class类**来实现的，是多态的基础
 
 RTTI和反射之间的区别在于：RTTI是编译器在编译时打开和检查.class文件；反射是编译器在运行时打开和检查.class文件
+
+RTTI可以理解为使用类、方法、属性的字面量来进行编程操作（即在编译时调用类）
+
+### 对Class类的操作（反射）
 
 * Java中每个实例对象都有相应的Class类对象，该Class对象保存了实例对象在内存中真正所属的类的信息，Class对象保存在.class文件中
 
@@ -54,8 +60,46 @@ Class c3 = new Integer().getClass();
 
 * 详细使用见 /code/java/ClassTest.java
 
-## JAVA反射
+## 代理
 
-在运行时动态地，对于任意一个类都能知道该类的所有属性和方法，对于任意一个实例都能调用它的所有属性和方法
+即通过代理类来访问目标类的方法和属性，通常发生在不能直接或不想直接引用一个对象，因此需要应用代理对象来起到中介作用
+
+### 静态代理
+
+优点：较为简单，方便实现
+
+缺点：
+* 代理对象的一个接口只服务于一种类型的对象，即每一种方法都会进行代理，如果要代理多种方法则工作量会大大加大
+* 代理的方法不方便扩展
+
+```java
+class Orgin {
+    void request() {
+        // do something
+    }
+}
+
+class Proxy extends Orgin {
+    private Orgin orgin;
+    static {
+        if (orgin == null) {
+            orgin = new Orgin();
+        }
+    }
+    @Override
+    void request() {
+        // do something proxy
+        orgin.request();
+        // do something proxy
+    }
+}
+```
+### 动态代理
+
+主要使用Proxy类
+
+* Proxy.getInvocationHandler(Objecy proxy)
+
+获得指定代理对象的关联调用处理器
 
 </font>

@@ -1,5 +1,6 @@
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 class ClassTest {
     class Happy {
         String happy = "hello happy world";
@@ -14,8 +15,7 @@ class ClassTest {
             return getHappy("my");
         }
     }
-
-    void run() {
+    void runReflect() {
         try {
             // 获取一个Class对象，注意：内部类使用$标记
             Class<?> c = Class.forName("ClassTest$Happy");
@@ -41,5 +41,11 @@ class ClassTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    void runProxy() {
+        Proxy.getInvocationHandler(Objecy proxy);
+    }
+    void run() {
+        runReflect();
     }
 }
