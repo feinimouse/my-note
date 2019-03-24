@@ -11,10 +11,10 @@ public class HelloWorld {
         System.out.println("Hello Happy World !!");
         System.out.println(Arrays.toString(args));
         // genericTest(); 
-        // extendsTest();
+        extendsTest();
         // threadTest();
         // classTest();
-        annotationTest();
+        // annotationTest();
     }
     static void classTest() {
         ClassTest classTest = new ClassTest();
@@ -31,6 +31,7 @@ public class HelloWorld {
         ExtendsTest extendsTest = new ExtendsTest();
         ExtendsTest.B b = extendsTest.new B();
         b.printA();
+        extendsTest.testLambda();
     }
     static void threadTest() {
         System.out.println("\n here is Thread test \n");
