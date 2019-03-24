@@ -1,7 +1,6 @@
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -28,8 +27,8 @@ class GenericTest {
     /**
      * 泛型方法的使用
     */
-    <T> String getType(T obj) { 
-        return obj.getClass().getName(); 
+    <T> String getType(T obj) {
+        return obj.getClass().getName();
     }
     void func2() {
         Integer a = 1;
@@ -60,12 +59,13 @@ class GenericTest {
     void func4() {
         MySupperData1<Integer> data = new MySupperData1<Integer>();
         // data.setObj("aaa"); // 报错
-        data.setObj(1); 
+        data.setObj(1);
         System.out.println(data.getObj().toString());
     }
 
     /**
      * 使用反射操纵泛型
+     * 不常用
      */
     class Func {
         void hi(Map<Integer, MySupperData1<Integer>> map, List<String> list) {}
@@ -86,7 +86,7 @@ class GenericTest {
             Class<?> c = Func.class;
             Method m = c.getDeclaredMethod("hi", Map.class, List.class);
             Type[] ts = m.getGenericParameterTypes();
-            checkGeneric(ts); 
+            checkGeneric(ts);
         } catch (Exception e) {
             e.printStackTrace();
         }

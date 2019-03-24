@@ -1,14 +1,12 @@
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 class ExtendsTest {
     class A {
-        A() { 
-            printA(); 
+        A() {
+            printA();
             printB();
         }
-        public void printA() { 
+        public void printA() {
             System.out.println("aaa");
         }
         private void printB() { System.out.println("there is no B");}
@@ -23,8 +21,8 @@ class ExtendsTest {
             printB();
         }
         @Override
-        public void printA() { 
-            System.out.println(b); 
+        public void printA() {
+            System.out.println(b);
         }
         private void printB() {System.out.println("I have B");}
     }
