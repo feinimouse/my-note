@@ -28,9 +28,15 @@ RTTI可以理解为使用类、方法、属性的字面量来进行编程操作�
 
 * 每装载一个新类时，Java虚拟机就会基于这个类创建一个Class实例
 
-* 无论实例对象的引用怎么转换，实例对象本身对应的Class类对象都不变。
+* 同一个类的不同实例的Class对象始终相同
+
+* 无论实例对象的引用怎么转换，实例对象本身对应的Class类对象都不变，getName()始终是转换前的类。
 
 * Java通过实例的Class类找到实例对象真正的方法实现，从而可以通过父类执行子类Class所指的正确的方法调用
+
+* 相比RTTI，使用反射机制操作对象会使java的性能降低，耗时增加30倍
+
+* 使用setAccessible控制java的安全检查机制，若关闭java的安全检查可以提高反射的运行速度，相比RTTI耗时增加7倍
 
 >当Java创建某个类的对象，比如Human类对象时，Java会检查内存中是否有相应的Class对象。
 
@@ -100,11 +106,17 @@ class Proxy extends Orgin {
 
 主要使用Proxy类来实现动态代理
 
-关联调用处理器：InvocationHandler（接口）
-* `InvocationHandler Proxy.getInvocationHandler(Object proxy)`：
-    * 获得指定代理对象的关联调用处理器
-* `invoke(Object proxy, Method m, Object[] args)`
-    * （代理类实例、方法、参数）用于动态代理类对象上的方法调用，实现对委托类的代理访问
+**注意：动态代理只能针对接口**
+
+> JDK动态代理的原理是根据定义好的规则，用传入的接口创建一个新类，这就是为什么采用动态代理时为什么只能用接口引用指向代理，而不能用传入的类引用执行动态类。
+
+关联调用处理器：InvocationHandler（接口），实现该接口的 `invoke(Object proxy, Method m, Object[] args)`方法
+* proxy：动态代理实例，**注意：在invoke方法中调用proxy对象的方法会触发递归操作，应该使用被代理对象的方法，而不是直接操作proxy对象，或加入判断及时跳出递归**
+* method：代理对象调用的方法
+* args：输入的参数
+
+`InvocationHandler Proxy.getInvocationHandler(Object proxy)`：
+* 获得一个已生成的动态代理对象的关联调用处理器
 
 `Class Proxy.getProxyClass(ClassLoader loader, Class[] interfaces)`：
 * 获取关联于指定类装载器和一组接口的动态代理类的Class对象

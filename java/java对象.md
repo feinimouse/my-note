@@ -69,9 +69,9 @@ by 菲尼莫斯 2019年3月14日
 
 * public：可以被任意方法访问
 
-* protected：只可被同一类及其子类访问
+* protected：只可被本类及其子类访问
 
-* private：只可以被同一类的方法访问（子类无法访问），因此默认是final的无法覆盖
+* private：只可以被本类的方法访问（子类无法访问），因此默认是final的无法覆盖
 
 ## 特殊关键字
 
@@ -113,17 +113,19 @@ by 菲尼莫斯 2019年3月14日
 
 ## Object类
 
-* getClass()、toString()
+* public final static Class getClass()、toString()
 
-* equals(Obj obj)：比较两个指针是否指向同一处；== 运算符也判断**指针**是否指向同一处
+* public boolean equals(Obj obj)：可重写自定义如何比较，默认比较两个指针是否指向同一处；
+
+* “==”运算符在对对象使用时，也判断**指针**是否指向同一处
 
 * clone()：返回对象的副本（重新申请的对象空间）
-    * 默认为protected方法，需要重写为public
+    * 默认为protected方法，需要重写为public，才能有效调用
     * 使用该功能需要implement Cloneable接口
 
 * hashCode()：对象的唯一标示hash值
 
-* finalize()：回收对象时的资源释放
+* protected finalize()：可重写，会在jvm资源回收时调用，通常用作回收对象同时时的资源释放操作
 
 ## 泛型
 

@@ -10,15 +10,15 @@ public class HelloWorld {
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         System.out.println("Hello Happy World !!");
         System.out.println(Arrays.toString(args));
-        // genericTest(); 
-        extendsTest();
+        genericTest(); 
+        // extendsTest();
         // threadTest();
         // classTest();
         // annotationTest();
     }
     static void classTest() {
         ClassTest classTest = new ClassTest();
-        classTest.run();
+        classTest.runProxy();
     }
     static void genericTest() {
         GenericTest genericTest = new GenericTest();

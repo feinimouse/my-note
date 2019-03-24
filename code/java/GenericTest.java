@@ -1,13 +1,20 @@
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 class GenericTest {
     /**
      * 泛型类的使用
     */
-    class MyData <Type> {
-        private Type obj;
-        public void setObj(Type obj) {
+    class MyData <T> {
+        private T obj;
+        public void setObj(T obj) {
             this.obj = obj;
         }
-        public Type getObj() {
+        public T getObj() {
             return this.obj;
         }
     }
@@ -21,7 +28,7 @@ class GenericTest {
     /**
      * 泛型方法的使用
     */
-    <Type> String getType(Type obj) { 
+    <T> String getType(T obj) { 
         return obj.getClass().getName(); 
     }
     void func2() {
@@ -49,7 +56,7 @@ class GenericTest {
      * supper：只有该类或该类的父类或更上层才能满足要求
     */
     // class MyChildData2<type supper Double> extends MyData<TYpe> {}
-    class MySupperData1 <Type extends Number> extends MyData<Type> {}
+    class MySupperData1 <T extends Number> extends MyData<T> {}
     void func4() {
         MySupperData1<Integer> data = new MySupperData1<Integer>();
         // data.setObj("aaa"); // 报错
@@ -57,10 +64,40 @@ class GenericTest {
         System.out.println(data.getObj().toString());
     }
 
+    /**
+     * 使用反射操纵泛型
+     */
+    class Func {
+        void hi(Map<Integer, MySupperData1<Integer>> map, List<String> list) {}
+    }
+    static void checkGeneric(Type[] ts) {
+        for (Type t : ts) {
+            if (t instanceof ParameterizedType) {
+                System.out.println("外层泛型类：" + t);
+                Type[] realTs = ((ParameterizedType)t).getActualTypeArguments();
+                checkGeneric(realTs);
+            } else {
+                System.out.println("最终的泛型：" + t);
+            }
+        }
+    }
+    void func5() {
+        try {
+            Class<?> c = Func.class;
+            Method m = c.getDeclaredMethod("hi", Map.class, List.class);
+            Type[] ts = m.getGenericParameterTypes();
+            checkGeneric(ts); 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     void run() {
         func1();
         func2();
         func3();
         func4();
+        func5();
     }
 }
