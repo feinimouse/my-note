@@ -10,18 +10,12 @@ public class HelloWorld {
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         System.out.println("Hello Happy World !!");
         System.out.println(Arrays.toString(args));
-        // String a = "1a曹";
-        // for (int i = 0; i < a.length(); i++) {
-        //     int c = a.charAt(i);
-        //     System.out.println("index: " + i);
-        //     System.out.println("char: " + c);
-        //     System.out.println("char: " + (char)c);
-        // }
-        //genericTest();
+        // genericTest();
         // extendsTest();
         // threadTest();
         // classTest();
         // annotationTest();
+        testJs();
     }
     static void classTest() {
         ClassTest classTest = new ClassTest();
@@ -48,5 +42,13 @@ public class HelloWorld {
     static void annotationTest() {
         Band band = new Band();
         ResloveBand.reslove(band);
+    }
+    static void testJs() {
+        try {
+            JavaScriptInJava.run("helloWorld.js");
+            System.out.println(JavaScriptInJava.eval("Math.round(3 * 2 + 7);"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

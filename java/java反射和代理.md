@@ -82,18 +82,11 @@ Class c3 = new Integer().getClass();
 
 ```java
 class Orgin {
-    void request() {
-        // do something
-    }
+    void request() {}
 }
-
 class Proxy extends Orgin {
     private Orgin orgin;
-    static {
-        if (orgin == null) {
-            orgin = new Orgin();
-        }
-    }
+    Proxy(Orgin o) {orgin = o;}
     @Override
     void request() {
         // do something proxy
@@ -126,5 +119,33 @@ class Proxy extends Orgin {
 
 `Object Proxy.newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)`：
 * 生成动态代理实例，通过指定类装载器和一组接口以及调用处理器
+
+详见 /code/java/ClassTest.java
+
+## 动态编译
+
+使用JavaCompiler类提供的API进行动态编译
+
+```java
+JavaCompiler c = ToolProvider.getSystemJavaCompiler();
+int result = c.run(null, null, null, "HelloWorld.java");
+```
+
+* 参数1：inputStream为java编译器提供的参数，若为空则为System.in
+* 参数2：outputStream得到Java编译器的输出信息，若为空则为System.out
+* 参数3：outputStream接收编译器的错误信息，若为空则为System.err
+* 参数4：可变长String或数组，传入多个Java源文件
+* 返回值：0表示编译成功，否则失败
+
+通过反射动态运行编译好的类
+
+```java
+URL url = new URL("file:/" + "E:/workspace/my-note/code/java/");
+URLClassLoader loader = new URLClassLoader(new URL[]{url});
+Class helloWorld = loader.loadClass("HelloWorld");
+// invoke调用静态方法时可以传入一个空的执行对象，注意此时将String数组转为了Object
+c.getMethod("main", String[].class)
+    .invoke(null, (Object)new String[]{});
+```
 
 </font>

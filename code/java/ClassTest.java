@@ -31,7 +31,7 @@ class ClassTest {
             Constructor<?> con = c.getDeclaredConstructor(this.getClass());
 
             // 通过构造函数创建实例，返回是一个Object类型，需要自行转换
-            Object o = con.newInstance(this);
+            Object o = con.newInstance((Object)this);
             // 对于非内部类可以通过newInstance方法直接调用无参构造函数
             // Object o = c.newInstance();
             System.out.println(o.toString());
@@ -49,7 +49,9 @@ class ClassTest {
 
             // 通过创建出的Happy实例执行获取到的方法
             // invoke方法接收一个方法所属类的实例，以及要调用方法的形参，返回是一个Object类型
-            String result = (String)m.invoke(o, "oh God");
+            // 注意在invoke中传入函数参数时一定要强制转换为Object类型，尤其是数组类型的参数
+            // 如func(String[] args)如果使用invoke(o, new String[] {"aa", "bb"})会被解析为func("aa", "bb")从而报错
+            String result = (String)m.invoke(o, (Object)"oh God");
             System.out.println(result);
         } catch (Exception e) {
             e.printStackTrace();
