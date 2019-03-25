@@ -6,6 +6,12 @@ by 菲尼莫斯 2019年3月16日
 
 ---
 
+## 堆栈
+
+> 栈(stack):是一个先进后出的数据结构，通常用于保存方法(函数)中的参数，局部变量。在java中，所有基本类型和引用类型都在栈中存储。栈中数据的生存空间一般在当前scopes内(就是由{...}括起来的区域)。
+
+>堆(heap):是一个可动态申请的内存空间(其记录空闲内存空间的链表由操作系统维护)，C中的malloc语句所产生的内存空间就在堆中。 在java中，所有使用new xxx()构造出来的对象都在堆中存储，当垃圾回收器检测到某对象未被引用，则自动销毁该对象。所以，理论上说java中对象的生存空间是没有限制的，只要有引用类型指向它，则它就可以在任意地方被使用。
+
 ## 集合
 
 ```mermaid
@@ -63,7 +69,7 @@ Queue --> LinkedList
 ### ArrayList
 
 * 非线程安全
-  
+
 * 底层使用数组实现
 
 * 适合查改，弱于增删
@@ -155,7 +161,7 @@ static class Entry<K, V> implements Map.Entry<K, V> {
     ```
     1. 若key不存在则创建一个新的链表节点
     ```java
-    void addEntry(int hash, K key, V value, int indexInTable) { 
+    void addEntry(int hash, K key, V value, int indexInTable) {
         // 当前数组位置的链表头
         Entry<K, V> e = table[indexInTable];
         // 将新的键值链表节点放在数组的该位置，充当头部

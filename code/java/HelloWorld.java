@@ -10,7 +10,14 @@ public class HelloWorld {
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         System.out.println("Hello Happy World !!");
         System.out.println(Arrays.toString(args));
-        genericTest(); 
+        // String a = "1a曹";
+        // for (int i = 0; i < a.length(); i++) {
+        //     int c = a.charAt(i);
+        //     System.out.println("index: " + i);
+        //     System.out.println("char: " + c);
+        //     System.out.println("char: " + (char)c);
+        // }
+        //genericTest();
         // extendsTest();
         // threadTest();
         // classTest();
@@ -23,7 +30,7 @@ public class HelloWorld {
     static void genericTest() {
         GenericTest genericTest = new GenericTest();
         genericTest.run();
-    } 
+    }
     static void extendsTest() {
         /**
          * 静态方法new非静态内部类时必须先new外部类
