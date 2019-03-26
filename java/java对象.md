@@ -18,8 +18,9 @@ by 菲尼莫斯 2019年3月14日
 
 * 内部类与外部类：
     * 内部类需要依赖于外部类存在（因为内部类中会引用外部类中的动态数据）
-    * 内部类创建时必须要有一个明确的外部类`InClass c = new OutClass().new InClass();`
-    * 静态内部类比较特殊，只能引用外部类中的静态成员，因此也可以直接构造`StaticINClass = new OutClass.InClass();`
+    * 内部类在创建时必须要有一个明确的外部类`OutClass.InClass c = new OutClass().new InClass();`
+    * 静态内部类比较特殊，**只能引用外部类中的静态成员**，即不依赖于外部类而存在，因此也可以直接使用其构造函数`OutClass.InClass = new OutClass.InClass();`
+    * 内部类中的private等权限修饰符的范围是相对于外部类来说的，正如**外部类可以调用内部类的private方法**
 
 ## 面向对象的特性
 
