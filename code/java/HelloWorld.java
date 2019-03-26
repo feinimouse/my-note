@@ -8,6 +8,7 @@ import annotation.ResloveBand;
 public class HelloWorld {
     public static void main(String[] args) {
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        System.out.println("path: " + System.getProperty("java.class.path"));
         System.out.println("Hello Happy World !!");
         System.out.println(Arrays.toString(args));
         // genericTest();
@@ -15,7 +16,12 @@ public class HelloWorld {
         // threadTest();
         // classTest();
         // annotationTest();
-        testJs();
+        // testJs();
+        // jvmTest();
+    }
+    static void jvmTest() {
+        JVMTest jvmTest = new JVMTest();
+        jvmTest.run();
     }
     static void classTest() {
         ClassTest classTest = new ClassTest();

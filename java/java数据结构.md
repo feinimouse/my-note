@@ -116,6 +116,7 @@ Map --> HashTable
 * 非线程安全
 
 * HashTable和HashMap的实现一致，但是是线程安全的且具备强一致性，但性能稍微降低
+    * ConcurrentHashMap和HashTable一样是线程安全的，但HashTable的线程锁针对的是整个数组，ConcurrentHashMap是对内部结构中的部分数组进行线程锁，其他的部分依然可以同步操作，从而在线程安全的同时提高了效率
 
 * 不保证映射顺序，且映射顺序可能会改变
 

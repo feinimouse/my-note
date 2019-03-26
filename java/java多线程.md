@@ -57,14 +57,14 @@ by 菲尼莫斯 2019年3月16日
     * **使用ReentrantLock类实现线程锁来代替synchronized可以使程序运行的效率更高**
 
 * 线程的协作：多个线程有条件的同时操作共享数据，允许其他线程在满足条件的情况下进入监视区
-    1. Data类的方法deal1和deal2被synchronized关键字修饰了
+    1. data类的方法deal1和deal2被synchronized关键字修饰了
     2. 首先运行的A线程获得了data的线程锁并运行deal1操作
     3. deal1调用wait()方法，之后A线程进入data的**wait线程池**，A释放data的线程锁
-    4. B线程获得data的线程锁并运行deal2操作
+    4. data的**lock线程池**中的B线程获得data的线程锁并运行deal2操作
     5. 满足一定条件后deal2调用notify()操作使得（其实是随机唤醒一个等待线程）A线程被唤醒，并由data的**wait线程池**进入data的**lock线程池**
     6. B线程deal2继续运行，直到释放锁。
     7. A线程获得锁后继续运行wait()后的操作，由于不是立即开始运行，deal1此时还需判断此时的环境是否适合继续运行。
-    * 在编程中，尽量在使用了notify/notifyAll() 后立即退出临界区，以唤醒其他线程 
+    * 在编程中，尽量在使用了notify/notifyAll() 后立即退出临界区，以唤醒其他线程
     * notifyAll() 可以唤醒所有data的**wait线程池**的线程进入data的**lock线程池**
     * **在使用wait和notify时必须先使用synchronized或其他方式获得该对象的线程锁**
 
@@ -78,7 +78,7 @@ by 菲尼莫斯 2019年3月16日
 
 * 构造线程：
     * 继承Thread类并重写run()方法
-    
+
     ```java
     class MyThread extends Thread {
         @Override
@@ -91,7 +91,7 @@ by 菲尼莫斯 2019年3月16日
     * 实现一个Runnable接口的实例，并用该实例初始化一个Thread对象
 
     ```java
-    // 便于多个线程间共享资源，且可以继承其他的基类 
+    // 便于多个线程间共享资源，且可以继承其他的基类
     class MyRun implements Runnable {
         // 该num会在同一个MyRun实例创建的所有线程中共享，类似于static
         private Integer num = 1;
