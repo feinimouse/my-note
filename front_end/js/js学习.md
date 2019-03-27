@@ -45,7 +45,7 @@ Object.getPrototypeOf(f) === f.__proto__;   // true
 
 **注意:** prototype和`__proto__`是构造函数`A()`所参照的一个独立对象，因此对象`a`本身的行为不会影响到对象`a'`，但`a`能直接访问到`a'`的属性但不能覆盖（覆盖将使该属性变为a的自有属性,即ownProperty可枚举属性）。
 
-![prototype和__proto__](img/prototype和__proto__.png)
+![prototype和__proto__](./prototype和__proto__.png)
 
 * 使用Object.create(prototype, ownProperties)创建一个对象；
 
