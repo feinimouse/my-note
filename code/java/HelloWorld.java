@@ -18,6 +18,7 @@ public class HelloWorld {
         // annotationTest();
         // testJs();
         // jvmTest();
+        LambdaUtils.testLambda();
     }
     static void jvmTest() {
         JVMTest jvmTest = new JVMTest();
@@ -38,7 +39,6 @@ public class HelloWorld {
         ExtendsTest extendsTest = new ExtendsTest();
         ExtendsTest.B b = extendsTest.new B();
         b.printA();
-        extendsTest.testLambda();
     }
     static void threadTest() {
         System.out.println("\n here is Thread test \n");

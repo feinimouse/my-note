@@ -78,24 +78,4 @@ class ExtendsTest {
             LiveHouse.super.getLocation();
         }
     }
-    /**
-     * 箭头函数lambda表达式的使用
-     * 只能用于接口函数，即只有一个抽象函数的接口
-     */
-    interface TheOperate <T> {
-        void run(T[] list);
-    }
-    <T> void opreateList(T[] list, TheOperate<T> operate) {
-        operate.run(list);
-    }
-    void testLambda() {
-        Integer[] theList = new Integer[] {1, 2, 3, 4, 5};
-        System.out.println(Arrays.toString(theList));
-        opreateList(theList, list -> {
-            for (int i = 0; i < list.length; i++) {
-                list[i] = list[i] + 1;
-            }
-        });
-        System.out.println(Arrays.toString(theList));
-    }
 }
