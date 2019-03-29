@@ -3,9 +3,12 @@
  */
 
 class Queue {
-    headNode = null;
-    endNode = null;
-    size = 0;
+    constructor() {
+        this.headNode = null;
+        this.endNode = null;
+        this.size = 0;
+
+    }
     isEmpty() {
         return Boolean(!this.headNode);
     }
@@ -17,7 +20,7 @@ class Queue {
         temp.value = value;
         if (this.isEmpty) {
             this.headNode = temp;
-            this.endNode = temp;    
+            this.endNode = temp;
         } else {
             temp.next = this.headNode;
             this.headNode = temp;

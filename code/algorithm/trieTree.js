@@ -3,8 +3,10 @@
  */
 
 class TrieTree {
-    value;
-    child = {};
+    constructor() {
+        this.value;
+        this.child = {};
+    }
     insert(tire, value) {
         let cur = this;
         tire.forEach(item => {

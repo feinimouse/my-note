@@ -2,8 +2,11 @@
  * js实现栈
  */
 class Stack {
-    head = new LinkNode();
-    count = 0;
+    constructor() {
+        this.head = new LinkNode();
+        this.count = 0;
+
+    }
     release() {
         while (this.head.next) {
             this.head.next = this.head.next.next;
@@ -95,7 +98,7 @@ const stackUtils = {
             }
         }
         stack.push(top);
-        
+
     },
 
     sortStack(stack) {

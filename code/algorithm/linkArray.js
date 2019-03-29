@@ -2,8 +2,10 @@
  * js实现链表，及链表的逆序
  */
 class LinkNode {
-    value = null;
-    next = null;
+    constructor() {
+        this.value = null;
+        this.next = null;
+    }
     getLast() {
         let last = this;
         while (last.next) {
@@ -30,9 +32,11 @@ class LinkNode {
 }
 
 class DouLinkNode {
-    value = null;
-    next = null;
-    pre = null;
+    constructor() {
+        this.value = null;
+        this.next = null;
+        this.pre = null;
+    }
 }
 
 const linkArraryUtils = {

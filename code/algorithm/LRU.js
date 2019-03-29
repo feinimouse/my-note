@@ -4,15 +4,13 @@
  * 并将其最近访问的页面存到缓存
  */
 class LRUjs {
-    memeryMap = new Map();
-    queueHead = null;
-    queueEnd = null;
-    size = 0;
-    max;
-    api;
     constructor(maxMemery = 5, resourceApi = item => item) {
         this.max = maxMemery;
         this.api = resourceApi;
+        this.memeryMap = new Map();
+        this.queueHead = null;
+        this.queueEnd = null;
+        this.size = 0;
     }
     getQueue() {
         return {
@@ -29,12 +27,12 @@ class LRUjs {
             this.queueHead = temp;
             this.memeryMap.clear();
             this.memeryMap.set(key, value);
-            return;            
+            return;
         }
         if (this.size >= this.max) {
             const oldKey = this.queueEnd.value;
             this.queueEnd.pre.next = null;
-            this.queueEnd = this.queueEnd.pre; 
+            this.queueEnd = this.queueEnd.pre;
             this.memeryMap.delete(oldKey);
             this.size --;
         }
@@ -47,7 +45,7 @@ class LRUjs {
         this.queueHead = temp;
         this.memeryMap.set(key, { value, node: temp });
         this.size ++;
-    } 
+    }
     get(key) {
         if (this.max < 1) {
             return this.api(key);

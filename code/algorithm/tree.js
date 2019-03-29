@@ -3,10 +3,12 @@
  */
 
  class BinaryTreeNode {
-    value = null;
-    left = null;
-    right = null;
-    
+    constructor() {
+        this.value = null;
+        this.left = null;
+        this.right = null;
+
+    }
     copyTree() {
         if (!this) {
             return null;
@@ -82,7 +84,7 @@
         } else if (this === null || node === null) {
             return false;
         }
-        return node.value === this.value && 
+        return node.value === this.value &&
             this.left.equalOf(node.left) &&
             this.right.equalOf(node.right);
     }
@@ -108,7 +110,7 @@
         let index = 1;
         if (deal(this)) {
             return index;
-        } 
+        }
         return -1;
         function deal(root) {
             const cur = index;
@@ -121,15 +123,15 @@
             index = cur * 2;
             if (deal(root.left)) {
                 return true;
-            } 
+            }
             index = (cur * 2) + 1;
             if (deal(root.right)) {
                 return true;
             }
-            return false; 
+            return false;
         }
     }
-    
+
     getNodeOf(index) {
         if (index < 1) {
             return null;
@@ -152,7 +154,7 @@
                 return null;
             }
         }
-        return result; 
+        return result;
     }
 
     static toLinkArray(root) {

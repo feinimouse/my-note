@@ -12,7 +12,7 @@ import javax.script.ScriptException;
 class JavaScriptInJava {
     private static ScriptEngineManager manager;
     private static ScriptEngine engine;
-    public static final String JS_PATH = "file:/" + "E:/workspace/my-note/code/nodejs/";
+    public static final String JS_PATH = "file:/" + "E:/workspace/my-note/code/js/";
     static {
         manager = new ScriptEngineManager();
         engine = manager.getEngineByName("javascript");
