@@ -1,9 +1,11 @@
+package name.feinimouse.study;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
-import annotation.Band;
-import annotation.ResloveBand;
+import name.feinimouse.study.annotation.Band;
+import name.feinimouse.study.annotation.ResloveBand;
 
 public class HelloWorld {
     public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class HelloWorld {
         // annotationTest();
         // testJs();
         // jvmTest();
-        LambdaUtils.testLambda();
+        // LambdaUtils.testLambda();
     }
     static void jvmTest() {
         JVMTest jvmTest = new JVMTest();

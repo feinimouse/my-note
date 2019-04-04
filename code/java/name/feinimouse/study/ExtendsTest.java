@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package name.feinimouse.study;
 
 class ExtendsTest {
     class A {

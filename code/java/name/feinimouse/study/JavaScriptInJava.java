@@ -1,3 +1,5 @@
+package name.feinimouse.study;
+
 import java.io.FileReader;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -12,7 +14,7 @@ import javax.script.ScriptException;
 class JavaScriptInJava {
     private static ScriptEngineManager manager;
     private static ScriptEngine engine;
-    public static final String JS_PATH = "file:/" + "E:/workspace/my-note/code/js/";
+    public static final String JS_PATH = "file:/" + "E:/workspace/my-note/code/java/name/feinimouse/study/";
     static {
         manager = new ScriptEngineManager();
         engine = manager.getEngineByName("javascript");

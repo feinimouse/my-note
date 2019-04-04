@@ -1,3 +1,5 @@
+package name.feinimouse.study;
+
 import java.lang.reflect.Array;
 /*
 * lambda表达式的使用
@@ -58,5 +60,16 @@ public class LambdaUtils {
         forEach(is, item -> System.out.print(item));
         System.out.println();
         forEach(res, item -> System.out.print(item));
+    }
+    public static <T> String join(T[] list,String j) {
+        String result = "";
+        for (int i = 0 ; i < list.length; i++) {
+            if (i != list.length - 1) {
+                result += (list[i].toString() + j);
+            } else {
+                result += list[i];
+            }
+        }
+        return result;
     }
 }

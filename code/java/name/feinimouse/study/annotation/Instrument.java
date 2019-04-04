@@ -1,4 +1,4 @@
-package annotation;
+package name.feinimouse.study.annotation;
 
 public enum Instrument {
     GUITAR("guitar"),

@@ -1,3 +1,5 @@
+package name.feinimouse.study;
+
 import java.util.Random;
 
 class JVMTest {

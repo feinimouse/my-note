@@ -1,4 +1,4 @@
-package annotation;
+package name.feinimouse.study.annotation;
 
 
 @Overview(type = {"electronic", "jazz"}, name = "Hello Happy World")
