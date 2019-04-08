@@ -49,45 +49,92 @@ by 菲尼莫斯 2019年3月16日
 
 * 实现Runnable接口的类，该类的同一个实例所创建的不同线程会**共享这个对象的实例属性**
 
-* 线程的互斥：即对于共享数据，同一时刻只能用一个线程访问；监视区则是同一时刻只能被一个线程执行的方法
-    1. 使用synchronized(共享数据 [data]) {// 进行互斥处理的操作 [deal]} 来创建一个线程锁
-    2. 首先运行的A线程会获得data的线程锁，并运行deal代码
-    3. data的线程锁只有一个，因此其他线程B必须等获得锁的A线程将锁释放才能运行deal操作
-    4. 此时B会被放到data的**lock线程池**中
-    5. 当获得线程锁的A线程将deal运行完毕后，便会释放data的线程锁
-    6. 此时data的**lock线程池**中的B经调度重新获得data线程锁并运行deal
-    * 也可以为**data对象的某个方法**加上synchronized关键字，从而保证该方法执行时对该对象触发线程锁
-    * **线程休眠时不会释放线程锁**
-    * 一条线程可以获得多个锁
+### 线程的互斥
 
-* 线程的协作：多个线程有条件的同时操作共享数据，允许其他线程在满足条件的情况下进入监视区
-    1. 方法deal被synchronized关键字修饰了
-    2. A线程要调用deal方法，A首先获得了deal的线程锁，紧接着A就运行deal方法
-    3. 线程B此时也要调用deal方法，但线程锁已被A拿走，B进入deal的**lock线程**池进行等待
-    4. A在deal中调用wait()方法后，A线程进入deal的**wait线程池**，此时A释放了deal的线程锁
-    5. deal的**lock线程池**中的B线程获得deal的线程锁并运行deal操作
-    6. 满足一定条件后B在deal中调用notify()操作使得（其实是随机唤醒一个等待线程）A线程被唤醒，并由deal的**wait线程池**进入deal的**lock线程池**
-    7. B线程deal继续运行，直到释放deal的线程锁。
-    8. A线程获得锁后，能够继续运行wait()后的操作，由于不是立即开始运行，此时deal中还需判断环境是否适合继续运行。
-    * 在编程中，尽量在使用了notify/notifyAll() 后立即退出临界区，以唤醒其他线程
-    * notifyAll() 可以唤醒所有deal的**wait线程池**的线程进入deal的**lock线程池**
-    * **在使用wait和notify时必须先使用synchronized或其他方式获得该对象的线程锁**
+即对于共享数据，同一时刻只能用一个线程访问；监视区则是同一时刻只能被一个线程执行的方法
+
+1. 使用synchronized(共享数据 [data]) {// 进行互斥处理的操作 [deal]} 来创建一个线程锁
+
+2. 首先运行的A线程会获得data的线程锁，并运行deal代码
+
+3. data的线程锁只有一个，因此其他线程B必须等获得锁的A线程将锁释放才能运行deal操作
+
+4. 此时B会被放到data的**lock线程池**中
+
+5. 当获得线程锁的A线程将deal运行完毕后，便会释放data的线程锁
+
+6. 此时data的**lock线程池**中的B若获得data的线程锁将重新回到**就绪状态**
+
+7. 经CPU调度重新B运行deal
+
+注意：
+
+* 也可以为**data对象的某个方法**加上synchronized关键字，从而保证该方法执行时对该对象触发线程锁
+
+* **线程休眠时不会释放线程锁**
+
+* 一条线程可以获得多个锁，锁中也能获得锁
+
+### 线程的协作：
+
+多个线程有条件的同时操作共享数据，允许其他线程在满足条件的情况下进入监视区
+
+1. 方法deal被synchronized关键字修饰了
+
+2. A线程要调用deal方法，A首先获得了deal的线程锁，紧接着A就运行deal方法
+
+3. 线程B此时也要调用deal方法，但线程锁已被A拿走，B进入deal的**lock线程**池进行等待
+
+4. A在deal中调用wait()方法后，A线程进入deal的**wait线程池**，此时A释放了deal的线程锁
+
+5. deal的**lock线程池**中的B线程获得deal的线程锁，B进入了**就绪状态**
+
+6. B经过CPU调度，并运行deal操作
+
+7. 满足一定条件后B在deal中调用notify()操作使得（其实是随机唤醒一个等待线程）A线程被唤醒，并由deal的**wait线程池**进入deal的**lock线程池**
+
+8. B线程deal继续运行，直到释放deal的线程锁。之后**lock线程池**中的A重新获得了线程锁，进入就绪状态。
+
+9.  A经过CPU调度，能够继续运行wait()后的操作，由于不是立即开始运行，此时deal中还需判断环境是否适合继续运行。
+
+注意：
+
+* 在编程中，尽量在使用了notify/notifyAll() 后立即退出临界区，以唤醒其他线程
+
+* notifyAll() 可以唤醒所有deal的**wait线程池**的线程进入deal的**lock线程池**
+
+* **在使用wait和notify时必须先使用synchronized或其他方式获得该对象的线程锁**
+
+* 当线程运行wait()方法并进入等待阻塞状态时，可由外部调用thread.interrupt()触发wait()方法抛出异常，处理异常后，**线程将继续运行try-catch块后的代码**。
+
+### 线程的中断
+
+每个线程中都拥有一个 interrupt 标志位，用于判断该线程是否被中断
+
+调用`thread.interrupt()`会触发线程的如下操作:
+
+* 若程序此时因为wait()、sleep()、join()进入阻塞。线程会立马触发一个unblock解除阻塞，并throw一个InterruptedException异常，注意：**捕获该异常会将中断标志位复原**，因此之后的程序不能再用Thread.interrupted()判断是否中断。
+
+* 当程序未阻塞时，thread.interrupt()仅仅只是更新了status标志位。线程中可以通过Thread.isInterrrupted()进行检查，做相应的处理，比如也throw InterruptedException或者是清理状态，取消task等。注意：**调用Thread.isInterrrupted()方法会使中断标志位复原**。
+
 
 ## 关键方法
 
-* 休眠：Thread.sleep(ms)
+* 休眠：Thread.sleep(ms)，直接使线程进入阻塞
 
 * 线程名在new Thread时传入，否则默认为“Thread-n”，n从0递增
 
 * Thread.currentThread()：返回当前运行的线程
 
-* Thread.yield()：使当前线程暂停，让其他线程开始运行
+* Thread.yield()：使当前线程让出CPU，让其他线程开始运行（对于同优先级线程）
 
-* Thread.interrupt()：中断线程（不推荐？）
+* thread.interrupt()：在线程外部调用该方法中断线程的死锁（sleep，wait，join），并在线程中抛出InterruptedException异常。若线程未进入阻塞状态，该操作仅仅是改变线程的中断标志位。
+
+* Thread.interrupted()：在线程内部通过中断标志位判断当前线程的是否被中断，**该方法会将中断标志位复原**，通常用于在线程死循环时进行中断判断。
 
 * Thread.stop()：停止线程，并释放占用的对象锁，但会导致数据不完整，不推荐使用
 
-* thread.join()：若A线程已启动，则等待A线程完毕才继续执行当前线程，可选参数为(long millis)，即超时时间后A还未运行完毕，则继续执行该线程
+* thread.join()：若A线程已就绪，则等待A线程完毕才继续执行当前线程，可选参数为(long millis)，即超时时间后A还未运行完毕，则继续执行该线程，该阻塞类似于sleep()
 
 * thread.setPriority(int p)：为线程A设置优先级
 
@@ -145,8 +192,78 @@ by 菲尼莫斯 2019年3月16日
     thread.start();
     ```
 
-## 更多线程锁
+## 高级多线程知识
 
-**使用ReentrantLock类实现线程锁来代替synchronized可以使程序运行的效率更高**
+**重入锁ReentrantLock**：
+
+* 在同一个线程中可以重复加锁，只需要解锁同样的次数就能真正解锁。
+
+```java
+ReentrantLock Lock = new ReentrantLock();
+Condition condition = lock.newCondition();
+// 加一把锁
+Lock.lock();
+// 相当于wait()，程序会立即释放锁
+condition.await();
+// 相当于notify()
+condition.signal();
+// 解一把锁
+lock.unlock();
+```
+
+* 使用ReentrantLock类实现线程锁来代替synchronized可以使程序的逻辑性更灵活，在早期java版本运行的效率更高
+
+* 等待锁阻塞的中断，即线程在阻塞并等待锁时，如被中断则会抛出InterruptedException异常，**并结束等待锁的阻塞状态继续执行**，若要实现这种操作应使用`lock.lockInterruptibly()`进行加锁。
+
+* 判断是否需要等待锁：
+    * `lock.tryLock(2, TimeUnit.SECONDS)`：判断从现在起两秒的时间内是否要一直等待锁，返回值为boolean。
+    * `lock.tryLock()`：判断当前是否要等待锁。返回值为boolean
+
+**公平锁**：
+
+* cpu对线程的调度室随机的，同样对锁的分配也是随机的，因此一个线程刚释放锁可能又可以立即获得锁
+
+```java
+// 传入true可以使重入锁变为公平锁
+ReentrantLock lock = new ReentrantLock(true);
+// 此时将维护一个有序队列记录申请锁的排队顺序
+```
+
+**偏向锁**：
+
+> 偏向锁是JDK1.6提出来的一种锁优化的机制。其核心的思想是，如果程序没有竞争，则取消之前已经取得锁的线程同步操作。也就是说，若某一锁被线程获取后，便进入偏向模式，当线程再次请求这个锁时，就无需再进行相关的同步操作了，从而节约了操作时间，如果在此之间有其他的线程进行了锁请求，则锁退出偏向模式。
+
+* 在JVM中的启动参数中，使用-XX:+UseBiasedLocking开启偏向锁
+* 偏向锁在线程对资源竞争较为激励的程序中反而会降低性能
+
+**自旋锁**：
+
+在线程所申请的锁处于占用状态时，线程会运行一个空循环，从而使得线程不被挂起，而是循环一定时间后再次去获取锁，从而加强了线程执行的连贯性。
+
+* 对于单线程需要长时间占用锁的并发程序，自旋锁反而会造成CPU资源的浪费
+* 从1.7开始，JVM总会执行自旋锁并自动调整自旋次数。
+
+**信号量**：
+
+Semaphore类可以维护**一组**许可证（一个锁的多把钥匙），多线程去调用一套资源时，只有获得许可证的线程可以调用，否则便会阻塞，等待许可证的释放。
+
+通常用于如下场景：如银行（资源）只提供一定数量的窗口（许可证锁）供业务办理，但办理业务的人（线程）有很多
+
+* `new Semaphore(int permits, boolean fair)`：构建一个信号量，参数：许可证数量、是否为公平锁。
+* `semaphore.acquire(int xx)`：申请xx个许可证，默认该阻塞是可中断的，使用`semaphore.acquireUninterruptibly`方法来使得阻塞不可中断。
+* `semaphore.release(int xx)`：释放xx个许可证
+
+## 计划任务Timer
+
+```java
+Timer timer = new Timer();
+// 参数：执行内容、执行时间、执行周期(若不传入则只执行一次)
+timer.schedule(() -> {
+    System.out.println("...");
+}, new Date(System.currenTimeMillis() + 1000)
+, 1000);
+```
+
+也可以使用开源插件quartz进行计划任务
 
 </font>
