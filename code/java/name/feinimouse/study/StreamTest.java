@@ -1,7 +1,12 @@
 package name.feinimouse.study;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -51,4 +56,52 @@ class StreamTest {
         reader.close();
     }
 
+    private static final String PATH = "code/java/name/feinimouse/study";
+    public static void testInput() {
+        File file = new File(PATH, "helloWorld.js");
+        try (
+            FileInputStream in = new FileInputStream(file);
+            BufferedInputStream bi = new BufferedInputStream(in);
+        ) {
+            // 一次读取10字节的大小
+            byte[] temp = new byte[10];
+            // 实际读取的字节大小
+            int len = 0;
+            String result = "";
+            // read(temp)方法将读到的数据保存在temp中，返回实际读到的字节数，且当读不到数据时返回-1
+            while ((len = bi.read(temp)) != -1) {
+                System.out.println("读到：" + len + "字节");
+                result += new String(temp, 0, len);
+            }
+            System.out.println(result);
+        } catch (IOException e) {
+            System.out.println("读取失败");
+            e.printStackTrace();
+        }
+    }
+
+    public static void testOutput() {
+        File file = new File(PATH, "myWorld.js");
+        try (
+            // false表示覆盖原文件，否则追加
+            FileOutputStream out = new FileOutputStream(file, false);
+            BufferedOutputStream bo = new BufferedOutputStream(out);
+        ){
+            String str = "console.log('my world');";
+            // 转换为字节数组
+            byte[] data = str.getBytes();
+            // 将字节写入流
+            bo.write(data);
+            // 将流中的所有字节强制刷新出去，即写入文件，当运行bo.close()时也会自动刷新出去
+            // 此时使用try()语句块，可以使close自动运行
+            // bo.flush();
+        } catch (IOException e) {
+            System.out.println("写入失败");
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        testInput();
+    }
 }
