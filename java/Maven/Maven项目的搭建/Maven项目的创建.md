@@ -1,19 +1,44 @@
-﻿---
-title: Maven项目的创建
-date:  2018-01-08 19:26:31
-Tags: JavaWeb
----
+﻿# Maven项目的创建
 
+2018-01-08 19:26:31
+
+重编 by 菲尼莫斯 2019年4月12日19:55:23
+
+---
 
 本文以Maven War工程为例，介绍如何在MyEclipse中搭建Maven项目
 
-*****
+## 0. Maven 的安装
+
+1. 下载maven：http://maven.apache.org
+
+2. 解压到安装目录
+
+3. 在安装目录的`config/setting.xml`中修改如下配置
+
+```xml
+<!-- 在mirrors元素中添加以下内容，阿里的镜像 -->
+<mirror>
+    <id>alimaven</id>
+    <name>aliyun maven</name>
+    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    <mirrorOf>central</mirrorOf>
+</mirror>
+<!-- 在settings元素中中添加以下内容，本地仓库位置 -->
+<localRepository>E:\这里填写你的资源下载路径</localRepository>
+```
+
+4. 在系统环境变量中添加M2_HOME环境变量，指向Maven的安装目录
+
+5. 在系统的Path变量中添加`%M2_HOME%/bin`路径
+
+6. 保存后在命令行测试`mvn -v`命令是否能正常显示maven版本
 
 ## 1. 选择Maven项目
 
 打开MyEclipse2015，左上角依次选择：
 
-**File**-->**New**-->**Project**-->**Maven4MyEclipse**-->**Maven project**   
+**File**-->**New**-->**Project**-->**Maven4MyEclipse**-->**Maven project**
 
 {% asset_img 2018-01-11_10-09-36.png  %}
 
