@@ -3,7 +3,10 @@ try {
 } catch(e) {
     print("Hello World in Java !!");
 }
-require('./readUtils').readlines(list => {
-    console.log(list);
-})
 
+/**
+ * 控制台输入输出
+ */
+process.stdin.on('data', data => {
+    process.stdout.write(data);
+});

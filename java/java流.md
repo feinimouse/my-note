@@ -36,9 +36,36 @@ file.getAbsolutePath();
 
 节点流：从数据源读入，往目的地写出，即离源头最近的流
 
-处理流：对数据进行处理，以提高处理效率专用的流如 BufferedInputStream
+处理流：对数据进行处理，以提高处理效率专用的流如
 
-转换流：将字节流转为字符流
+* BufferedInputStream：在所有流外部包装一层Buffered能大幅提高运行效率
+
+* DataInputStream：能将其他流传递的字节数据转为java基本数据类型
+
+* ObjectInputStream：序列化与反序列化流，将对象通过流来传送
+
+* 处理流使用的是装饰设计模式，装饰设计模式相比较于代理模式，装饰模式不具备对原对象的控制权，只能将其产出进行修缮。代理模式则能够完全控制原对象的行为，代理模式使用到极致开发就是AOP，即spring架构。
+
+转换流：将字节流转为字符流ByteArrayInputStream
+
+打印流：将内容转换为String加入流中
+
+```java
+// true表示自动flush
+PrintStream ps = new PrintStream(new FileOutputStream(File file), true);
+// 可直接将字符输出到文件中
+ps.println("xxxx");
+```
+
+序列化：
+
+* 将对象数据转为字节数据
+
+* 对象若需要使用序列化功能则必须实现serializable接口才能进行序列化
+
+* 若想实现自定义序列化过程（如加密等）需实现externalizable接口，并实现writeExternal和readExternal方法
+
+* 用transient（该修饰符修饰的成员不能被序列化）和static修饰的成员不会被序列化
 
 字节的流的基本：InputStream、OutputStream
 
@@ -85,7 +112,8 @@ bo.write(byte[] b);
 bo.write(byte[] b, int from, int to);
 // 写入一个字节
 bo.write(int b);
-// 将流中的数据推出到另一端，即执行写入
+// 强制将流缓冲中未占满的数据输出到流的另一端
+// 正常情况下，为了防止多次操作IO（操作IO很费cpu时间），提供了一个缓冲区，当缓冲区满的时候，再写入文件，从而提高效率
 bo.flush();
 // 关闭流，同时执行flush()方法
 bo.close();
@@ -127,17 +155,5 @@ FileOutputStream out = new FileOutputStream(File file);
 OutputStreamWriter writer = new OutputStreamWriter(out, "utf-8");
 
 ```
-
-## 序列化
-
-* 将内存中的对象保存在硬盘上，从而防止数据丢失
-
-* 对象若需要使用序列化功能则必须实现serializable接口
-
-* 若想实现自定义序列化过程（如加密等）需实现externalizable接口，并实现writeExternal和readExternal方法
-
-* 用transient和static修饰的成员不会被序列化
-
-* 使用 ObjectInputStream & ObjectInputStream 来实现序列化
 
 </font>
