@@ -6,15 +6,19 @@ import java.lang.reflect.Array;
 * 只能用于接口函数，即只有一个抽象函数的接口
 */
 public class LambdaUtils {
+    @FunctionalInterface
     public interface SimpleVoidFunc <I> {
         public void run(I item);
     }
+    @FunctionalInterface
     public interface SimpleReturnFunc <I, O> {
         public O run(I item);
     }
+    @FunctionalInterface
     public interface ReturnFunc <I, O> {
         public O run(I item, int index);
     }
+    @FunctionalInterface
     public interface VoidFunc <I> {
         public void run(I item, int index);
     }
@@ -48,7 +52,7 @@ public class LambdaUtils {
     }
     public static <I> void forEachBreak(I[] list, ReturnFunc<I, Boolean> f) {
         for (int i = 0; i < list.length; i ++) {
-            Boolean result = (Boolean)f.run(list[i], i);
+            var result = (Boolean)f.run(list[i], i);
             if (result != null && !result) {
                 break;
             }
@@ -62,7 +66,7 @@ public class LambdaUtils {
         forEach(res, item -> System.out.print(item));
     }
     public static <T> String join(T[] list,String j) {
-        String result = "";
+        var result = "";
         for (int i = 0 ; i < list.length; i++) {
             if (i != list.length - 1) {
                 result += (list[i].toString() + j);

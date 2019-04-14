@@ -2,7 +2,7 @@
 
 # http报文
 
-by 菲尼莫斯 2019年3月15日 
+by 菲尼莫斯 2019年3月15日
 
 ---
 
@@ -26,7 +26,7 @@ Server: Apache tomcat servlet
 * 请求报文格式：
 
 ```
-[method] [request-url] HTTP/[version]  
+[method] [request-url] HTTP/[version]
 [header]
 
 [body]
@@ -35,7 +35,7 @@ Server: Apache tomcat servlet
 * 响应报文格式
 
 ```
-HTTP/[version] [status-code] [status-message]  
+HTTP/[version] [status-code] [status-message]
 [header]
 
 [body]
@@ -78,7 +78,7 @@ HTTP/[version] [status-code] [status-message]
     * 307：在http 1.1中，使用该状态码取代302的临时重定向
 
 * 4：客户端错误
-    * 400：bad request：发送了错误的请求
+    * 400：bad request：发送了错误的请求语法
     * 401、407：unauthorized：未授权的请求
     * 403：forbidden：请求被服务器拒绝，通常不会说明原因
     * 404：not found：未找到URL
@@ -91,5 +91,9 @@ HTTP/[version] [status-code] [status-message]
     * 502：bad gateway：作为代理服务器收到了一条伪响应，无法连接到父网关
     * 503：service unavailable：服务器维护中
     * 504：gateway timeout：网关或代理等待服务器响应超时
+
+## 常见首部
+
+Cache-Control: no-chache；获取最新的数据而不是缓存
 
 </font>

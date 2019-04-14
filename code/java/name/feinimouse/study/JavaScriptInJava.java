@@ -32,8 +32,8 @@ public class JavaScriptInJava {
             return;
         }
         try (
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
+            var fr = new FileReader(file);
+            var br = new BufferedReader(fr);
         ) {
             String js = "";
             String temp = null;

@@ -23,32 +23,32 @@ public class HelloWorld {
         // LambdaUtils.testLambda();
     }
     static void jvmTest() {
-        JVMTest jvmTest = new JVMTest();
+        var jvmTest = new JVMTest();
         jvmTest.run();
     }
     static void classTest() {
-        ClassTest classTest = new ClassTest();
+        var classTest = new ClassTest();
         classTest.runProxy();
     }
     static void genericTest() {
-        GenericTest genericTest = new GenericTest();
+        var genericTest = new GenericTest();
         genericTest.run();
     }
     static void extendsTest() {
         /**
          * 静态方法new非静态内部类时必须先new外部类
          */
-        ExtendsTest extendsTest = new ExtendsTest();
-        ExtendsTest.B b = extendsTest.new B();
+        var extendsTest = new ExtendsTest();
+        var b = extendsTest.new B();
         b.printA();
     }
     static void threadTest() {
         System.out.println("\n here is Thread test \n");
-        ThreadTest threadTest = new ThreadTest();
+        var threadTest = new ThreadTest();
         threadTest.run();
     }
     static void annotationTest() {
-        Band band = new Band();
+        var band = new Band();
         ResloveBand.reslove(band);
     }
     static void testJs() {

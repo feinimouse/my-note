@@ -6,6 +6,27 @@ by 菲尼莫斯 2019年3月12日
 
 ---
 
+## java相关名词
+
+JDK：Java Development Kit；Java开发工具
+* J2SE：standard edition标准版
+* J2EE：enterprise edition企业版
+* J2ME：micro edition移动版
+
+JRE： Java Runtime Enviroment；Java运行环境
+
+JVM：Java Virtual Machine：Java虚拟机
+
+DI：Dependency Injection依赖注入 
+
+IOC：Inversion of Control控制反转 
+
+AOP：Aspect Oriented Programming面向切面编程
+
+MVC：Model View Controller模型-视图-控制器
+
+MVVM：Model View ViewModel模型-视图-视图模型
+
 ## java的基本数据类型
 
 * **基本类型的传递使用的是值传递（直接复制）**

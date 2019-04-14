@@ -24,7 +24,7 @@ class StreamTest {
     }
     static Reader createFileReader(String fileName) throws IOException {
         // jdk1.7之后，通过try(){}语句块，能在括号中的语句出错时自动释放资源，并能够抛出真正出错的异常而不是finally中的异常
-        try (FileReader fr = new FileReader(fileName)) {
+        try (var fr = new FileReader(fileName)) {
             return fr;
         }
     }
@@ -47,7 +47,7 @@ class StreamTest {
         }
     }
     static void testAll(String from, String to) throws IOException {
-        BufferedReader reader = creatBufferReader(from);
+        var reader = creatBufferReader(from);
         String line = reader.readLine();
         while (line != null) {
             testWrite(to, line);
@@ -60,8 +60,8 @@ class StreamTest {
     public static void testInput() {
         File file = new File(PATH, "helloWorld.js");
         try (
-            FileInputStream in = new FileInputStream(file);
-            BufferedInputStream bi = new BufferedInputStream(in);
+            var in = new FileInputStream(file);
+            var bi = new BufferedInputStream(in);
         ) {
             // 一次读取10字节的大小
             byte[] temp = new byte[10];
@@ -84,10 +84,10 @@ class StreamTest {
         File file = new File(PATH, "myWorld.js");
         try (
             // false表示覆盖原文件，否则追加
-            FileOutputStream out = new FileOutputStream(file, false);
-            BufferedOutputStream bo = new BufferedOutputStream(out);
+            var out = new FileOutputStream(file, false);
+            var bo = new BufferedOutputStream(out);
         ){
-            String str = "console.log('my world');";
+            var str = "console.log('my world');";
             // 转换为字节数组
             byte[] data = str.getBytes();
             // 将字节写入流
