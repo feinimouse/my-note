@@ -17,25 +17,27 @@ JRE： Java Runtime Enviroment；Java运行环境
 
 JVM：Java Virtual Machine：Java虚拟机
 
-DI：Dependency Injection依赖注入 
+DI：Dependency Injection 依赖注入 
 
-IOC：Inversion of Control控制反转 
+**IOC**：Inversion of Control 控制反转 
 
-AOP：Aspect Oriented Programming面向切面编程
+**AOP**：Aspect Oriented Programming 面向切面编程（事务管理、日志等系统事务独立）
 
-MVC：Model View Controller模型-视图-控制器
+ORM：Object Relational Mapping 对象关系映射（解决面向对象与关系数据库存在的互不匹配的现象的技术）
 
-MVVM：Model View ViewModel模型-视图-视图模型
+JPA：Java Persistence API；Java持久层关系映射
+
+OXM：Object Xml Mapping 对象XML关系映射
+
+JMS：Java Message Service；Java 消息服务（用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信）
+
+JDBC：Java Data Base Connection；java数据库连接
+
+MVC：Model View Controller 模型-视图-控制器
+
+MVVM：Model View ViewModel 模型-视图-视图模型
 
 ## java的基本数据类型
-
-* **基本类型的传递使用的是值传递（直接复制）**
-
-* **注意：包装类型Integer、Boolean等赋值和取值不是采用引用传递，Integer值改变后实际是创建了一个新对象**
-
-* 基本数据类型的数据和引用都是存储在栈中的
-
-> 编译器先处理int a = 3；首先它会在栈中创建一个变量为a的引用，然后查找有没有字面值为3的地址，没找到，就开辟一个存放3这个字面值的地址，然后将a指向3的地址。接着处 理int b = 3；在创建完b的引用变量后，由于在栈中已经有3这个字面值，便将b直接指向3的地址。这样，就出现了a与b同时均指向3的情况。
 
 ### 整数：
 
@@ -82,6 +84,14 @@ MVVM：Model View ViewModel模型-视图-视图模型
 * **默认值为 false**
 
 ### 其他说明
+
+* **基本类型的传递使用的是值传递（直接复制）**
+
+* **注意：包装类型Integer、Boolean等赋值和取值不是采用引用传递，Integer值改变后实际是创建了一个新对象**
+
+* 基本数据类型的数据和引用都是存储在栈中的
+
+> 编译器先处理int a = 3；首先它会在栈中创建一个变量为a的引用，然后查找有没有字面值为3的地址，没找到，就开辟一个存放3这个字面值的地址，然后将a指向3的地址。接着处 理int b = 3；在创建完b的引用变量后，由于在栈中已经有3这个字面值，便将b直接指向3的地址。这样，就出现了a与b同时均指向3的情况。
 
 * “==”操作符对于基本数据类型来说是比较基本数据类型的值是否相同
 
