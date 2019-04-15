@@ -44,7 +44,7 @@ IOC的作用是创建并管理要使用的对象，并使用依赖注入（Depen
 
 ### Bean
 
-核心包：
+**核心包：**
 * org.springframework/spring-beans
 * org.springframework/spring-context
 * org.springframework/spring-test
@@ -53,19 +53,51 @@ beans包中的BeanFactor提供了IOC配置结构和基本功能，加载并初�
 
 context包中的ApplicationContext提供了bean对象的存储容器，以及在spring获取、注入和管理等
 
-scope：作用域
-* 单例模式：single一个容器只存在一份
-* 原型模式：prototype每次获取实例都会创建一份新的实例
-* web模式：
-    * request：每次http请求中创建一个实例
-    * session：每个session中一个独立的实例
-    * global session：在一个web平台的不同的应用中的session维护一个实例
+**scope：作用域**
 
-bean的定义：使用注解或者xml文件进行定义
+单例模式：single一个容器只存在一份
 
-bean的初始化：为bean指定init-method方法，当bean初始化时自动调用，或实现InitializingBean接口
+原型模式：prototype每次获取实例都会创建一份新的实例
 
-bean的销毁：为bean指定destroy-method方法，当bean销毁时自动调用，或实现DisposableBean接口
+web模式：
+  * request：每次http请求中创建一个实例
+  * session：每个session中一个独立的实例
+  * global session：在一个web平台的不同的应用中的session维护一个实例
+
+**proxyMode：代理模式**
+
+试想一种情况：公司bean和临时工bean；临时工是非单例模式，在不同的情境下有不同的实例，单列模式的公司中引用了临时工对象，那么如何保证公司在不同情境运行时，每次都能使用正确的临时工？此时就需要对临时工进行代理，该代理表现出和临时工一样的对外接口，但使用时会根据情境调遣真正的临时工来完成业务。
+* ScopedProxyMode.INTERFACES 当返回的bean的是一个多态接口时，直接实现一个该接口的静态代理即可。
+* ScopedProxyMode.TARGET_CLASS 若返回的bean是一个类，必须使用CGLib来生成基于类的代理。
+
+**bean的定义：**使用注解或者xml文件进行定义
+
+**bean的初始化：**为bean指定init-method方法，当bean初始化时自动调用，或实现InitializingBean接口
+
+**bean的销毁：**为bean指定destroy-method方法，当bean销毁时自动调用，或实现DisposableBean接口
+
+```xml
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd"
+    <!-- 自动搜索并调用每个bean名叫init的方法进行创建后的初始化 -->
+    default-init-method="init"
+    <!-- 自动搜索并调用每个bean名叫destroy的方法进行销毁前的资源释放 -->
+    default-destroy-method="destroy"
+>
+    <bean
+        id="guitar"
+        class="name.feinimouse.study.xxx"
+        scope="session"
+        <!-- 对每个bean指定特定的构造方法，会覆盖default-init-method -->
+        init-method="init"
+    />
+    <!-- 使用CGLib进行代理 -->
+    <aop:scoped-proxy />
+</beans>
+```
 
 ### 注入
 
@@ -89,4 +121,94 @@ bean的销毁：为bean指定destroy-method方法，当bean销毁时自动调用
 <bean id="guitar" class="name.feinimouse.study.Kasumi"></bean>
 ```
 
-Aware接口：实现以Aware结尾的接口，可以在bean中获取IOC容器相关的核心信息，这些信息会以设值注入的方式注入到bean中。如ApplicationContextAware可以在bean中获取IOC容器对象本身，BeanNameAware可以在bean中获取自己在运行时容器中的id。
+自动注入：
+```xml
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd"
+    <!--通过bean的id匹配其他bean中的同名属性进行注入  -->
+    default-autowire="byName"
+    <!--通过bean的类型匹配其他bean的属性的同类型进行注入  -->
+    default-autowire="byType"
+    <!--通过bean的类型匹配其他bean的属性的同类型构造函数进行注入  -->
+    default-autowire="constructor"
+></bean>
+```
+
+### resource资源的加载
+
+applicationContext.getResource(String path)
+
+路径的几种种形式：
+* `classpath:xxx/xxx`：从classpath中加载
+* `file:C:\\xxx\\xxx`：通过url从文件系统中加载
+* `url:http://xxx/xxx`：通过网络加载配置文件
+* `/xxx/xxx`：从applicationContext的配置文件的加载路径进行加载
+
+
+### Aware接口：
+
+实现以Aware结尾的接口，可以在bean中获取IOC容器相关的核心信息，这些信息会以设值注入的方式注入到bean中。如ApplicationContextAware可以在bean中获取IOC容器对象本身，BeanNameAware可以在bean中获取自己在运行时容器中的id。
+
+### 引用资源文件
+
+使用`${}`的形式调用.properties文件中的属性
+
+```xml
+<context:property-placeholder location="classpath:xxx.properties" />
+<bean>
+<!-- 注意：${}中间不能有空格 -->
+    <property name="xxx" value="${mybean.xxx}" />
+</bean>
+```
+
+### IOC的注解实现
+
+用注解代替xml
+
+1. 用`@Component`代替`<bean />`，Component是一个通用的bean注解，bean的id默认为类名首字母小写
+
+2. `@Repository`、`@Service`、`@Controller`分别用于注解持久层（DAO）、服务层和MVC控制层的bean
+
+3. 用`@Autowired`来代替`<bean><property /></bean>`对对象的属性进行注入，可以用于私有属性且不需要set方法
+
+4. 使用`@Qualifier(id)`来指定要注入的对象的id
+
+5. 使用`@configuration`和`@Bean`来创建一个bean的生产工厂（即java代替xml）
+
+```java
+@Configuration
+public class Config {
+    // 返回的对象即是供IOC容器管理的bean对象，注意默认的id为方法的名称，通过name参数重置id
+    @Bean(name="myObject", initMethod="init")
+    public MyObject myObject() {
+        var o = new  MyChildObject();
+        o.setName("my Name");
+        return o;
+    }
+}
+```
+
+6. 使用`@Scope`声明作用域和代理模式
+
+```java
+    @Bean
+    // 使用非单例的session模式，即在session中单例
+    // proxyMode表示当该非单例drum被其他单例的band引用时，如何实现一个该非单列drum的代理
+    // 代理会对其进行懒解析并将调用委任给session作用域内真正的drum，保证单例band的有效运行
+    // INTERFACES表示直接实现drum的静态代理作为接口，若drum不是一个接口则应使用ScopedProxyMode.TARGET_CLASS
+    @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
+    public Drum drum() {
+        /* ... */
+    }
+    // 该bean默认是单例的
+    @Bean
+    public Band band() {
+        var o = new Band();
+        // 使用设值注入来使用drum对象
+        o.setDrum(drum());
+        return o;
+    }
+```
