@@ -193,28 +193,38 @@ b == d; // false
 
 * 显示转换：隐式以外的都必须使用显式转换
 
-## 剩余参数
 
-```java
-// 剩余参数默认作为数组传入
-void test(String... args) {
-    for (String s : args) {
-        sysout(s);
-    }
-}
-// 可以使用数组或者多个参数的形式传入函数
-void run() {
-    test("a", "b", "c");
-    test(new String[] {"1", "2", "3", "4"});
-}
+## 异常处理
+
+错误处理类：
+
+```
+Throwable
+    |-- >Error
+    |-- >Exception
+            |-- >RuntimeException
 ```
 
-## lambda表达式
+Error：故障发生于虚拟机自身，可以被try-catch，但应该直接终止运行的致命错误，如ThreadDeath
 
-> lambda表达式就是一个匿名函数，主要用于替换以前广泛使用的内部匿名类，各种回调，比如事件响应器、传入Thread类的Runnable等。
+Exception：必须被捕获错误并执行错误的处理，如IOException
 
-> λ表达式是由(参数)、->、{}三部分构成的。左边是接口定义方法的参数，可以省略参数类型，并且只有当方法仅唯一参数时，小括号才能省略，没有参数应该写成()。表达式右边是代码块，也就是我们平时书写函数体中的内容。请注意：能够使用λ表达式的目标类型必须是函数接口，函数接口的定义是：一个接口，如果只有一个显式声明的抽象方法，那么它就是一个函数接口。一般用@FunctionalInterface标注出来（也可以不标）。说的简单一点就是在一个接口中只有一个显示申明的函数。
+RuntimeException：可以不被try-catch的干扰错误，如NullPointerException，IndexOutOfBoundsException等
 
-详见: /code/java/LambdaUtils.java
+try可以捕获所有Throwable，一般情况下只捕获Exception
+
+return的使用：
+* 如果try和catch中有返回值，就把返回值保存到局部变量中；
+* 执行jsr指令跳到finally语句里执行；
+* 执行完finally语句后，返回之前保存在局部变量表里的值。
+* 若finally中有return则抛弃try和catch中的return
+
+## 管道
+
+管道实际上是一种固定大小的缓冲区，管道对于管道两端的进程而言，就是一个文件，但它不是普通的文件，它不属于某种文件系统，而是自立门户，单独构成一种文件系统，并且只存在于内存中。
+* 可以实现双向的数据传输，即匿名管道只能单向；命名管道可以双向
+* 同一个时刻只能最多有一个方向的传输，即可以有多个进程对其读，也可以有多个进程写，但不能同时写
+* 管道的容量大小受内存大小限制。
+* 当管道满时，进程在写管道会被阻塞，而当管道空时，进程读管道会被阻塞
 
 </font>
