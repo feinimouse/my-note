@@ -223,8 +223,37 @@ public class Config {
 
 具体实例：由spring来代替开发人进行数据库连接的统一开启和管理等
 
-预编译：AspectJ
+AOP实现手段：
+* 预编译：AspectJ，代价较为昂贵
+* 运行期间动态代理的方式：
+    * JDK动态代理（有接口代理）：运行时创建实现代理类所有接口的实现类类
+    * CGLib动态代理（无接口代理）：运行时创建代理类的子类
 
-运行期间动态代理：JDK动态代理（有接口代理）、CGLib动态代理（无接口代理）
+### pointcut表达式：
 
+* `execution(public * * (..))`：执行所有public方法时
+* `execution(* set*(..))`：执行所有set开头方法时
+* `execution(* name.feinimouse.study.Test*(..))`：执行Test类的所有方法时
+* `execution(* name.feinimouse.study..(..))`：执行study包下的所有方法时
+* `execution(* name.feinimouse.study...(..)`：执行study包及其子包下所有方法时
 
+within：
+* `within(com.xyz.service.*)`：在service包里的任意方法
+* `within(com.xyz.service..*)`：在service包或者子包里的任意方法
+
+其他：
+* `this(com.xyz.service.AccountService)`：实现了 AccountService 接口的代理对象的任意方法
+
+* `target(com.xyz.service.AccountService)`：实现了 AccountService 接口的目标对象的任意方法
+
+* `args(java.io.Serializable)`：接受一个实现了Serializable接口的参数
+
+* `@target(name.feinimouse.study.anno.Band)`：带有Band注解的目标对象的任意方法
+
+* `@within(name.feinimouse.study.anno.Band)`：任何一个带有Band注解的对象声明的类型的任意方法
+
+* `@annotation(name.feinimouse.study.anno.Band)`：任何一个带有Band注解的方法
+
+### AOP类型：
+
+Introduction：给与一个接口A和它的实现类B，切面在处理目标类C时，可以让C强制以B的实现方式来实现接口A，从而可以使用B来代理目标类C进行使用
