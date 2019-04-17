@@ -172,9 +172,9 @@ applicationContext.getResource(String path)
 
 2. `@Repository`、`@Service`、`@Controller`分别用于注解持久层（DAO）、服务层和MVC控制层的bean
 
-3. 用`@Autowired`来代替`<bean><property /></bean>`对对象的属性进行注入，可以用于私有属性且不需要set方法
+3. 用`@Autowired`或`@Inject`或`@Resource`来代替`<bean><property /></bean>`对对象的属性进行注入，可以用于私有属性且不需要set方法
 
-4. 使用`@Qualifier(id)`来指定要注入的对象的id
+4. 使用`@Qualifier(id)`或`@Named(id)`或`@Resource(name="xxx")`来指定要注入的对象的id
 
 5. 使用`@configuration`和`@Bean`来创建一个bean的生产工厂（即java代替xml）
 
@@ -212,3 +212,19 @@ public class Config {
         return o;
     }
 ```
+
+**(待补充其他注解)**
+
+## AOP
+
+面向切面：通过**预编译**和**运行期动态代理**的方式实现程序功能的统一维护；在每一个子模块中都要实现一个不同情景的相同的功能，我们称之为切面，如日志等。
+
+常用功能：日志、性能统计、安全控制、事务和异常控制
+
+具体实例：由spring来代替开发人进行数据库连接的统一开启和管理等
+
+预编译：AspectJ
+
+运行期间动态代理：JDK动态代理（有接口代理）、CGLib动态代理（无接口代理）
+
+
