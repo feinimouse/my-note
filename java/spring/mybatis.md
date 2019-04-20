@@ -20,7 +20,7 @@ mapper十分依赖数据库结构
 
 Hibernate对象/关系映射能力强，无需编写sql，数据库无关性好，对于关系模型要求高的软件，如果用hibernate开发可以节省很多代码，提高效率。
 
-`#{}`可以消除sql注入，调用了PreparedStatement的set方法
+`#{}`可以消除sql注入，调用了PreparedStatement的set方法， PreparedStatement利用预编译的机制将sql语句的主干和参数分别传输给数据库服务器,从而使数据库分辨的出哪些是sql语句的主干哪些是参数,这样一来即使参数中带了sql的关键字,数据库服务器也仅仅将他当作参数值使用,关键字不会起作用,从而从原理上防止了sql注入的问题。由于使用了预编译机制,执行的效率要高于Statement
 `${}`直接拼接了字符串
 
 Mapper 接口的工作原理是JDK动态代理，Mybatis运行时会使用JDK动态代理为Mapper接口生成代理对象proxy，代理对象会拦截接口方法，转而执行MapperStatement所代表的sql，然后将sql执行结果返回。

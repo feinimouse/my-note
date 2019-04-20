@@ -6,6 +6,26 @@ by 菲尼莫斯 2019年3月16日
 
 ---
 
+## 快速浏览
+
+列表：
+* ArrayList：线程不安全，数组
+* Vector：线程安全，数组
+* LinkedList：线程不安全。链表
+* CopyOnWriteArrayList：线程安全，在写时将容器复制一份进行写，写完再将引用进行替换
+
+map：
+* HashMap：线程不安全，无序
+* LinkedHashMap：线程不安全，按照插入顺序排序
+* TreeMap：线程不安全，按照key大小排序，红黑树
+* HashTable：线程安全，无序，key，value不能为null
+* ConcurrentHashMap：线程安全，速度更快，无序
+
+Set：
+* HashSet：线程不安全，无序
+* LinkedHashSet：线程不安全，按照插入顺序
+* TreeSet：线程不安全，按照key的大小排序
+
 ## 堆、栈、池
 
 > 栈(stack):是一个先进后出的数据结构，通常用于保存方法(函数)中的参数，局部变量。在java中，所有基本类型和引用类型都在栈中存储。栈中数据的生存空间一般在当前scopes内(就是由{...}括起来的区域)。
@@ -115,6 +135,10 @@ Map --> HashTable
 
 * 非线程安全
 
+* 使用了hashCode()和equals()来生成key索引和判断索引位置key的值是否相等，应遵循以下原则
+    * 如果o1.equals(o2)，那么o1.hashCode() == o2.hashCode()总是为true的。
+    * 如果o1.hashCode() == o2.hashCode()，并不意味着o1.equals(o2)会为true。
+
 * HashTable和HashMap的实现一致，但是是线程安全的且具备强一致性，但性能稍微降低
     * ConcurrentHashMap和HashTable一样是线程安全的，但HashTable的线程锁针对的是整个数组，ConcurrentHashMap是对内部结构中的部分数组进行线程锁，其他的部分依然可以同步操作，从而在线程安全的同时提高了效率
 
@@ -194,7 +218,7 @@ static class Entry<K, V> implements Map.Entry<K, V> {
 
 * 包含属性key、value、left、right、parent、color
 
-* 通过key进行排序（比较大小）
+* 通过key进行排序（**比较大小**）
 
 * 具有较高的空间利用率，有稳定的操作性能O(log n)
 

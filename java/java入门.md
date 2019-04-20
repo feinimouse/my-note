@@ -13,7 +13,7 @@ JDK：Java Development Kit；Java开发工具
 * J2EE：enterprise edition企业版
 * J2ME：micro edition移动版
 
-JRE： Java Runtime Enviroment；Java运行环境
+JRE：Java Runtime Enviroment；Java运行环境
 
 JVM：Java Virtual Machine：Java虚拟机
 
@@ -55,6 +55,15 @@ MVVM：Model View ViewModel 模型-视图-视图模型
 
 * 字面量可以通过下划线来分割（`int i = 0b1000_1010_1111`）
 
+* 整数的**字面量默认均为int类型**，小数的为double
+
+* **整数进行加减乘除运算时默认会转为int类型**，小数计算时连同整数都会转为double
+
+```java
+byte a = 1, b = 2;
+byte c = a + b; // 此处会报类型转换错误，此时a+b已经转为了int类型，需要强制转为byte
+```
+
 * 强制高位向低位转换时：高位数余上低位所能表示的范围（`(byte)258 = 258 % 256`，`(byte)253 = -3`）
 
 * 表达式中有不同数据类型时，所有的数据会提升成最高位的数进行计算（`4 + 8L` int 4 会提升为long类型）
@@ -88,6 +97,8 @@ MVVM：Model View ViewModel 模型-视图-视图模型
 * **基本类型的传递使用的是值传递（直接复制）**
 
 * **注意：包装类型Integer、Boolean等赋值和取值不是采用引用传递，Integer值改变后实际是创建了一个新对象**
+
+* 包装类与包装类间的`==`操作符会比较两个包装类的指针地址，因此很容易出现不相等的情况
 
 * 基本数据类型的数据和引用都是存储在栈中的
 
