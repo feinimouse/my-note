@@ -48,6 +48,8 @@ IOC的作用是创建并管理要使用的对象，并使用依赖注入（Depen
 * org.springframework/spring-beans
 * org.springframework/spring-context
 * org.springframework/spring-test
+* javax.annotation/javax.annotation-api
+* javax.inject/javax.inject
 
 beans包中的BeanFactor提供了IOC配置结构和基本功能，加载并初始化bean
 
@@ -178,6 +180,8 @@ applicationContext.getResource(String path)
 
 5. 使用`@configuration`和`@Bean`来创建一个bean的生产工厂（即java代替xml）
 
+6. 使用`@PostConstruct`和`@PreDestory`来代替`init-method`和`destroy-method`属性，实现回收和初始化。
+
 ```java
 @Configuration
 public class Config {
@@ -217,6 +221,11 @@ public class Config {
 
 ## AOP
 
+核心包：
+* org.springframework/spring-aop
+* org.aspectj/aspectjweaver
+
+
 面向切面：通过**预编译**和**运行期动态代理**的方式实现程序功能的统一维护；在每一个子模块中都要实现一个不同情景的相同的功能，我们称之为切面，如日志等。
 
 常用功能：日志、性能统计、安全控制、事务和异常控制
@@ -229,30 +238,44 @@ AOP实现手段：
     * JDK动态代理（有接口代理）：运行时创建实现代理类所有接口的实现类类
     * CGLib动态代理（无接口代理）：运行时创建代理类的子类
 
+1、如果目标对象实现了接口，默认情况下会采用JDK的动态代理实现AOP
+2、如果目标对象实现了接口，可以强制使用CGLIB实现AOP
+3、如果目标对象没有实现了接口，必须采用CGLIB库，spring会自动在JDK动态代理和CGLIB之间转换
+
 ### pointcut表达式：
 
+execution：用于匹配方法执行的连接点：
 * `execution(public * * (..))`：执行所有public方法时
 * `execution(* set*(..))`：执行所有set开头方法时
-* `execution(* name.feinimouse.study.Test*(..))`：执行Test类的所有方法时
+* `execution(* name.feinimouse.study.Test.*(..))`：执行Test类的所有方法时
 * `execution(* name.feinimouse.study..(..))`：执行study包下的所有方法时
 * `execution(* name.feinimouse.study...(..)`：执行study包及其子包下所有方法时
 
-within：
+within：用于匹配指定类型内的方法执行：
 * `within(com.xyz.service.*)`：在service包里的任意方法
 * `within(com.xyz.service..*)`：在service包或者子包里的任意方法
 
-其他：
+以下方法不太明确，需要慎重：
+
+this：用于匹配当前AOP代理对象类型的执行方法；注意是AOP代理对象的类型匹配，这样就可能包括引入接口也类型匹配；
 * `this(com.xyz.service.AccountService)`：实现了 AccountService 接口的代理对象的任意方法
 
+target：用于匹配当前目标对象类型的执行方法；注意是目标对象的类型匹配，这样就不包括引入接口也类型匹配；
 * `target(com.xyz.service.AccountService)`：实现了 AccountService 接口的目标对象的任意方法
 
+args：用于匹配当前执行的方法传入的参数为指定类型的执行方法；
 * `args(java.io.Serializable)`：接受一个实现了Serializable接口的参数
 
+@target：用于匹配当前目标对象类型的执行方法，其中目标对象持有指定的注解；
 * `@target(name.feinimouse.study.anno.Band)`：带有Band注解的目标对象的任意方法
 
+@within：用于匹配所以持有指定注解类型内的方法；
 * `@within(name.feinimouse.study.anno.Band)`：任何一个带有Band注解的对象声明的类型的任意方法
 
+@annotation：用于匹配当前执行方法持有指定注解的方法；
 * `@annotation(name.feinimouse.study.anno.Band)`：任何一个带有Band注解的方法
+
+bean：Spring AOP扩展的，AspectJ没有对于指示符，用于匹配特定名称的Bean对象的执行方法；
 
 ### AOP类型：
 
