@@ -1,3 +1,0 @@
-name: tsutumaki kokoro
-age: 16
-feature: rich, cute, passion
