@@ -27,6 +27,10 @@ AOP实现手段：
 2、如果目标对象实现了接口，可以强制使用CGLIB实现AOP
 3、如果目标对象没有实现了接口，必须采用CGLIB库，spring会自动在JDK动态代理和CGLIB之间转换
 
+**aop的本质是通过在pointcut位置注入一个advice来执行相关操作**
+
+advice的实现有aspect和advisor两种方式
+
 ## pointcut（切入点）：
 
 ### 使用方法
@@ -50,6 +54,9 @@ AOP实现手段：
 ### 切入点表达式
 
 execution：用于匹配方法执行的连接点：
+
+execution( `方法修饰符<可选>` `返回类型<必须>` `包名.方法名<必须>`(`参数<必须>`))
+
 * `execution(public * * (..))`：执行所有public方法时
 * `execution(* set*(..))`：执行所有set开头方法时
 * `execution(* name.feinimouse.study.Test.*(..))`：执行Test类的所有方法时
@@ -82,7 +89,7 @@ args：用于匹配当前执行的方法传入的参数为指定类型的执行�
 
 bean：Spring AOP扩展的，AspectJ没有对于指示符，用于匹配特定名称的Bean对象的执行方法；
 
-## AOP Aspect类型：
+## AOP aspect adcice通知：
 
 ### 常规通知
 
@@ -175,8 +182,73 @@ public void test() {
 }
 ```
 
+## aop Advisor advice通知
+
+Advisor是Pointcut和Advice的配置器，它包括Pointcut和Advice，是将Advice注入程序中Pointcut位置的代码
+
+简单来说是一个aop的通知器类，该类要实现`*Advice`接口（如MethodBeforeAdvice），这些接口对常用的advice进行了封装
+
+一般配合事务管理来使用
+
 ## 纯注解AOP（AspectJ）
 
 spring aop（xml形式）不依赖于AspectJ，但支持AspectJ的切入点配置
 
+使用`@Aspect`注解声明一个切面类
+* 该注解会被spring自动识别为切面类
+* 该注解的类会从自动切面代理中排出，以防止代理循环
+* 拥有该注解的类会自动使用AspectJ来实现AOP功能，即预编译形式，该形式会在编译前进行扫描，因此代价比较昂贵
+* **该切面类可以被spring识别，但无法被spring自动应用（加入bean），因此需要配合`@Component`等使用**
 
+使用示例：
+
+```java
+@Aspect
+@Component("circleLiveHouse")
+public class Circle implements Support {
+    /**
+     * 定义一个可以方便引用的切入点
+     */
+    @Pointcut("execution(* name.feinimouse.study.bandparty.band.impl.*.display(..))")
+    private void circleDisplay() {}
+
+    /**
+     * 引用了circleDisplay这个切入点的方法执行前的通知，同xml配置中的aop:before
+     */
+    @Override
+    @Before("circleDisplay()")
+    public void beforeDisplay() {
+        System.out.println("We will display in circle !");
+    }
+
+    /**
+     * 环绕通知 使用args()截取了输入值
+     * @param pjp 注意：pjp.proceed()是代理方法真正的执行，抛出throwable异常，无论返回值是否为void都需要返回
+     * @param song 这里可以捕获输入参数
+     * @return 这里必须要返回方法原本的返回值，即pjp.proceed()的返回值
+     * @throws Throwable 若pjp.proceed()发生异常，在此可以处理
+     */
+    @Around("execution(* name.feinimouse.study.bandparty.band.impl.*.display(String)) && args(song)")
+    public Object aroundDisplay(ProceedingJoinPoint pjp, String song) throws Throwable {
+        System.out.println("Next song is " + song);
+        Object ret = pjp.proceed();
+        System.out.println("Thanks for watching " + song);
+        return ret;
+    }
+
+    /**
+     * introduction通知的使用，在@Aspect类中
+     * 要introduction的接口用一个static变量表示
+     * defaultImpl表示该接口具体的实现类
+     * value表示要代理的类
+     */
+    @DeclareParents(value = "name.feinimouse.study.bandparty.band.impl.PoppinParty",
+        defaultImpl = Circle.class)
+    public static Support support;
+
+    @Override
+    public String getSupportName() {
+        return "Circle Live House";
+    }
+}
+```
