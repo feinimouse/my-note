@@ -45,9 +45,15 @@ IOC的作用是创建并管理要使用的对象，并使用依赖注入（Depen
 ### Bean
 
 **核心包：**
-* org.springframework/spring-beans
-* org.springframework/spring-context
-* org.springframework/spring-test
+
+* org.springframework/spring-core：Spring的一些基础关键类，包括cglib，以及其他一些定义了资源的访问方式，序列化等的类
+* org.springframework/spring-beans：Bean 的定义、Bean 的创建以及对 Bean 的解析
+* org.springframework/spring-context：给 Spring 提供一个运行时的环境，用以保存各个对象的状态。
+    * 标识一个应用环境
+    * 利用 BeanFactory 创建 Bean 对象
+    * 保存对象关系表
+    * 能够捕获各种事件
+* org.springframework/spring-test：提供便利的junit集成spring的测试环境，能够进行事务回滚，自动注入等操作。
 * javax.annotation/javax.annotation-api
 * javax.inject/javax.inject
 
