@@ -1,4 +1,12 @@
-
+---
+title: react中的一些坑
+author: 菲尼莫斯
+date: 2018-07-29
+tags:
+- react
+categories:
+- 前端
+---
 
 # react中的一些坑
 
