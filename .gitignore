@@ -1,6 +1,3 @@
-# 不添加到git的一些文章和书籍
-/ignore
-
 # build 源码编译后的内容
 /build
 
@@ -18,5 +15,10 @@
 .settings
 .classpath
 
+.DS_Store
+Thumbs.db
+db.json
 *.log
 node_modules/
+public/
+.deploy*/
