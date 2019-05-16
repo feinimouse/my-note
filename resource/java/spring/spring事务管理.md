@@ -1,3 +1,13 @@
+---
+title: spring事务管理
+author: 菲尼莫斯
+date: 2019-05-09
+tags:
+- spring
+categories:
+- java
+---
+
 # spring事务管理
 
 by 菲尼莫斯 2019年5月9日

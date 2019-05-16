@@ -1,4 +1,12 @@
-
+---
+title: web-deemo（五）layui表格
+author: 菲尼莫斯
+date: 2018-07-18
+tags:
+- web-deemo
+categories:
+- java
+---
 
 # layui表格
 

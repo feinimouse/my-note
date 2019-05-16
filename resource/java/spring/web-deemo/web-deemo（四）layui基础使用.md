@@ -1,4 +1,12 @@
-
+---
+title: web-deemo（四）layui基础使用
+author: 菲尼莫斯
+date: 2018-07-17
+tags:
+- web-deemo
+categories:
+- java
+---
 
 # layui基础使用
 

@@ -1,3 +1,12 @@
+---
+title: web-deemo（二）动态页面
+author: 菲尼莫斯
+date: 2018-07-12
+tags:
+- web-deemo
+categories:
+- java
+---
 
 # 动态页面
 

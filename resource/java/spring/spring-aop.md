@@ -1,3 +1,13 @@
+---
+title: spring-aop
+author: 菲尼莫斯
+date: 2019-04-14
+tags:
+- spring
+categories:
+- java
+---
+
 # spring-aop
 
 by 菲尼莫斯 2019年4月14日
