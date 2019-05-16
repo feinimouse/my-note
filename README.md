@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # mynote
 
@@ -12,5 +12,3 @@ the repositories of Feinimouse recording the IT study and reading.
 
 java study code is transfer to https://github.com/feinimouse/java-study.
 
-
-</font>
