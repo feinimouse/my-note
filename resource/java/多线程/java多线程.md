@@ -1,4 +1,12 @@
-
+---
+title: java多线程
+author: 菲尼莫斯
+date: 2019-03-16
+tags:
+- 多线程
+categories:
+- java
+---
 
 # java多线程
 

@@ -1,3 +1,13 @@
+---
+title: javac
+author: 菲尼莫斯
+date: 2019-04-14
+tags:
+- jvm
+categories:
+- java
+---
+
 # javac
 
 by 菲尼莫斯 2019年4月14日

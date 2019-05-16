@@ -1,4 +1,12 @@
-
+---
+title: java多线程进阶
+author: 菲尼莫斯
+date: 2019-04-08
+tags:
+- 多线程
+categories:
+- java
+---
 
 # java多线程进阶
 

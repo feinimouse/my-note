@@ -1,4 +1,12 @@
-
+---
+title: JVM入门
+author: 菲尼莫斯
+date: 2019-03-18
+tags:
+- jvm
+categories:
+- java
+---
 
 # JVM入门
 

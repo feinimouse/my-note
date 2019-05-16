@@ -1,4 +1,12 @@
-
+---
+title: java垃圾回收
+author: 菲尼莫斯
+date: 2019-03-14
+tags:
+- jvm
+categories:
+- java
+---
 
 # java垃圾回收
 
