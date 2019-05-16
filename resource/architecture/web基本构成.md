@@ -1,4 +1,12 @@
-<font size="4">
+---
+title: web基本构成
+author: 菲尼莫斯
+date: 2019-03-22
+tags:
+- 架构
+categories:
+- 编程思想
+---
 
 # web基本构成
 
@@ -41,5 +49,3 @@ HTTP 隧道通常用来在一条或多条HTTP 连接上转发非HTTP 数据，�
 ## Agent代理
 
 浏览器、自动访问各种服务器的机器人和爬虫
-
-</font>
