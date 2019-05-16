@@ -1,4 +1,12 @@
-
+---
+title: java一些特性
+author: 菲尼莫斯
+date: 2019-03-14
+tags:
+- 基础
+categories:
+- java
+---
 
 # java一些特性
 

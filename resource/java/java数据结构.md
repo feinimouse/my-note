@@ -1,4 +1,12 @@
-
+---
+title: java数据结构
+author: 菲尼莫斯
+date: 2019-03-16
+tags:
+- 基础
+categories:
+- java
+---
 
 # java数据结构
 

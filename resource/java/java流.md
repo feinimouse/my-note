@@ -1,4 +1,12 @@
-
+---
+title: java流
+author: 菲尼莫斯
+date: 2019-03-15
+tags:
+- 基础
+categories:
+- java
+---
 
 # java流
 

@@ -1,4 +1,12 @@
-
+---
+title: java入门
+author: 菲尼莫斯
+date: 2019-03-12
+tags:
+- 基础
+categories:
+- java
+---
 
 # java入门
 

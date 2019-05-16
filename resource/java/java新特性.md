@@ -1,4 +1,12 @@
-
+---
+title: java新特性
+author: 菲尼莫斯
+date: 2019-04-04
+tags:
+- 基础
+categories:
+- java
+---
 
 # java新特性
 
