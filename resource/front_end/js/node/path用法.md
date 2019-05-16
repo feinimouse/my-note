@@ -1,4 +1,12 @@
-
+---
+title: path用法
+author: 菲尼莫斯
+date: 2018-07-19
+tags:
+- node
+categories:
+- 前端
+---
 
 # path用法
 
