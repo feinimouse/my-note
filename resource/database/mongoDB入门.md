@@ -1,4 +1,14 @@
-# MongoDB
+---
+title: MongoDB入门
+author: 菲尼莫斯
+date: 2019-04-12
+tags:
+- mongodb
+categories:
+- 数据库
+---
+
+# MongoDB入门
 
 by 菲尼莫斯 2019年4月12日
 

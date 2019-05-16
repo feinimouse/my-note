@@ -1,3 +1,13 @@
+---
+title: Redis入门
+author: 菲尼莫斯
+date: 2019-04-17
+tags:
+- redis
+categories:
+- 数据库
+---
+
 # Redis入门
 
 by 菲尼莫斯 2019年4月17日

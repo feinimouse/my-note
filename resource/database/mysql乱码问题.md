@@ -1,4 +1,12 @@
-
+---
+title: MySql乱码问题
+author: 菲尼莫斯
+date: 2019-03-08
+tags:
+- mysql
+categories:
+- 数据库
+---
 
 # MySql乱码问题
 
