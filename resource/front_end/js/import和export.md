@@ -1,4 +1,12 @@
-
+---
+title: import和export
+author: 菲尼莫斯
+date: 2018-09-21
+tags:
+- js
+categories:
+- 前端
+---
 
 # import和export
 

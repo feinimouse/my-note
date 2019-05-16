@@ -1,4 +1,12 @@
-
+---
+title: js学习
+author: 菲尼莫斯
+date: 2018-11-12
+tags:
+- js
+categories:
+- 前端
+---
 
 # js学习
 

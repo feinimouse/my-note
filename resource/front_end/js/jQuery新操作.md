@@ -1,10 +1,14 @@
-# jQuery新操作
-
-标签（空格分隔）： 前端
-
+---
+title: jQuery新操作
+author: 菲尼莫斯
+date: 2018-09-21
+tags:
+- js
+categories:
+- 前端
 ---
 
-### 1. 使用on代替click
+## 1. 使用on代替click
 
 在最新版idea的jquery官方typescript注释中$().<del>clik(function)</del>事件已经过时，推荐使用on来代替:
 ```javascript
@@ -13,9 +17,9 @@
             alert(my);
         });
 ```
-### 2. 使用this来调用元素
-jquery中使用this和$(this)来调用对象：  
-* 在jquery方法中直接this获取的是当前调用元素的dom对象，只能使用其原生js方法。  
+## 2. 使用this来调用元素
+jquery中使用this和$(this)来调用对象：
+* 在jquery方法中直接this获取的是当前调用元素的dom对象，只能使用其原生js方法。
 * 要想使用jquery方法必须用$(this)来获取jquery对象。
 ```javascript
 $(.class).on('click',function () {
@@ -26,7 +30,7 @@ $(.class).on('click',function () {
         });
 
 ```
-### 3. 使用data属性来储存数据
+## 3. 使用data属性来储存数据
 
 在html5的dom元素中添加data-\*属性可以被浏览器和jquery直接识别，它不会影响到你的页面布局和风格，但它却是可读可写的。
 
@@ -64,7 +68,7 @@ $('a').data('mydream','success');
 
 ```
 
-### 常用操作
+## 常用操作
 
 1. 选择器+遍历
 

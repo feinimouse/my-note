@@ -1,4 +1,12 @@
-
+---
+title: promise用法
+author: 菲尼莫斯
+date: 2018-10-17
+tags:
+- js
+categories:
+- 前端
+---
 
 # promise用法
 

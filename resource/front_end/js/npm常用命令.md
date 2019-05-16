@@ -1,7 +1,11 @@
-#用idea创建Vue项目
-
-标签（空格分隔）： 前端
-
+---
+title: npm常用命令
+author: 菲尼莫斯
+date: 2018-03-29
+tags:
+- js
+categories:
+- 前端
 ---
 
 **npm ls xxx** : 查看当前安装模块的版本

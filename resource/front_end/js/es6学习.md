@@ -1,4 +1,12 @@
-
+---
+title: es6学习
+author: 菲尼莫斯
+date: 2018-12-13
+tags:
+- js
+categories:
+- 前端
+---
 
 # es6学习
 

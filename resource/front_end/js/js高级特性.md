@@ -1,4 +1,12 @@
-
+---
+title: js高级特性
+author: 菲尼莫斯
+date: 2019-03-29
+tags:
+- js
+categories:
+- 前端
+---
 
 # js高级特性
 
