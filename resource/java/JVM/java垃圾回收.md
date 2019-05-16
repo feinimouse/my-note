@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # java垃圾回收
 
@@ -75,4 +75,4 @@ Heap space：分为老年代、新生代
 
 针对年老代的垃圾回收即 Full GC。
 
-</font>
+

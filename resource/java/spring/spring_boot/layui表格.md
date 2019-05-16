@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # layui表格
 
@@ -158,4 +158,4 @@ var dateStr = dateFormat('yyyy年MM月dd日 HH时mm分ss秒', new Date());
 
 
 
-</font>
+

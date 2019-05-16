@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # React服务器端渲染
 
@@ -17,7 +17,7 @@ app-server.js
 import React from 'react'
 import App from 'App.jsx'
 
-export default <App/>  
+export default <App/>
 
 ```
 

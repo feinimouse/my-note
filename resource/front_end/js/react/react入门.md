@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # react入门
 
@@ -50,4 +50,4 @@ ReactDOM.render(jsx, document.getElementById('app'));
 
 
 
-</font>
+

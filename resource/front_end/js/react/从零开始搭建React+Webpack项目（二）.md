@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # 从零开始搭建React+Webpack项目（二）
 
@@ -8,17 +8,17 @@ by 菲尼莫斯 2018年7月25日
 
 ## 安装开发辅助插件
 
-用于方便开发时实时查看效果的开发服务器  
+用于方便开发时实时查看效果的开发服务器
 **webpack-dev-server：**```npm install webpack-dev-server -D ```
 
-用于适应不同系统环境的全局变量设置  
+用于适应不同系统环境的全局变量设置
 **cross-env：**```npm install cross-env -D```
 
-用于删除文件的插件  
+用于删除文件的插件
 **rimraf：**```npm install rimraf -D```
 
-在package.json中添加新的启动命令  
-启动开发服务器：```"dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.js"```  
+在package.json中添加新的启动命令
+启动开发服务器：```"dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.js"```
 清理编译残留文件：```"clear": "rimraf dist" ```
 
 ## 配置webpack
@@ -110,4 +110,4 @@ module.exports = config;
 
 ```npm run dev```
 
-</font>
+

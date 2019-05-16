@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # Docker入门.md
 
@@ -28,7 +28,7 @@ by 菲尼莫斯 2019年01月12日
 
 ### pull拉取镜像
 
-`docker pull [仓库名/][镜像名][:镜像TAG]` 
+`docker pull [仓库名/][镜像名][:镜像TAG]`
 
 * 若不填仓库名则默认从docker hub拉取镜像
 
@@ -106,9 +106,9 @@ by 菲尼莫斯 2019年01月12日
     * -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；
 
     * **-d: 后台运行容器，并返回容器ID；**
-     
+
     * **-i: 以交互模式运行容器，通常与 -t 同时使用；**
-     
+
     * **-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；**
 
     * **-p: 端口映射，格式为：主机(宿主)端口:容器端口**
@@ -118,29 +118,29 @@ by 菲尼莫斯 2019年01月12日
     * **--rm: 运行结束后自动删除容器**
 
     * **--expose:** 暴露容器的端口，可以直接访问容器ip下的该端口
-     
+
     * --name="nginx-lb": 为容器指定一个名称；
-     
+
     * --dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；
-     
+
     * --dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；
-     
+
     * -h "mars": 指定容器的hostname；
-     
+
     * -e username="ritchie": 设置环境变量；
-     
+
     * --env-file=[]: 从指定文件读入环境变量；
-     
+
     * --cpuset="0-2" or --cpuset="0,1,2": 绑定容器到指定CPU运行；
-     
+
     * -m :设置容器使用内存最大值；
-     
+
     * --net="bridge": 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；
-     
+
     * --link=[要链接容器名]: 添加链接到另一个容器；
         * 在当前容器中可以通过 `env | grep [要链接的容器名]` 查看链接的状态
         * link链接后当前容器会自动将 **域名** [要链接的容器名]映射到目标容器，可使用`ping [要链接的容器名]`等类似的网络操作
-     
+
     * --expose=[]: 开放一个端口或一组端口；
 
 ### 容器的状况
@@ -229,7 +229,7 @@ COPY go-wrapper /usr/local/bin/
 
 ### 其他命令
 
-* EXPOSE 22 8080 8843 
+* EXPOSE 22 8080 8843
 声明docker要使用并暴露的端口，需要在运行容器时使用-p来进行外部端口映射
 
 * `ADD ~/workspace/docker/*.cpp /code/`
@@ -278,10 +278,10 @@ root@container:/$ docker network create test
 # 查看已有的docker网络
 root@container:/$ docker network ls
 # 将服务端和客户端都加入测试网络
-root@container:/$ docker run -itd --name=server --net=test --rm test:server /bin/bash  
+root@container:/$ docker run -itd --name=server --net=test --rm test:server /bin/bash
 root@container:/$ docker run -itd --name=client --net=test --rm test:client /bin/bash
 # 客户端使用容器名进行访问
 root@client:/$ ping server
 ```
 
-</font>
+

@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # Solidity入门
 
@@ -30,17 +30,17 @@ pragma solidity ^0.4.19;
 
 contract Faucet {
     function withdraw(uint amout) public {
-        
+
         // limit condition
         require(amout <= 100000000000000000);
-        
+
         // send ether
         msg.sender.transfer(amout);
     }
-    
+
     // default function to receive eth
     function () public payable {}
-    
+
 }
 
 ```
@@ -61,4 +61,4 @@ contract Faucet {
 
 * 在合约中执行的交易称为内部交易（也称message，不记在链上？）
 
-</font>
+

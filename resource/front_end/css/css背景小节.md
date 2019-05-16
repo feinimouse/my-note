@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # css装饰小节
 
@@ -85,4 +85,4 @@ border-image 属性
 
 使用transform：rotate旋转一个菱形45度，并用其他块遮住菱形下半部分
 
-</font>
+

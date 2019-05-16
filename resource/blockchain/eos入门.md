@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # eos入门
 
@@ -46,7 +46,7 @@ by 菲尼莫斯 2019年01月30日
 
 * 启动keosd : `keosd &`
 
-* 启动单节点测试网络 : 
+* 启动单节点测试网络 :
 1. 在开发目录下的eosio目录中使用工作目录进行区块链数据和配置。这里我们分别使用eosio / data和eosio / config
 2. 运行Nodeos。此命令加载所有基本插件，设置服务器地址，启用CORS(Cross-Origin Resource Sharing)并添加一些合同调试和日志记录。
 3. 允许所有CORS跨域请求（请不要在公网环境下使用）
@@ -71,4 +71,4 @@ nodeos -e -p eosio \
 
 * 查看RPC(Remote Procedure Call) API 远程调用接口 : `curl http://localhost:8888/v1/chain/get_info`
 
-</font>
+

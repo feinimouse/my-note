@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # 从零开始搭建React+Webpack项目（一）
 
@@ -150,4 +150,4 @@ gen
 /dist
 ```
 
-</font>
+

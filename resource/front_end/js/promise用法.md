@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # promise用法
 
@@ -103,4 +103,4 @@ promise2
 
     * throw err：返回失败状态的promise，并将传递参数置为err
 
-</font>
+

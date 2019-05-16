@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # geth入门
 
@@ -69,7 +69,7 @@ geth version
     "timestamp"  : "0x00",
     "alloc"      : {
         "0xb962f56ce7f476a845a062be2fb7c745a3ff1cff": {"balance": "4000000000000000000"},
-        "0xe1b6036b384ddcf91cb9b1cde7fbe88d1ad39f07": {"balance": "5000000000000000000"}    
+        "0xe1b6036b384ddcf91cb9b1cde7fbe88d1ad39f07": {"balance": "5000000000000000000"}
     }
 }
 
@@ -79,7 +79,7 @@ geth version
 
 * 新建一个账户文件夹 `mkdir kasumi`
 
-* 调用geth命令生成一个账户 `geth --datadir "./kasumi" account new` 
+* 调用geth命令生成一个账户 `geth --datadir "./kasumi" account new`
 
 * 输入两次密码进行确认（密码不能修改）
 
@@ -90,15 +90,15 @@ geth version
 ### 初始化创世区块
 
 ```bash
-# feinimouse @ thinkpad-x270 in ~/workspace/eth-account [11:38:33] 
+# feinimouse @ thinkpad-x270 in ~/workspace/eth-account [11:38:33]
 $ geth init ./kasumi/genesis.json --datadir ./kasumi/chain
 INFO [01-29|11:39:49.768] Maximum peer count                       ETH=25 LES=0 total=25
 INFO [01-29|11:39:49.788] Allocated cache and file handles         database=/home/feinimouse/workspace/eth-account/kasumi/chain/geth/chaindata cache=16 handles=16
-INFO [01-29|11:39:49.901] Writing custom genesis block 
+INFO [01-29|11:39:49.901] Writing custom genesis block
 INFO [01-29|11:39:49.902] Persisted trie from memory database      nodes=3 size=409.00B time=234.956µs gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
 INFO [01-29|11:39:49.903] Successfully wrote genesis state         database=chaindata                                                          hash=0e5c4c…bcf45a
 INFO [01-29|11:39:49.903] Allocated cache and file handles         database=/home/feinimouse/workspace/eth-account/kasumi/chain/geth/lightchaindata cache=16 handles=16
-INFO [01-29|11:39:50.019] Writing custom genesis block 
+INFO [01-29|11:39:50.019] Writing custom genesis block
 INFO [01-29|11:39:50.020] Persisted trie from memory database      nodes=3 size=409.00B time=194.026µs gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
 INFO [01-29|11:39:50.021] Successfully wrote genesis state         database=lightchaindata                                                          hash=0e5c4c…bcf45a
 ```
@@ -143,6 +143,6 @@ INFO [01-29|11:39:50.021] Successfully wrote genesis state         database=ligh
 
 * admin.peers : 查看当前连接的节点
 
-* admin.addPeer(enode) : 连接其他节点 
+* admin.addPeer(enode) : 连接其他节点
 
-</font>
+

@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # flexbox学习
 
@@ -71,4 +71,4 @@ by 菲尼莫斯 2018年12月12日
 
 * align-self: 覆盖父元素的align-items，改变自身的垂直对齐方式
 
-</font>
+

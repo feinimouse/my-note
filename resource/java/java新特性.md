@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # java新特性
 
@@ -159,4 +159,4 @@ interface SingelParaConstructor <P, O> {
 
 * 为G1添加了一个并行的垃圾收集器，以提高长等待时间时的性能
 
-</font>
+

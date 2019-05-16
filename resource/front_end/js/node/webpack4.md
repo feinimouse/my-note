@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # webpack4
 
@@ -78,4 +78,4 @@ module.exports = {
 }
 ```
 
-</font>
+

@@ -1,4 +1,11 @@
-<font size="4">
+---
+title: blockchain入门
+author: 菲尼莫斯
+date: 2018-12-20
+tags:
+categories:
+- 区块链
+---
 
 # blockchain入门
 
@@ -94,4 +101,4 @@ Paxos、Raft算法
 
 
 
-</font>
+

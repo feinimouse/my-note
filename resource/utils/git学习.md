@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # git使用小结
 
@@ -91,4 +91,4 @@ ps : 记得安装git的时候配置email和name，这样在使用github的时候
  git config --global user.email "your e-mail"
 ```
 
-</font>
+

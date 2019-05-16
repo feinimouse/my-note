@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # 为安装文件夹创建映射节省空间
 
@@ -45,4 +45,4 @@ mklink /D Ethereum D:\Ethereum
 
 
 
-</font>
+

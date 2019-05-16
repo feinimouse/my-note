@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # java数据结构
 
@@ -230,4 +230,4 @@ static class Entry<K, V> implements Map.Entry<K, V> {
 
 * 主要对HashMap的key进行维护，因此使用虚拟Object作为Value
 
-</font>
+

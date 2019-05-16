@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # path用法
 
@@ -53,4 +53,4 @@ path.join('aaa','../bbb','ccc.js');
 **__filename** 指向当前执行文件所在完整路径：如：'E:\\Workspace\\Idea\\react2-study\\aaa\\bbb\\test.js'
 
 
-</font>
+

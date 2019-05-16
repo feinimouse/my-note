@@ -69,13 +69,13 @@ const hhw = {
 * 箭头函数的this指向是在定义函数时就绑定了，而function则是在运行时才进行绑定，因此apply和call方法对箭头函数无效
 
 ```js
-function HHW() {  
+function HHW() {
     setTimeout(() => {
         // 此处的this在定义时就绑定了HHW对象
         console.log(this);
     }, 1000);
 }
-function HHW() {  
+function HHW() {
     setTimeout(function(){
         // 此处的this在定时函数启动时才进行this的绑定，此时this已经指向了global
         console.log(this);
@@ -133,7 +133,7 @@ class HHW extends Band {
         // 使用super来调用父类的构造函数
         super(name);
         // 需要在super之后才能使用this
-        this.vocal = vocal; 
+        this.vocal = vocal;
     }
     // 重写父类的方法
     play() {
@@ -165,7 +165,7 @@ hhw.slogan('happy');
 ```
 
 * static 的使用类似于java中的static
-    
+
     * 静态属性在继承时直接引用不进行复制
 
     * 静态方法可以直接用类调用，不用新建类
@@ -192,7 +192,7 @@ const [a = 3] = []
 ```
 
 * 默认值在函数中使用：
-  
+
 ```js
 // b的默认值为3：
 function test(b = 3) {
@@ -208,7 +208,7 @@ const{a, b:happy = 3} = {a:1}
 ```
 
 * 解构中别名的使用
-    
+
 ```js
 // 将lucky赋值给常量smile
 const {happy, smile: lucky} = {happy: 1, lucky: 2}
@@ -218,11 +218,11 @@ const {happy, smile: lucky} = {happy: 1, lucky: 2}
 
 ```js
 // 深度解构赋值vocal和guitar两个常量
-const { 
-        name, 
+const {
+        name,
         hhw: { vocal, guitar },
-    } = { 
-        name: 'happy', 
+    } = {
+        name: 'happy',
         hhw: { vocal: 'kkr', guitar: 'kor' },
     }
 ```
@@ -272,13 +272,13 @@ hhw(...[1, 2]);
 
 `const s = Symbol();` 创建一个symbol对象
 
-* `s === Symbol(); // false` 
+* `s === Symbol(); // false`
 
 * `console.log(s); // Symbol()`
 
 `const s2 = Symbol('kasumi')` 创建一个带描述的symbol对象
 
-* `s2 === Symbol('kasumi') // false` 
+* `s2 === Symbol('kasumi') // false`
 
 * `console.log(s2); // Symbol(kasumi)`
 
@@ -286,7 +286,7 @@ hhw(...[1, 2]);
 
 * `s3 === Symbol.for('arisa'); // true`
 
-* `console.log(s3); // Symbol(arisa)` 
+* `console.log(s3); // Symbol(arisa)`
 
 * `Symbol.keyFor(s3); // arisa`
 
@@ -312,7 +312,7 @@ hhw(...[1, 2]);
 
 ```js
 let m1 = `Happy \n Lucky \n Smile \n Yeah`
-console.log(m1); 
+console.log(m1);
 // "Happy \n Lucky \n Smile \n Yeah"
 
 let m2 = String.raw`Happy \n Lucky \n Smile \n Yeah`
@@ -360,7 +360,7 @@ console.log(pickFirst(1, 2, 3, 4)); // 1
     * c > 0 则b排在a前面
     * c = 0 则a和b的相对位置不变
 
-* Array.reduce((x, y) => z) : 
+* Array.reduce((x, y) => z) :
     * 第一次循环，ｘ位数组第一项，ｙ为第二项
     * 第n次循环，ｘ为上一次循环中传出的ｚ，ｙ为第n+1项
 
@@ -370,4 +370,4 @@ console.log(pickFirst(1, 2, 3, 4)); // 1
 * forEach、filter等方法的第二个参数可以为回调函数指定一个上下文，其默认值为调用时的上下文
 
 
-</font>
+

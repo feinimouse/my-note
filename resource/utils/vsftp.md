@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # vsftpd.md
 
@@ -30,7 +30,7 @@ start-stop-daemon --start --background -m --oknodo --pidfile /var/run/vsftpd/vsf
 
 n=0
 while [ ${n} -le 5 ]
-do 
+do
 
 # ........
 ```
@@ -48,7 +48,7 @@ sleep 1
 
 n=0
 while [ ${n} -le 5 ]
-do 
+do
 
 # ........
 ```
@@ -57,4 +57,4 @@ do
 
 [原博客见此](http://www.owsiak.org/vsftpd-and-nasty-vsftpd-failed-probably-invalid-config/)
 
-</font>
+

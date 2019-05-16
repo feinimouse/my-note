@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # java入门
 
@@ -17,9 +17,9 @@ JRE：Java Runtime Enviroment；Java运行环境
 
 JVM：Java Virtual Machine：Java虚拟机
 
-DI：Dependency Injection 依赖注入 
+DI：Dependency Injection 依赖注入
 
-**IOC**：Inversion of Control 控制反转 
+**IOC**：Inversion of Control 控制反转
 
 **AOP**：Aspect Oriented Programming 面向切面编程（事务管理、日志等系统事务独立）
 
@@ -238,4 +238,4 @@ return的使用：
 * 管道的容量大小受内存大小限制。
 * 当管道满时，进程在写管道会被阻塞，而当管道空时，进程读管道会被阻塞
 
-</font>
+

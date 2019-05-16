@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # JVM入门
 
@@ -129,4 +129,4 @@ Java栈：即虚拟机栈，是Java方法执行的内存模型，每一个栈帧
 
 * 类的加载和链接是在运行时进行的：loading（运行时数据结构）、verification（规范、版本、安全等）、preparation（分配内存、常量初始化）、resolution（符号引用转为直接引用）、initialization（类变量）、using（主被动引用）、unloading（卸载）
 
-</font>
+

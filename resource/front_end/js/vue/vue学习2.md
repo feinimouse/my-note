@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # vue学习1
 
@@ -262,4 +262,4 @@ const app = new Vue({
 * v-else和v-else-if ：搭配v-if使用的条件判断
 
 
-</font>
+

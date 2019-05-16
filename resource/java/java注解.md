@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # java注解
 
@@ -30,4 +30,4 @@ by 菲尼莫斯 2019年3月22日
     * CLASS：在class文件中有效
     * RUNTIME：在运行时有效，可以被反射读取
 
-</font>
+

@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # react中的一些坑
 
@@ -123,4 +123,4 @@ export default class App extends React.Component {
 ```
 顶层的组件中尽量不要出现mobx的相关操作，react是一个单向的数据流，中间层起到嵌套的作用，应该到最底层显示数据是再进行@observer进行数据绑定
 
-</font>
+

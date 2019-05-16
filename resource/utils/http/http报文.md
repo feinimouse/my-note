@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # http报文
 
@@ -96,4 +96,4 @@ HTTP/[version] [status-code] [status-message]
 
 Cache-Control: no-chache；获取最新的数据而不是缓存
 
-</font>
+

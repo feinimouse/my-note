@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # import和export
 
@@ -51,4 +51,4 @@ console.log(test.test,test.func())
 
 
 
-</font>
+

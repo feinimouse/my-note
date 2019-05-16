@@ -50,7 +50,7 @@
 
 Create a simple project勾选后将跳过MyEclipse提供的Maven依赖原型的选择，有需要使用Maven原型的同学可以不勾选此项。一般在学习阶段，为了熟悉Maven的使用，我们将在项目创建完成后，根据需求手动添加依赖。
 
-###  注：<font color='red'>某些版本的MyEclipse若不勾选Create a simple project直接进入下一步，将会造成MyEclipse在后台疯狂加载Maven仓库，大概率会导致系统卡顿，以及MyEclipse未响应报错重启。</font>
+###  注：<font color='red'>某些版本的MyEclipse若不勾选Create a simple project直接进入下一步，将会造成MyEclipse在后台疯狂加载Maven仓库，大概率会导致系统卡顿，以及MyEclipse未响应报错重启。
 
 {% asset_img 2018-01-11_10-56-40.png  %}
 
@@ -91,7 +91,7 @@ Create a simple project勾选后将跳过MyEclipse提供的Maven依赖原型的�
 
 {% asset_img 2018-01-11_15-50-14.png  %}
 
-###  注：<font color='red'>某些版本的MyEclipse无法选择Compiler Level，或者是选择后无法创建项目,可以采用以下方法解决</font>
+###  注：<font color='red'>某些版本的MyEclipse无法选择Compiler Level，或者是选择后无法创建项目,可以采用以下方法解决
 
 **首先我们要完成项目的创建：**
 

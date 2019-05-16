@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # java一些特性
 
@@ -60,7 +60,7 @@ Main Happy Lucky Smile Yeah
 
 ## 可变长参数
 
-`function([class name]... [var name])` 
+`function([class name]... [var name])`
 
 * 可变长参数会被解析为一个数组
 
@@ -80,4 +80,4 @@ deal(a, b, c);
 deal();
 ```
 
-</font>
+

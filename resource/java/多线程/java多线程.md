@@ -1,4 +1,4 @@
-<font size="4">
+
 
 # java多线程
 
@@ -192,4 +192,4 @@ by 菲尼莫斯 2019年3月16日
     thread.start();
     ```
 
-</font>
+
