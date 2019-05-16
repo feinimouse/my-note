@@ -1,4 +1,12 @@
-
+---
+title: linux入门
+author: 菲尼莫斯
+date: 2018-10-31
+tags:
+- linux
+categories:
+- utils
+---
 
 # linux入门
 

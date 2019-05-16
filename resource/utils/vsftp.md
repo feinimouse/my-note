@@ -1,6 +1,14 @@
+---
+title: vsftp
+author: 菲尼莫斯
+date: 2019-01-26
+tags:
+- linux
+categories:
+- utils
+---
 
-
-# vsftpd.md
+# vsftp
 
 by 菲尼莫斯 2019年01月26日
 

@@ -1,4 +1,12 @@
-
+---
+title: vim基础
+author: 菲尼莫斯
+date: 2018-10-31
+tags:
+- vim
+categories:
+- utils
+---
 
 # vim基础
 
