@@ -53,15 +53,39 @@ _id是文档的默认主键，可以是任何类型，默认为`ObjectId()`生�
 * Null
 * 正则表达式
 
-启动服务：`mongod --[选项]`
-* `--dbpath c:\mongo\data\db`：数据存储路径（defaults to \data\db\ which is C:\data\db\ based on the current working drive）
-* `--auth`：启动用户登录与权限功能
+启动服务：`mongod --config [配置文件位置]`
 * 安装为windows服务：
     * `--install`：install Windows service
     * `--remove`：remove Windows service
     * `--reinstall`：reinstall Windows service (equivalent to --remove followed by --install)
-    * `--serviceName "Mongodb" --serviceDisplayName "MongoDB"`
-* `--logpath`：log file to send write to instead of stdout - has to be a file, not directory
+    * `--serviceName "Mongodb"`
+    * `--serviceDisplayName "MongoDB"`
+
+配置文件mongodb.conf
+
+```properties
+#日志文件位置
+logpath=E:\ProgramData\mongo\log\mongodb.log
+
+# 以追加方式写入日志
+logappend=true
+
+# 是否以守护进程方式运行
+# fork =true
+
+# 端口默认是27017
+# port =27017
+
+# 数据库文件位置
+dbpath=E:\ProgramData\mongo\db
+
+# 开启用户验证
+auth=true
+
+# 绑定服务端所有ip地址
+bind_ip_all=true
+ipv6=true
+```
 
 ## 用户管理
 
