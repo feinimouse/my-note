@@ -18,10 +18,14 @@
 .settings
 .classpath
 
+# node
+node_modules/
+package-lock.json
+
+# hexo
 .DS_Store
 Thumbs.db
 db.json
 *.log
-node_modules/
 public/
 .deploy*/
