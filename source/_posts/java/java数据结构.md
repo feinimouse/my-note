@@ -17,9 +17,9 @@ by 菲尼莫斯 2019年3月16日
 ## 快速浏览
 
 列表：
-* ArrayList：线程不安全，数组
-* Vector：线程安全，数组
-* LinkedList：线程不安全。链表
+* ArrayList：线程不安全，数组 -> AbstrctList -> List -> Collection
+* Vector：线程安全，数组 -> AbstrctList -> List -> Collection
+* LinkedList：线程不安全。链表 -> AbstractSequentialList -> AbstractList -> ...
 * CopyOnWriteArrayList：线程安全，在写时将容器复制一份进行写，写完再将引用进行替换
 
 map：
