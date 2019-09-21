@@ -1,0 +1,17 @@
+{
+  "name": "my-note",
+  "version": "0.1",
+  "description": "the markdown-html note generator of feinimouse",
+  "main": "./src/index",
+  "repository": "https://github.com/feinimouse/my-note.git",
+  "author": "feinimouse <704602977@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "showdown": "^1.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1"
+  }
+}
