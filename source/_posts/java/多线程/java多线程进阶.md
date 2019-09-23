@@ -57,5 +57,21 @@ timer.schedule(() -> {
 
 也可以使用开源插件quartz进行计划任务
 
+## LockSupport
+
+能够让某个线程阻塞，并能被其他线程唤醒
+* LockSupport.park()：阻塞当前线程
+* LockSupport.unpark(Thread)：唤醒指定线程
+* LockSupport.parkUntil(long)：阻塞指定的时间
+* LockSupport.parkNanos(long)：阻塞指定的时间后，若没唤醒则抛出异常
+
+## Condition
+
+和ReentrantLock不太一样，condition能够new不同的实例，对不同的线程进行加锁
+
+ReentrantLock则是对一个公共对象的方法或代码块进行加锁
+
+有await()和signal()方法，类似于notify和wait。在一个Lock块中可以放置多个condition，以实现唤醒指定的线程
+
 
 

@@ -1,18 +1,14 @@
----
-title: java多线程
-author: 菲尼莫斯
-date: 2019-03-16
-tags:
-- 多线程
-categories:
-- java
----
-
 # java多线程
 
 by 菲尼莫斯 2019年3月16日
 
 ---
+
+## 快速浏览
+
+* 阻塞线程进入阻塞：sleep、wait
+* 唤醒线程进入就绪：notify、notifyAll
+* 让出线程进入就绪：yield、join
 
 ## 线程和进程
 
