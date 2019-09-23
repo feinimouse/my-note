@@ -2,7 +2,30 @@
 <html>
     <head>
     </head>
+    <style>
+        .header {
+            display: block;
+            padding: 8px;
+        }
+        .hea-child {
+            height: 48px;
+            display: inline-block;
+        }
+        
+    </style>
     <body>
+        <header class="header">
+            <div class="hea-child hea-title">
+                <div class="hea-child hea-menubar">menubar</div>
+                <div class="hea-child hea-logo">logo</div>
+            </div>
+            <form class="hea-child hea-searcher">
+                <input class="hea-input" type="text">
+            </form>
+            <div class="hea-child hea-version">
+                    version
+            </div>
+        </header>
         <h1>Hello World</h1>
     </body>
     <script>
