@@ -7,7 +7,7 @@ const findFile = async ({
     deep = true,
 }) => {
     if (!folder) {
-        throw new Error('错误的文件名称');
+        throw new Error('错误的文件夹名称');
     }
     // 如果不是绝对路径则转换为绝对路径
     const folderPath = path.resolve(folder);

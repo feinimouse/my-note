@@ -1,6 +1,7 @@
 const showdown = require('showdown');
 const findAndRead = require('./findFile').findAndRead;
 
+// header不添加ID属性
 showdown.setOption('noHeaderId', true);
 
 const convert = new showdown.Converter();
