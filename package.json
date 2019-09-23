@@ -1,6 +1,6 @@
 {
   "name": "my-note",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "the markdown-html note generator of feinimouse",
   "main": "./src/index",
   "repository": "https://github.com/feinimouse/my-note.git",
@@ -10,8 +10,14 @@
     "ejs": "^2.7.1",
     "showdown": "^1.9.0"
   },
+  "scripts": {
+    "dev": "node src/server.js"
+  },
   "devDependencies": {
     "eslint": "^6.4.0",
-    "eslint-config-airbnb": "^18.0.1"
+    "eslint-config-airbnb": "^18.0.1",
+    "koa": "^2.8.1",
+    "koa-route": "^3.2.0",
+    "koa-static": "^5.0.0"
   }
 }
