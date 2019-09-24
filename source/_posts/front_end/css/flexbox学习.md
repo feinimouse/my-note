@@ -1,13 +1,3 @@
----
-title: flexbox学习
-author: 菲尼莫斯
-date: 2018-12-12
-tags:
-- css
-categories:
-- 前端
----
-
 # flexbox学习
 
 by 菲尼莫斯 2018年12月12日
@@ -22,7 +12,7 @@ by 菲尼莫斯 2018年12月12日
 
 * align-content：纵向对齐方式，默认**flex-start**上对齐
 
-* align-items：行内的纵向对齐方式，默认**flex-start**上对齐
+* align-items：行内横向对齐基线，默认**flex-start**上对齐
 
 ## flex的基础
 
