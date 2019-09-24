@@ -3,23 +3,83 @@
     <head>
     </head>
     <style>
+        body {
+            color: #5f6368;
+        }
         .header {
             display: block;
             padding: 8px;
+            box-shadow: inset 0 -1px 0 rgba(100,121,143,0.322);
+            display: flex;
+            justify-content: space-between;
         }
         .hea-child {
             height: 48px;
             display: inline-block;
         }
-        
+        .hea-title {
+            width: 300px;
+        }
+        .hea-menubar {
+            height: 48px;
+            width: 48px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+        }
+        .hea-menubar svg {
+            height: 36px;
+            width: 36px;
+            padding: 6px;
+            opacity: 0.6;
+        }
+        .hea-menubar:hover {
+            background-color: rgba(60,64,67,0.08);
+            outline: none;
+        }
+        .hea-logo img {
+            height: 48px;
+        }
+        .hea-searcher {
+            border-radius: 8px;
+            background: #f1f3f4;
+            display: inline-flex;
+            vertical-align: top;
+            align-content: center;
+            align-items: center;
+        }
+        .hea-input {
+            display: block;
+            height: 16px;
+            font-size: 16px;
+            /* 去除默认样式 */
+            background:none; 
+            outline:none;  
+            border:none;
+        }
+        .hea-search-icon {
+            margin-left: 4px;
+            margin-right: 4px; 
+            padding: 8px;
+            opacity: 0.6;
+        }
     </style>
     <body>
         <header class="header">
             <div class="hea-child hea-title">
-                <div class="hea-child hea-menubar">menubar</div>
-                <div class="hea-child hea-logo">logo</div>
+                <div class="hea-child hea-menubar">
+                    <svg focusable="false" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+                </div>
+                <div class="hea-child hea-logo">
+                    <img src="/img/logo-name.png">
+                </div>
             </div>
             <form class="hea-child hea-searcher">
+                <div>
+                    <svg class="hea-search-icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M16.3198574,14.9056439 L21.7071068,20.2928932 L20.2928932,21.7071068 L14.9056439,16.3198574 C13.5509601,17.3729184 11.8487115,18 10,18 C5.581722,18 2,14.418278 2,10 C2,5.581722 5.581722,2 10,2 C14.418278,2 18,5.581722 18,10 C18,11.8487115 17.3729184,13.5509601 16.3198574,14.9056439 Z M10,16 C13.3137085,16 16,13.3137085 16,10 C16,6.6862915 13.3137085,4 10,4 C6.6862915,4 4,6.6862915 4,10 C4,13.3137085 6.6862915,16 10,16 Z"/>
+                    </svg>
+                </div>
                 <input class="hea-input" type="text">
             </form>
             <div class="hea-child hea-version">
