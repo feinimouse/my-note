@@ -4,9 +4,9 @@ by 菲尼莫斯 2019年9月25日
 
 ---
 
-## ThreadPoolExecutor
+## 构造
 
-ExecutorService 是线程池的核心接口，有抽象实现类 AbstractExecutorService ，大部分线程池都继承于该抽线类
+ExecutorService 继承了Executor接口，是线程池的核心接口，有抽象实现类 AbstractExecutorService ，大部分线程池都继承于该抽线类
 
 ThreadPoolExecutor 时线程池的主要使用类，继承于 AbstractExecutorService ，其构造函数的参数如下：
 
@@ -51,3 +51,11 @@ ThreadPoolExecutor 时线程池的主要使用类，继承于 AbstractExecutorSe
 * CallerRunsPolicy： 由任务发起线程自己创建线程
 
 **threadFactory**： 线程的创建者
+
+## 核心方法
+
+**void excute(Runnable)**：向线程池提交一个任务并执行
+
+**Future submit(Runnable)**：向线程池提交一个任务，执行并获取返回结果
+
+**void shutdown()**：关闭线程池
