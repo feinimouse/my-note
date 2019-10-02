@@ -1,6 +1,13 @@
 body {
     color: #5f6368;
+    margin: 0;
+    font-size: 16px;
 }
+
+/*************
+ *  顶部   *
+**************/
+
 .header {
     display: block;
     padding: 8px;
@@ -8,12 +15,12 @@ body {
     display: flex;
     justify-content: space-between;
 }
-.hea-child {
+.hea {
     height: 48px;
     display: inline-block;
 }
 .hea-title {
-    width: 300px;
+    width: 256px;
 }
 .hea-menubar {
     height: 48px;
@@ -44,7 +51,7 @@ body {
     align-content: center;
     align-items: center;
 }
-.hea-input {
+.hea-searcher input {
     display: block;
     height: 16px;
     font-size: 16px;
@@ -56,7 +63,7 @@ body {
     outline:none;  
     border:none;
 }
-.hea-search-icon {
+.hea-searcher svg {
     margin-left: 4px;
     margin-right: 4px; 
     /* padding: 8px; */
@@ -64,4 +71,71 @@ body {
 }
 .hea-version {
     line-height: 48px;
+}
+
+/*************
+ *  主体容器   *
+**************/
+
+.content {
+    display: flex;
+    padding: 8px;
+}
+
+/*************
+ *  导航栏   *
+**************/
+.nav {
+    width: 256px;
+    padding-left: 8px;
+}
+.nav-list {
+    margin: 0;
+    list-style: none;
+    padding-left: 16px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.nav-list li {
+    position: relative;
+}
+.nav-list li::before {
+    display: inline-block;
+    position: absolute;
+    top: calc(1em - 8px);
+    left: -18px;
+    height: 16px;
+    width: 16px;
+    content: " ";
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHYYAAB2GAV2iE4EAAADfSURBVFhH7ZdLDkVAEEXrmVgGO7EdLazEjKAnEjuxJmZGnpK7gC5ViYE+SUffGshJf0r8zgt6kQTP14gCUSAKiAT2fac8z2lZFlQM4EYUStu23LTuMY4jqjpEK5CmKWZEVVXRNE1Iz1GdAZbw3iM9Q30InXOqlTC5BZrtMBFgnkqYCTAssa4rUhimAkySyF5pKjAMAxVFgRSGmUDf9/cWSDER6LqO6rpGkqEWuFoyNU2DJEclwNeOG5EGkcBxHJjR3YLLskRSgI9SENu2nVmWnfM8o6In/hdEgSjwdQGiP5bhJt23YtVOAAAAAElFTkSuQmCC);
+    background-size: cover;
+    cursor: pointer;
+}
+.nav-list p {
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 2em;
+}
+.nav-list span {
+    cursor: pointer;
+}
+.nav-list ul {
+    font-size: 16px;
+    font-weight: normal;
+    list-style: none;
+    padding-left: 16px;
+    display: none;
+}
+.nav-list a {
+    color: inherit;
+}
+.nav-list .nav-leaf::before {
+    display: none;
+}
+.nav-list .nav-open::before {
+    transform: rotate(90deg);
+    /* background-image: url(img/triangle-arrow-d.png); */
+}
+.nav-list .nav-open > ul {
+    display: block;
 }
