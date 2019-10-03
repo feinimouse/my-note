@@ -11,7 +11,7 @@
     "showdown": "^1.9.0"
   },
   "scripts": {
-    "dev": "node src/server.js"
+    "dev": "node src/server-dev.js"
   },
   "devDependencies": {
     "eslint": "^6.4.0",
