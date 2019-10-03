@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const KOA = require('koa');
 const koaStatic = require('koa-static');
 const route = require('koa-route');
