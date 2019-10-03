@@ -132,7 +132,7 @@ body {
 .nav-list .nav-open > ul {
     display: block;
 }
-.nav-select a {
+.nav-select > a {
     color: #822;
     font-weight: bold;
 }
