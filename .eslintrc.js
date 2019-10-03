@@ -20,5 +20,7 @@ module.exports = {
     'arrow-parens': 0,
     'no-unused-vars': 1,
     'space-before-function-paren': 0,
+    'no-plusplus': 0,
+    'import/extensions': 0,
   },
 };
