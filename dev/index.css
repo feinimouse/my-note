@@ -124,6 +124,7 @@ body {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHYYAAB2GAV2iE4EAAADfSURBVFhH7ZdLDkVAEEXrmVgGO7EdLazEjKAnEjuxJmZGnpK7gC5ViYE+SUffGshJf0r8zgt6kQTP14gCUSAKiAT2fac8z2lZFlQM4EYUStu23LTuMY4jqjpEK5CmKWZEVVXRNE1Iz1GdAZbw3iM9Q30InXOqlTC5BZrtMBFgnkqYCTAssa4rUhimAkySyF5pKjAMAxVFgRSGmUDf9/cWSDER6LqO6rpGkqEWuFoyNU2DJEclwNeOG5EGkcBxHJjR3YLLskRSgI9SENu2nVmWnfM8o6In/hdEgSjwdQGiP5bhJt23YtVOAAAAAElFTkSuQmCC);
     background-size: cover;
     cursor: pointer;
+    transition: transform 0.3s;
 }
 .nav-list .nav-open > span::before {
     transform: rotate(90deg);
