@@ -99,7 +99,21 @@ body {
 .nav-list li {
     position: relative;
 }
-.nav-list li::before {
+.nav-list ul {
+    font-size: 1rem;
+    font-weight: normal;
+    list-style: none;
+    padding-left: 1rem;
+    display: none;
+}
+.nav-list a,
+.nav-list span {
+    color: inherit;
+    text-decoration: none;
+    line-height: 2em;
+    cursor: pointer;
+}
+.nav-list span::before {
     display: inline-block;
     position: absolute;
     top: calc(1em - 0.5rem);
@@ -111,31 +125,8 @@ body {
     background-size: cover;
     cursor: pointer;
 }
-.nav-list p {
-    margin-bottom: 0;
-    margin-top: 0;
-    line-height: 2em;
-}
-.nav-list span {
-    cursor: pointer;
-}
-.nav-list ul {
-    font-size: 1rem;
-    font-weight: normal;
-    list-style: none;
-    padding-left: 1rem;
-    display: none;
-}
-.nav-list a {
-    color: inherit;
-    text-decoration: none;
-}
-.nav-list .nav-leaf::before {
-    display: none;
-}
-.nav-list .nav-open::before {
+.nav-list .nav-open > span::before {
     transform: rotate(90deg);
-    /* background-image: url(img/triangle-arrow-d.png); */
 }
 .nav-list .nav-open > ul {
     display: block;
