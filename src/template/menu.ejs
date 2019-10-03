@@ -1,0 +1,29 @@
+<% const parseMenu = str => {
+        let menuArr = str;
+        if (typeof str === 'string') {
+            menuArr = JSON.parse(str);
+        }
+        if (Array.isArray(menuArr)) {
+            menuArr.forEach(li => {
+                if (li.url) {%>
+                    <li data-id="<%=li.id%>">
+                        <a href="<%=li.url%>"><%=li.title%></a>
+                    </li>
+                <%} else if (li.children) {%>
+                    <li data-id="<%=li.id%>">
+                        <span><%=li.title%></span>
+                        <ul>
+                            <%-parseMenu(li.children)%>
+                        </ul>
+                    </li>
+                <%}
+            });
+        }
+    }
+%>
+<ul id="nav-list" class="nav-list">
+    <li id="nav-home" class="nav-select">
+        <a href="index.html">主页</a>
+    </li>
+    <%-parseMenu(menu)%>
+</ul>
