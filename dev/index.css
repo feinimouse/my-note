@@ -1,6 +1,7 @@
 body {
     color: #5f6368;
     margin: 0;
+    position: relative;
 }
 
 /*************
@@ -8,6 +9,10 @@ body {
 **************/
 
 .header {
+    background: #fff;
+    position: fixed;
+    box-sizing: border-box;
+    width: 100%;
     display: block;
     padding: 0.5rem;
     box-shadow: inset 0 -1px 0 rgba(100,121,143,0.322);
@@ -78,12 +83,17 @@ body {
 
 .content {
     display: flex;
+    padding-top: 4rem;
 }
 
 /*************
  *  导航栏   *
 **************/
 .nav {
+    background: #fff;
+    position: fixed;
+    margin-top: 4rem;
+    box-sizing: border-box;
     width: 16rem;
     height: calc(100vh - 4rem);
     padding: 0.5rem;
@@ -135,4 +145,18 @@ body {
 .nav-select > a {
     color: #822;
     font-weight: bold;
+}
+
+/*************
+ *  文章部份  *
+**************/
+.main {
+    padding-left: 16rem;
+    padding-top: 4rem;
+}
+.markdown-body {
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
