@@ -11,7 +11,7 @@ const convertHtml = async ({
     deep = true,
 }) => {
     const mds = await findAndRead({ folder, test, deep });
-    return mds.map((md) => ({ ...md, html: convert.makeHtml(md.content) }));
+    return mds.map(md => ({ ...md, html: convert.makeHtml(md.content) }));
 };
 
 module.exports = convertHtml;
