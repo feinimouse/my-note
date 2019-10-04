@@ -22,5 +22,9 @@ module.exports = {
     'space-before-function-paren': 0,
     'no-plusplus': 0,
     'import/extensions': 0,
+    // 对象换行规则
+    "object-curly-newline": ["error", {
+      "ExportDeclaration": { "minProperties": 4 }
+    }]
   },
 };
