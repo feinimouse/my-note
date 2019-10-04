@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="content-type" content="text/html">
+        <meta name="author" content="Feinimouse">
         <title>Home</title>
         <link rel="stylesheet" href="index.css">
         <script type="module" src="./index.js"></script>
@@ -76,7 +79,73 @@
                     </li>
                 </ul>
             </nav>
-            <main class="main"></main>
+            <main class="main">
+                <h1 id="java一些特性">java一些特性</h1>
+                <p>by 菲尼莫斯 2019年3月14日</p>
+                <hr>
+                <h2 id="枚举类">枚举类</h2>
+                <ul>
+                <li><p>可以包括方法和变量</p>
+                </li>
+                <li><p>构造方法必须为包保护或私有</p>
+                </li>
+                <li><p>values() 获取所有枚举值</p>
+                </li>
+                <li><p>在定义枚举类时自动调用私有构造方法进行构造</p>
+                </li>
+                </ul>
+                <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> GirlsBand {
+                    <span class="hljs-comment">// 此处自动调用了构造函数</span>
+                    POPIPA(<span class="hljs-string">"pink"</span>),
+                    ROSELIA(<span class="hljs-string">"blue"</span>);
+                
+                    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">String</span> <span class="hljs-built_in">color</span>;
+                
+                    <span class="hljs-keyword">private</span> GirlBand(<span class="hljs-built_in">color</span>) {
+                        <span class="hljs-keyword">this</span>.<span class="hljs-built_in">color</span> = <span class="hljs-built_in">color</span>;
+                    }
+                    <span class="hljs-keyword">public</span> <span class="hljs-keyword">String</span> getColor() {
+                        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.<span class="hljs-built_in">color</span>;
+                    }
+                }
+                <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-keyword">String</span>[] args) {
+                    <span class="hljs-comment">// 可以直接调用某个枚举的方法</span>
+                    System.out.<span class="hljs-built_in">println</span>(GirlsBand.POPIPA.getColor());
+                    <span class="hljs-comment">// 遍历所有枚举</span>
+                    <span class="hljs-keyword">for</span> (GirlsBand i : GirlsBand.values()) {
+                        System.out.<span class="hljs-built_in">println</span>(i.getColor());
+                    };
+                }
+                </code></pre>
+                <h2 id="命令行参数args">命令行参数args</h2>
+                <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> {
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(<span class="hljs-params">String[] args</span>)</span> {
+                        System.<span class="hljs-keyword">out</span>.println(Arrays.toString(args));
+                    }
+                }</code></pre>
+                <pre><code class="language-bash">$ javac Main
+                $ java Main Happy Lucky <span class="hljs-keyword">Smile </span>Yeah
+                <span class="hljs-symbol">Main</span> Happy Lucky <span class="hljs-keyword">Smile </span>Yeah</code></pre>
+                <h2 id="可变长参数">可变长参数</h2>
+                <p><code>function([class name]... [var name])</code></p>
+                <ul>
+                <li><p>可变长参数会被解析为一个数组</p>
+                </li>
+                <li><p>只能作为最后一个形参使用</p>
+                </li>
+                </ul>
+                <pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> deal(<span class="hljs-built_in">int</span>... var) {
+                    <span class="hljs-built_in">int</span>[] values = var;
+                    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i : values) {
+                        System.<span class="hljs-keyword">out</span>.println(i);
+                    }
+                }
+                <span class="hljs-built_in">int</span> a = <span class="hljs-number">0</span>, b = <span class="hljs-number">1</span>, c = <span class="hljs-number">3</span>;
+                <span class="hljs-comment">// 一次放入三个参数</span>
+                deal(a, b, c);
+                <span class="hljs-comment">// 不放入参数</span>
+                deal();</code></pre>
+            </main>
         </div>
     </body>
     <script>
