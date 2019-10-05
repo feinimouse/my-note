@@ -17,10 +17,11 @@ marked.setOptions({
 const mdName = /^java的一些特性.md$/;
 const matchTitle = /^# (\S+)\n$/m;
 
-findListAndRead({ folder: __dirname, test: mdName, deep: false })
-    .then(arr => {
-        const { content } = arr[0];
-        const [, title] = matchTitle.exec(content);
-        const html = marked(content);
-        fs.writeFile(path.resolve(__dirname, 'testHtml.html'), html);
-    });
+module.exports = async () => {
+    const arr = await findListAndRead({ folder: __dirname, test: mdName, deep: false });
+    const { content } = arr[0];
+    const [, title] = matchTitle.exec(content);
+    const html = marked(content);
+    // fs.writeFile(path.resolve(__dirname, 'testHtml.html'), html);
+    return html;
+};
