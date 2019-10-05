@@ -1,6 +1,14 @@
 const fs = require('fs').promises;
 const path = require('path');
 
+/**
+ * @description 将符合条件的文件以路径的形式放入一个数组中
+ * @param {
+ * folder 要寻找的文件夹
+ * test 寻找规则
+ * depp 是否深度查找
+ * } options 配置项
+ */
 const findFileList = async ({
     folder = '',
     test = new RegExp(),
@@ -31,11 +39,22 @@ const findFileList = async ({
     return result;
 };
 
+/**
+ * @description 将符合条件的文件编号并放入一棵树中，编号从1开始
+ * @param {
+ * folder 要寻找的文件夹
+ * test 寻找规则
+ * depp 是否深度查找
+ * preId 文件编号的前缀
+ * join 不同层级间编号的间隔符
+ * } options 配置项
+ */
 const findFileTree = async ({
     folder = '',
     test = new RegExp(),
     deep = true,
     preId = '',
+    join = '-',
 }) => {
     const folderPath = path.resolve(folder);
     const files = await fs.readdir(folderPath, { withFileTypes: true });
@@ -45,7 +64,7 @@ const findFileTree = async ({
         if (file.isFile && test.test(file.name)) {
             result.push({
                 fileName: file.name,
-                id: preId ? `${preId}-${id}` : id,
+                id: preId ? `${preId}${join}${id}` : id,
                 path: path.resolve(folderPath, file.name),
             });
             id++;
@@ -53,13 +72,14 @@ const findFileTree = async ({
         if (deep && file.isDirectory) {
             result.push({
                 fileName: file.name,
-                id: preId ? `${preId}-${id}` : id,
+                id: preId ? `${preId}${join}${id}` : id,
                 path: path.resolve(folderPath, file.name),
                 children: await findFileTree({
                     folder: path.resolve(folderPath, file.name),
                     test,
                     deep,
-                    preId: preId ? `${preId}-${id}` : id,
+                    join,
+                    preId: preId ? `${preId}${join}${id}` : id,
                 }),
             });
             id++;
