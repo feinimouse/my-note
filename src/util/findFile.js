@@ -29,7 +29,7 @@ const findFileList = async ({
             }));
             return;
         }
-        if (file.isFile && test.test(file.name)) {
+        if (file.isFile() && test.test(file.name)) {
             result.push(path.resolve(folderPath, file.name));
         }
     });
@@ -61,7 +61,7 @@ const findFileTree = async ({
     const result = [];
     let id = 1;
     files.forEach(async file => {
-        if (file.isFile && test.test(file.name)) {
+        if (file.isFile() && test.test(file.name)) {
             result.push({
                 fileName: file.name,
                 id: preId ? `${preId}${join}${id}` : id,
@@ -69,7 +69,7 @@ const findFileTree = async ({
             });
             id++;
         }
-        if (deep && file.isDirectory) {
+        if (deep && file.isDirectory()) {
             result.push({
                 fileName: file.name,
                 id: preId ? `${preId}${join}${id}` : id,
