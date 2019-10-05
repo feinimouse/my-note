@@ -45,10 +45,14 @@ const findFileList = async ({
  * folder 要寻找的文件夹
  * test 寻找规则
  * depp 是否深度查找
- * preId 文件编号的前缀
- * join 不同层级间编号的间隔符
  * exProps 树的额外属性，输入的值应是对象，对象的属性名为额外的属性名，属性值为一个函数用于计算该额外属性
- * onFind 每个符合条件的文件被找到后触发，传入值为该文件的属性和额外属性
+ * { propName: function({
+ *      name (string)文件名,
+ *      path (string)路径,
+ *      isFolder (boolean)是否是文件夹,
+ *      sort ([])该文件在遍历中每一层级的排序,
+ * }) }
+ * onFind 每个符合条件的文件被找到后触发的回调，传入值为该文件的属性和额外属性
  * } options 配置项
  */
 const findFileTree = async ({
@@ -65,7 +69,10 @@ const findFileTree = async ({
         if (exProps && typeof exProps === 'object') {
             Object.keys(exProps).forEach(key => {
                 if (typeof exProps[key] === 'function') {
-                    ex[key] = exProps[key](args);
+                    const value = exProps[key](args);
+                    if (typeof value !== 'undefined') {
+                        ex[key] = value;
+                    }
                 }
             });
         }
