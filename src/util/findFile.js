@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const findFile = async ({
+const findFileList = async ({
     folder = '',
     test = new RegExp(),
     deep = true,
@@ -16,7 +16,7 @@ const findFile = async ({
     const childFolders = [];
     files.forEach(file => {
         if (file.isDirectory() && deep) {
-            childFolders.push(findFile({
+            childFolders.push(findFileList({
                 folder: path.resolve(folderPath, file.name), test,
             }));
             return;
@@ -31,12 +31,49 @@ const findFile = async ({
     return result;
 };
 
-const findAndRead = async ({
+const findFileTree = async ({
+    folder = '',
+    test = new RegExp(),
+    deep = true,
+    preId = '',
+}) => {
+    const folderPath = path.resolve(folder);
+    const files = await fs.readdir(folderPath, { withFileTypes: true });
+    const result = [];
+    let id = 1;
+    files.forEach(async file => {
+        if (file.isFile && test.test(file.name)) {
+            result.push({
+                fileName: file.name,
+                id: preId ? `${preId}-${id}` : id,
+                path: path.resolve(folderPath, file.name),
+            });
+            id++;
+        }
+        if (deep && file.isDirectory) {
+            result.push({
+                fileName: file.name,
+                id: preId ? `${preId}-${id}` : id,
+                path: path.resolve(folderPath, file.name),
+                children: await findFileTree({
+                    folder: path.resolve(folderPath, file.name),
+                    test,
+                    deep,
+                    preId: preId ? `${preId}-${id}` : id,
+                }),
+            });
+            id++;
+        }
+    });
+    return result;
+};
+
+const findListAndRead = async ({
     folder = '',
     test = new RegExp(),
     deep = true,
 }) => {
-    const files = await findFile({ folder, test, deep });
+    const files = await findFileList({ folder, test, deep });
     return Promise.all(files.map(async file => {
         const content = await fs.readFile(file, 'utf8');
         return { path: file, content };
@@ -44,6 +81,7 @@ const findAndRead = async ({
 };
 
 module.exports = {
-    findFile,
-    findAndRead,
+    findFileList,
+    findFileTree,
+    findListAndRead,
 };

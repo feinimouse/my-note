@@ -16,9 +16,6 @@ const parseMenu = async str => {
     return result;
 };
 
-// const menuJson = require('../template/menu');
-// parseMenu(menuJson);
-
 module.exports = {
     parseMenu,
 };

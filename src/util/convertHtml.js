@@ -1,5 +1,5 @@
 const showdown = require('showdown');
-const { findAndRead } = require('./findFile');
+const { findListAndRead } = require('./findFile');
 
 // header不添加ID属性
 showdown.setOption('noHeaderId', true);
@@ -10,7 +10,7 @@ const convertHtml = async ({
     test = /.md$/,
     deep = true,
 }) => {
-    const mds = await findAndRead({ folder, test, deep });
+    const mds = await findListAndRead({ folder, test, deep });
     return mds.map(md => ({ ...md, html: convert.makeHtml(md.content) }));
 };
 
