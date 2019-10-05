@@ -25,6 +25,7 @@ module.exports = {
     // 对象换行规则
     "object-curly-newline": ["error", {
       "ExportDeclaration": { "minProperties": 4 }
-    }]
+    }],
+    'object-property-newline': [ 0, { "allowAllPropertiesOnSameLine": true }]
   },
 };
