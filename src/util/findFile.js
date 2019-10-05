@@ -47,6 +47,7 @@ const findFileList = async ({
  * depp 是否深度查找
  * exProps 树的额外属性，输入的值应是对象，对象的属性名为额外的属性名，属性值为一个函数用于计算该额外属性
  * { propName: function({
+ *      roots ([])所在的每层父文件夹
  *      name (string)文件名,
  *      path (string)路径,
  *      isFolder (boolean)是否是文件夹,
@@ -78,7 +79,7 @@ const findFileTree = async ({
         }
         return { ...args, ...ex };
     };
-    const exec = async (folderPath, preSort) => {
+    const exec = async (folderPath, preSort, preRoots) => {
         const files = await fs.readdir(folderPath, { withFileTypes: true });
         // 所有符合要求的文件以及文件夹
         const result = [];
@@ -93,6 +94,7 @@ const findFileTree = async ({
                     name: file.name,
                     sort: [...preSort, id++],
                     path: $path.resolve(folderPath, file.name),
+                    roots: preRoots,
                     isFolder: false,
                 });
                 // 执行找到文件的回调
@@ -108,12 +110,13 @@ const findFileTree = async ({
                     name: file.name,
                     sort: folderPreSort,
                     path: childFolderPath,
+                    roots: preRoots,
                     isFolder: true,
                 });
                 result.push(childFolder);
                 // 这里解析每个子文件夹是异步执行的，因此会先把整个文件夹扫描完再扫描子文件夹
                 // 将子文件夹添加到待扫描列表中，扫描完成后将其挂到父文件夹的children上
-                childTree.push(exec(childFolderPath, folderPreSort)
+                childTree.push(exec(childFolderPath, folderPreSort, preRoots.concat(file.name))
                     .then(children => { childFolder.children = children; }));
             }
         });
@@ -121,7 +124,7 @@ const findFileTree = async ({
         await Promise.all(childTree);
         return result;
     };
-    return exec(folder, []);
+    return exec(folder, [], []);
 };
 
 /**
