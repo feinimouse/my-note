@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Api</title>
+</head>
+<script type="text/javascript">
+    const testAPI = async function(name) {
+        const res = await fetch(`/api/test/${name}`, { method: 'GET' });
+        if (res.ok) {
+            const text = await res.text();
+            try {
+                const json = JSON.parse(text);
+                console.log(json);
+                return json;
+            } catch {
+                console.log(text);
+                document.getElementById('container').innerHTML = text;
+                return text;
+            }
+        }
+        throw new Error(`test api 调用失败，状态码：${res.status}`)
+    }
+</script>
+<body>
+    <h1>Hello World</h1>
+    <div id="container"></div>
+</body>
+</html>
