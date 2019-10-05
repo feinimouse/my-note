@@ -59,32 +59,33 @@ const findFileTree = async ({
     const folderPath = path.resolve(folder);
     const files = await fs.readdir(folderPath, { withFileTypes: true });
     const result = [];
+    const childTree = [];
     let id = 1;
-    files.forEach(async file => {
+    files.forEach(file => {
         if (file.isFile() && test.test(file.name)) {
+            const fileId = preId ? `${preId}${join}${id++}` : id++;
             result.push({
                 fileName: file.name,
-                id: preId ? `${preId}${join}${id}` : id,
+                id: fileId,
                 path: path.resolve(folderPath, file.name),
             });
-            id++;
         }
         if (deep && file.isDirectory()) {
-            result.push({
+            const fileId = preId ? `${preId}${join}${id++}` : id++;
+            const childFolder = {
                 fileName: file.name,
-                id: preId ? `${preId}${join}${id}` : id,
+                id: fileId,
                 path: path.resolve(folderPath, file.name),
-                children: await findFileTree({
-                    folder: path.resolve(folderPath, file.name),
-                    test,
-                    deep,
-                    join,
-                    preId: preId ? `${preId}${join}${id}` : id,
-                }),
-            });
-            id++;
+            };
+            result.push(childFolder);
+            childTree.push(findFileTree({
+                folder: path.resolve(folderPath, file.name),
+                test, deep, join,
+                preId: fileId,
+            }).then(children => { childFolder.children = children; }));
         }
     });
+    await Promise.all(childTree);
     return result;
 };
 
