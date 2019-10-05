@@ -18,9 +18,11 @@ const findFileList = async ({
     const folderPath = $path.resolve(path);
     let result = [];
     const files = await fs.readdir(folderPath, { withFileTypes: true });
+    // 待扫描的子文件夹
     const childFolders = [];
     files.forEach(file => {
         if (file.isDirectory() && deep) {
+            // 将扫描到的子文件夹添加到待扫描列表中
             childFolders.push(findFileList({
                 folder: $path.resolve(folderPath, file.name), test,
             }));
@@ -30,6 +32,7 @@ const findFileList = async ({
             result.push($path.resolve(folderPath, file.name));
         }
     });
+    // 扫描子文件夹，并拼合列表
     (await Promise.all(childFolders)).forEach(childFiles => {
         result = result.concat(childFiles);
     });
@@ -56,6 +59,7 @@ const findFileTree = async ({
     onFind = null,
 }) => {
     const folder = $path.resolve(path);
+    // 用于往固有属性中添加额外属性
     const addExProps = args => {
         const ex = {};
         if (exProps && typeof exProps === 'object') {
@@ -69,17 +73,22 @@ const findFileTree = async ({
     };
     const exec = async (folderPath, preSort) => {
         const files = await fs.readdir(folderPath, { withFileTypes: true });
+        // 所有符合要求的文件以及文件夹
         const result = [];
+        // 待扫描的子文件夹列表
         const childTree = [];
         let id = 1;
+        // forEach对async的支持不是很好
         files.forEach(file => {
             if (file.isFile() && test.test(file.name)) {
+                // 添加额外属性
                 const resFile = addExProps({
                     name: file.name,
                     sort: [...preSort, id++],
                     path: $path.resolve(folderPath, file.name),
                     isFolder: false,
                 });
+                // 执行找到文件的回调
                 if (typeof onFind === 'function') {
                     onFind(resFile);
                 }
@@ -95,10 +104,13 @@ const findFileTree = async ({
                     isFolder: true,
                 });
                 result.push(childFolder);
+                // 这里解析每个子文件夹是异步执行的，因此会先把整个文件夹扫描完再扫描子文件夹
+                // 将子文件夹添加到待扫描列表中，扫描完成后将其挂到父文件夹的children上
                 childTree.push(exec(childFolderPath, folderPreSort)
                     .then(children => { childFolder.children = children; }));
             }
         });
+        // 解析子文件夹
         await Promise.all(childTree);
         return result;
     };
