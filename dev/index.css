@@ -123,6 +123,10 @@ body {
     line-height: 2em;
     cursor: pointer;
 }
+.nav-list a:hover,
+.nav-list span:hover {
+    color: #822;
+}
 .nav-list span::before {
     display: inline-block;
     position: absolute;
@@ -157,6 +161,5 @@ body {
 .markdown-body {
     box-sizing: border-box;
     width: 100%;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 1.5rem;
 }
