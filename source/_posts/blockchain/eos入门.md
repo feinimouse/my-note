@@ -1,13 +1,3 @@
----
-title: eos入门
-author: 菲尼莫斯
-date: 2019-01-30
-tags:
-- eos
-categories:
-- 区块链
----
-
 # eos入门
 
 by 菲尼莫斯 2019年01月30日

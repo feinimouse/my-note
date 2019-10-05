@@ -1,13 +1,3 @@
----
-title: web基本构成
-author: 菲尼莫斯
-date: 2019-03-22
-tags:
-- 架构
-categories:
-- 编程思想
----
-
 # web基本构成
 
 by 菲尼莫斯 2019年3月22日

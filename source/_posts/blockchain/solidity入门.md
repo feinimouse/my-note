@@ -1,13 +1,3 @@
----
-title: Solidity入门
-author: 菲尼莫斯
-date: 2018-12-20
-tags:
-- 以太坊
-categories:
-- 区块链
----
-
 # Solidity入门
 
 by 菲尼莫斯 2018年12月20日

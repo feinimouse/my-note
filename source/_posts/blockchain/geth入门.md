@@ -1,13 +1,3 @@
----
-title: geth入门
-author: 菲尼莫斯
-date: 2019-01-29
-tags:
-- 以太坊
-categories:
-- 区块链
----
-
 # geth入门
 
 by 菲尼莫斯 2019年01月29日
