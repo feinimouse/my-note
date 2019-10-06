@@ -1,13 +1,14 @@
 import { opened } from './storage.js';
 
-export default function() {
+export const handelHistoryOpen = () => {
     const navList = document.getElementById('nav-list');
     // 从url读取当前应该的选中项
-    const selected = document.URL.split('/').pop().split('.').shift();
+    // const selected = document.URL.split('/').pop().split('.').shift();
+    const selected = JSON.parse(document.getElementById('markdown-body').dataset.rootsId);
     // 将当前地址所在目录添加到需要展开的目录中
-    selected.split('-')
-        .map((t, i, arr) => arr.slice(0, i).join('-'))
-        .forEach(open => opened.add(open));
+    if (Array.isArray(selected)) {
+        selected.forEach(open => opened.add(open));
+    }
     // home的菜单项
     const navHome = document.getElementById('nav-home');
     // 遍历所有菜单项
@@ -23,6 +24,10 @@ export default function() {
                 li.classList.add('nav-select');
             }
         });
+};
+
+export const handelOpenListener = () => {
+    const navList = document.getElementById('nav-list');
     navList.addEventListener('click', e => {
         // 打开菜单
         if (e.target && e.target.tagName === 'SPAN' && e.target.parentElement) {
@@ -43,4 +48,4 @@ export default function() {
             sessionStorage.setItem('opened', JSON.stringify(Array.from(opened)));
         }
     });
-}
+};
