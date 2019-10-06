@@ -29,13 +29,9 @@ const path = require('path');
     },
 ];
  */
-const parseMenu = async str => {
-    let menuArr = str;
-    if (typeof str === 'string') {
-        menuArr = JSON.parse(str);
-    }
+const parseMenu = async menuArr => {
     if (!Array.isArray(menuArr)) {
-        throw new Error('input menu json can not be parsed !!');
+        throw new Error('input menu must be a Array !!');
     }
     const result = await ejs.renderFile(
         path.resolve(__dirname, '../template/menu.ejs'),
