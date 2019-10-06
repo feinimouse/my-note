@@ -47,7 +47,7 @@ const findFileList = async ({
  * depp 是否深度查找
  * exProps 树的额外属性，输入的值应是对象，对象的属性名为额外的属性名，属性值为一个函数用于计算该额外属性
  * { propName: function({
- *      roots ([])所在的每层父文件夹
+ *      roots ([])所在的每层父文件夹名
  *      name (string)文件名,
  *      path (string)路径,
  *      isFolder (boolean)是否是文件夹,
