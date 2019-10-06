@@ -13,8 +13,10 @@ const mdFolder = $path.resolve(__dirname, './md');
 const fileTest = /\.md$/;
 const matchTitle = /^# (\S+)\n$/m;
 
+// 初始化markdown生成器
 marked.setOptions({
     renderer: new marked.Renderer(),
+    // 语法高亮使用highlight.js插件
     highlight(code) {
         return highlightJs.highlightAuto(code).value;
     },
@@ -24,7 +26,9 @@ marked.setOptions({
 });
 
 const deal = async () => {
+    // 将所有文章整理到一个数组中
     const articles = [];
+    // 生成菜单树
     const catalog = await findFileTree({
         path: mdFolder,
         test: fileTest,
@@ -51,6 +55,8 @@ const deal = async () => {
             articles.push(article);
         },
     });
+
+    // 读取文章内容并生成html
     await Promise.all(articles.map(async ({ path, roots, url, rootsId }) => {
         const content = await fs.readFile(path, 'utf8');
         const output = $path.resolve(__dirname, './output', `./${roots.join('/')}`, url);
@@ -70,5 +76,3 @@ const deal = async () => {
 };
 
 module.exports = deal;
-
-deal();

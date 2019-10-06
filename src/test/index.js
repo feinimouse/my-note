@@ -1,10 +1,10 @@
 const route = require('koa-route');
-const findFileTest = require('./findFileTest');
-const genTestHtml = require('./genTestHtml');
+const testGenFileFlow = require('./testGenFileFlow');
+const testCreateFile = require('./testCreateFile');
 
 const testMap = {
-    findFileTest,
-    genTestHtml,
+    testCreateFile,
+    testGenFileFlow,
 };
 
 module.exports = preUrl => Object.keys(testMap)

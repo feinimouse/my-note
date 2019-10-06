@@ -127,24 +127,7 @@ const findFileTree = async ({
     return exec(folder, [], []);
 };
 
-/**
- * 搜寻并读取文件的内容，该方法使用 api findFileList
- * @param {*} param0
- */
-const findListAndRead = async ({
-    path = '',
-    test = new RegExp(),
-    deep = true,
-}) => {
-    const files = await findFileList({ path, test, deep });
-    return Promise.all(files.map(async file => {
-        const content = await fs.readFile(file, 'utf8');
-        return { path: file, content };
-    }));
-};
-
 module.exports = {
     findFileList,
     findFileTree,
-    findListAndRead,
 };
