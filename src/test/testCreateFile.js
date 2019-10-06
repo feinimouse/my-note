@@ -22,4 +22,4 @@ const path = $path.resolve(__dirname, './a/b/c/d/e.html');
 //         await fs.writeFile(path, 'qwer');
 //     });
 
-createFile(path, 'qwer').catch(e => console.log(e));
+// createFile(path, 'qwer').catch(e => console.log(e));
