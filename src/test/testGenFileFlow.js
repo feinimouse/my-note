@@ -57,14 +57,14 @@ const deal = async () => {
     });
 
     // 读取文章内容并生成html
-    await Promise.all(articles.map(async ({ path, roots, url, rootsId }) => {
+    await Promise.all(articles.map(async ({ path, url, rootsId }) => {
         const content = await fs.readFile(path, 'utf8');
-        const output = $path.resolve(__dirname, './output', `./${roots.join('/')}`, url);
+        const output = $path.resolve(__dirname, './output', url);
         const data = {
             title: matchTitle.exec(content),
-            prePath: '.',
-            cssName: 'index.css',
-            jsName: 'index.js',
+            cssPath: '/index.css',
+            jsPath: '/index.js',
+            logoPath: '/img/logo-name.png',
             version: '0.0.1',
             menu: await parseMenu(catalog),
             article: marked(content),

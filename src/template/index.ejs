@@ -10,9 +10,9 @@
         <!-- highlight.js language css -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
         <!-- my css -->
-        <link rel="stylesheet" href="<%=prePath%>/<%=cssName%>">
+        <link rel="stylesheet" href="<%=cssPath%>">
         <!-- my js -->
-        <script type="module" src="<%=prePath%>/<%=jsName%>"></script>
+        <script type="module" src="<%=jsPath%>"></script>
     </head>
     <body>
         <header class="header">
@@ -21,7 +21,7 @@
                     <svg focusable="false" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
                 </div>
                 <div class="hea hea-logo">
-                    <img src="<%=prePath%>/img/logo-name.png">
+                    <img src="<%=logoPath%>">
                 </div>
             </div>
             <div class="hea">
@@ -37,10 +37,10 @@
             </div>
         </header>
         <nav class="nav">
-            <%-menu%>
+<%-menu%>
         </nav>
         <main class="main">
-            <article class="markdown-body" data-rootsId="<%=rootsId%>">
+            <article class="markdown-body" id="markdown-body" data-rootsId="<%=rootsId%>">
 <%-article%>
             </article>
         </main>
