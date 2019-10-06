@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const $path = require('path');
 
-const createFile = require('../util/createFile');
+const { createFile } = require('../util/createFile');
 
 const path = $path.resolve(__dirname, './a/b/c/d/e.html');
 // fs.writeFile(path, 'qwer')
@@ -22,4 +22,4 @@ const path = $path.resolve(__dirname, './a/b/c/d/e.html');
 //         await fs.writeFile(path, 'qwer');
 //     });
 
-// createFile(path, 'qwer').catch(e => console.log(e));
+createFile(path, 'qwer').catch(e => console.log(e));
