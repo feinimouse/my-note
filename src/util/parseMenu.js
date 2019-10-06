@@ -44,6 +44,4 @@ const parseMenu = async str => {
     return result;
 };
 
-module.exports = {
-    parseMenu,
-};
+module.exports = parseMenu;
