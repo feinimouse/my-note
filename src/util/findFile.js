@@ -128,7 +128,7 @@ const findFileTree = async ({
                 // 这里递归执行使用的信息 childExecMsg 是专门的内部属性，与最终信息 resFolder 区分开
                 // 原因是dir中包含循环嵌套
                 childTree.push(
-                    exec({ childExecMsg, ...ex })
+                    exec({ ...childExecMsg, ...ex })
                         .then(children => { resFolder.children = children; }),
                 );
             }
