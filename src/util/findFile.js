@@ -79,22 +79,21 @@ const findFileTree = async ({
         }
         return { ...args, ...ex };
     };
-    const exec = async (folderPath, preSort, preRoots) => {
+    const exec = async folderMsg => {
+        const { path: folderPath, sort: preSort } = folderMsg;
         const files = await fs.readdir(folderPath, { withFileTypes: true });
         // 所有符合要求的文件以及文件夹
         const result = [];
         // 待扫描的子文件夹列表
         const childTree = [];
         let id = 1;
-        // forEach对async的支持不是很好
         files.forEach(file => {
             if (file.isFile() && test.test(file.name)) {
                 // 添加额外属性
                 const resFile = addExProps({
-                    name: file.name,
+                    dir: folderMsg,
                     sort: [...preSort, id++],
                     path: $path.resolve(folderPath, file.name),
-                    roots: preRoots,
                     isFolder: false,
                 });
                 // 执行找到文件的回调
@@ -107,16 +106,15 @@ const findFileTree = async ({
                 const folderPreSort = [...preSort, id++];
                 const childFolderPath = $path.resolve(folderPath, file.name);
                 const childFolder = addExProps({
-                    name: file.name,
+                    dir: folderMsg,
                     sort: folderPreSort,
                     path: childFolderPath,
-                    roots: preRoots,
                     isFolder: true,
                 });
                 result.push(childFolder);
                 // 这里解析每个子文件夹是异步执行的，因此会先把整个文件夹扫描完再扫描子文件夹
                 // 将子文件夹添加到待扫描列表中，扫描完成后将其挂到父文件夹的children上
-                childTree.push(exec(childFolderPath, folderPreSort, preRoots.concat(file.name))
+                childTree.push(exec(childFolder)
                     .then(children => { childFolder.children = children; }));
             }
         });
@@ -124,7 +122,12 @@ const findFileTree = async ({
         await Promise.all(childTree);
         return result;
     };
-    return exec(folder, [], []);
+    return exec({
+        sort: [],
+        dir: null,
+        path: folder,
+        isFolder: true,
+    });
 };
 
 module.exports = {
