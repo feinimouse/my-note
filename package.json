@@ -16,7 +16,8 @@
     "showdown": "^1.9.0"
   },
   "scripts": {
-    "dev": "node src/server-dev.js"
+    "dev": "set NODE_ENV=development && node src/server-dev.js",
+    "build-dev": "set NODE_ENV=development && node src/index.js"
   },
   "devDependencies": {
     "eslint": "^6.5.1",

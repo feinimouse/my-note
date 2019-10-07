@@ -27,6 +27,7 @@ module.exports = {
       "ExportDeclaration": { "minProperties": 4 }
     }],
     'func-names': 0,
-    'object-property-newline': [ 0, { "allowAllPropertiesOnSameLine": true }]
+    'object-property-newline': [ 0, { "allowAllPropertiesOnSameLine": true }],
+    'no-underscore-dangle': 0,
   },
 };
