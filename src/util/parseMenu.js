@@ -1,9 +1,6 @@
-const ejs = require('ejs');
-const path = require('path');
-
 /**
  * 将输入的json菜单转为html
- * @param {*} str json菜单，必须是数组或json数组的string类型
+ * @param {*} menuArr 菜单的树状表达
  * 输入样例：[
     {
         title: 'JAVA开发',
@@ -29,15 +26,30 @@ const path = require('path');
     },
 ];
  */
-const parseMenu = async menuArr => {
+
+const childMenu = ({ id, title, childHtml }) => `<li data-id="${id}">
+ <span>${title}</span>
+ <ul>
+     ${childHtml}
+ </ul>
+</li>`;
+
+const link = ({ id, url, title }) => `<li data-id="${id}">
+<a href="${url}">${title}</a>
+</li>`;
+
+const parseMenu = menuArr => {
     if (!Array.isArray(menuArr)) {
-        throw new Error('input menu must be a Array !!');
+        return '';
     }
-    const result = await ejs.renderFile(
-        path.resolve(__dirname, '../template/menu.ejs'),
-        { menu: menuArr },
-    );
-    return result;
+    const result = menuArr.map(item => {
+        if (item.children) {
+            const childHtml = parseMenu(item.children);
+            return childMenu({ ...item, childHtml });
+        }
+        return link(item);
+    });
+    return result.join('');
 };
 
 module.exports = parseMenu;
