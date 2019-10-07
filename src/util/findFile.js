@@ -77,11 +77,10 @@ const findFileTree = async ({
                 }
             });
         }
-        return { ...args, ...ex };
+        return ex;
     };
-    const exec = async folderMsg => {
-        const { path: folderPath, sort: preSort } = folderMsg;
-        const files = await fs.readdir(folderPath, { withFileTypes: true });
+    const exec = async execMsg => {
+        const files = await fs.readdir(execMsg.path, { withFileTypes: true });
         // 所有符合要求的文件以及文件夹
         const result = [];
         // 待扫描的子文件夹列表
@@ -90,32 +89,48 @@ const findFileTree = async ({
         files.forEach(file => {
             if (file.isFile() && test.test(file.name)) {
                 // 添加额外属性
-                const resFile = addExProps({
-                    dir: folderMsg,
-                    sort: [...preSort, id++],
-                    path: $path.resolve(folderPath, file.name),
+                const fileSort = [...execMsg.sort, id++];
+                const filePath = $path.resolve(execMsg.path, file.name);
+                // 这里将用于额外属性生成的信息 childExecMsg ，与最终信息 resFile 区分开
+                // 原因是dir中包含循环嵌套
+                const childExecMsg = {
+                    dir: execMsg,
+                    sort: fileSort,
+                    path: filePath,
                     isFolder: false,
-                });
+                };
+                const ex = addExProps(childExecMsg);
+                const resFile = { sort: fileSort, path: filePath, ...ex };
+                result.push(resFile);
+
                 // 执行找到文件的回调
                 if (typeof onFind === 'function') {
                     onFind(resFile);
                 }
-                result.push(resFile);
             }
             if (deep && file.isDirectory()) {
-                const folderPreSort = [...preSort, id++];
-                const childFolderPath = $path.resolve(folderPath, file.name);
-                const childFolder = addExProps({
-                    dir: folderMsg,
-                    sort: folderPreSort,
+                const childFolderSort = [...execMsg.sort, id++];
+                const childFolderPath = $path.resolve(execMsg.path, file.name);
+                // 用于额外属性生成的信息 childExecMsg 是内部属性，将与最终信息 resFolder 区分开
+                // 原因是dir中包含循环嵌套
+                const childExecMsg = {
+                    dir: execMsg,
+                    sort: childFolderSort,
                     path: childFolderPath,
                     isFolder: true,
-                });
-                result.push(childFolder);
+                };
+                const ex = addExProps(childExecMsg);
+                const resFolder = { sort: childFolderSort, path: childFolderPath, ...ex };
+                result.push(resFolder);
+
                 // 这里解析每个子文件夹是异步执行的，因此会先把整个文件夹扫描完再扫描子文件夹
                 // 将子文件夹添加到待扫描列表中，扫描完成后将其挂到父文件夹的children上
-                childTree.push(exec(childFolder)
-                    .then(children => { childFolder.children = children; }));
+                // 这里递归执行使用的信息 childExecMsg 是专门的内部属性，与最终信息 resFolder 区分开
+                // 原因是dir中包含循环嵌套
+                childTree.push(
+                    exec({ childExecMsg, ...ex })
+                        .then(children => { resFolder.children = children; }),
+                );
             }
         });
         // 解析子文件夹
