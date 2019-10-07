@@ -2,7 +2,8 @@ const $path = require('path');
 const fs = require('fs').promises;
 
 const mkdirDeep = async path => {
-    const { root } = $path.parse(path);
+    const _path = $path.resolve(path);
+    const { root } = $path.parse(_path);
     const mk = async dirName => {
         if (dirName !== root) {
             try {
@@ -19,18 +20,19 @@ const mkdirDeep = async path => {
             }
         }
     };
-    await mk(path);
+    await mk(_path);
 };
 
 const createFile = async (path, content) => {
+    const _path = $path.resolve(path);
     try {
-        await fs.writeFile(path, content);
+        await fs.writeFile(_path, content);
     } catch (err) {
         if (!err.code === 'ENOENT') {
             throw err;
         }
-        await mkdirDeep($path.dirname(path));
-        await createFile(path, content);
+        await mkdirDeep($path.dirname(_path));
+        await createFile(_path, content);
     }
 };
 
