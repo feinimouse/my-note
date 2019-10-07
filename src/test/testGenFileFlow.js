@@ -36,15 +36,13 @@ const deal = async () => {
             id({ sort }) {
                 return sort.join('-');
             },
-            rootsId({ sort }) {
-                const rootsId = [];
-                sort.forEach((item, i) => {
-                    rootsId.push(sort.slice(0, i).join('-'));
-                });
-                rootsId.shift();
-                return rootsId;
+            rootsId({ sort, dir: { rootsId } }) {
+                return Array.isArray(rootsId)
+                    ? rootsId.concat(sort[sort.length - 1])
+                    : [sort.join('-')];
             },
-            url({ name, isFolder, sort }) {
+            url({ path, isFolder, sort }) {
+                const name = $path.basename(path);
                 if (!isFolder) {
                     return `${name.replace('.md', '')}${sort.join('')}.html`;
                 }
@@ -75,4 +73,4 @@ const deal = async () => {
     }));
 };
 
-module.exports = deal;
+deal();
