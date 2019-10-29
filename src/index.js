@@ -27,7 +27,7 @@ const run = async config => {
     await Promise.all(articles.map(async art => {
         const html = await createMdHtml.fromFile(art.path, { ...config, ...art, menu });
         await createFile(art.output, html);
-        console.log(`${art.path} has been created...`);
+        console.log(`file has been created: ${art.output} `);
     }));
     // 复制静态文件
     await copyFile.copyTestFile();
