@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "ejs": "^2.7.1",
+    "fs-extra": "^8.1.0",
     "highlight.js": "^9.15.10",
     "koa": "^2.8.2",
     "koa-route": "^3.2.0",
@@ -16,8 +17,8 @@
     "showdown": "^1.9.0"
   },
   "scripts": {
-    "dev": "set NODE_ENV=development && node src/server-dev.js",
-    "build-dev": "set NODE_ENV=development && node src/index.js"
+    "dev": "set NODE_ENV=development&&node src/server-dev.js",
+    "build-test": "set NODE_ENV=development&&node src/index.js"
   },
   "devDependencies": {
     "eslint": "^6.5.1",
