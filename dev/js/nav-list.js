@@ -4,7 +4,8 @@ export const handelHistoryOpen = () => {
     const navList = document.getElementById('nav-list');
     // 从url读取当前应该的选中项
     // const selected = document.URL.split('/').pop().split('.').shift();
-    const selected = JSON.parse(document.getElementById('markdown-body').dataset.rootsId);
+    const selected = document.getElementById('markdown-body')
+        .dataset.rootsId.split(',');
     // 将当前地址所在目录添加到需要展开的目录中
     if (Array.isArray(selected)) {
         selected.forEach(open => opened.add(open));
