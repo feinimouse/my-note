@@ -18,6 +18,7 @@
   },
   "scripts": {
     "dev": "set NODE_ENV=development&&node src/server-dev.js",
+    "test": "set NODE_ENV=development&&node src/server-test.js",
     "build-test": "set NODE_ENV=development&&node src/index.js"
   },
   "devDependencies": {
