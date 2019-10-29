@@ -24,7 +24,7 @@ const run = async config => {
     const menu = parseMenu(catalog);
 
     // 清理已有的文件
-    fileUtils.clearDir(output);
+    await fileUtils.clearDir(output);
     console.log('output dir has been clear...');
 
     // 生成首页
