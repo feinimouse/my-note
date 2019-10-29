@@ -1,4 +1,4 @@
-const { findFileTree } = require('./findFile');
+const { findFileTree } = require('./fileUtils');
 
 module.exports = async (path = './', test = /\.md$/, exProps = {}) => {
     // 将所有文章整理到一个数组中
