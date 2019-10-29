@@ -14,6 +14,14 @@ const config = {
     jsUrl: '/index.js',
     homeUrl: '/index.html',
 
+    copy: {
+        dir: './dev',
+        files: [
+            'js', 'img', 'svg',
+            'index.js', 'index.css',
+        ],
+    },
+
     exProps: {
         id({ sort }) {
             return sort.join('-');

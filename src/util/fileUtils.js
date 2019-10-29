@@ -1,5 +1,22 @@
-const fs = require('fs').promises;
+const fse = require('fs-extra');
 const $path = require('path');
+const fs = require('fs').promises;
+
+const clearDir = async dir => fse.remove($path.resolve(dir));
+
+/**
+ * 拷贝文件夹
+ * @param {String} dir 拷贝的文件
+ * @param {String} files 拷贝文件夹中的文件
+ * @param {String} output 输出位置
+ */
+const copyFile = async (dir, files, output) => Promise.all(files.map(async path => {
+    await fse.copy(
+        $path.resolve(dir, path),
+        $path.resolve(output, path),
+    );
+    console.log(`copy ${$path.resolve(__dirname, dir, path)}`);
+}));
 
 /**
  * @description 将符合条件的文件以路径的形式放入一个数组中
@@ -145,7 +162,55 @@ const findFileTree = async ({
     });
 };
 
+/**
+ * 深度创建文件夹
+ * @param {String} path 文件夹路径
+ */
+const mkdirDeep = async path => {
+    const _path = $path.resolve(path);
+    const { root } = $path.parse(_path);
+    const mk = async dirName => {
+        if (dirName !== root) {
+            try {
+                await fs.mkdir(dirName);
+            } catch (e) {
+                if (e.code === 'EEXIST') {
+                    return;
+                }
+                if (!e.code === 'ENOENT') {
+                    throw e;
+                }
+                await mk($path.dirname(dirName));
+                await mk(dirName);
+            }
+        }
+    };
+    await mk(_path);
+};
+
+/**
+ * 深度创建文件
+ * @param {String} path 文件路径
+ * @param {String} content 文件内容
+ */
+const createFile = async (path, content) => {
+    const _path = $path.resolve(path);
+    try {
+        await fs.writeFile(_path, content);
+    } catch (err) {
+        if (!err.code === 'ENOENT') {
+            throw err;
+        }
+        await mkdirDeep($path.dirname(_path));
+        await createFile(_path, content);
+    }
+};
+
 module.exports = {
     findFileList,
     findFileTree,
+    copyFile,
+    createFile,
+    mkdirDeep,
+    clearDir,
 };
