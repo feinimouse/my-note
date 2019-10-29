@@ -5,7 +5,7 @@ const config = {
     input: './src/test/md',
     test: /\.md$/,
     template: './src/template/index.ejs',
-    output: './src/test/out',
+    output: './build',
     articleUrl: '/article',
 
     version: '0.0.1',
@@ -26,7 +26,7 @@ const config = {
         output({ path, isFolder, sort }) {
             if (!isFolder) {
                 const name = $path.basename(path, $path.extname(path));
-                return $path.resolve(config.output, `${name}${sort.join('')}.html`);
+                return $path.resolve(`${config.output}${config.articleUrl}`, `${name}${sort.join('')}.html`);
             }
             return undefined;
         },
