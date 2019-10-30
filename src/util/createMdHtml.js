@@ -29,7 +29,7 @@ const fromStr = (content, data) => {
     }
     return ejs.render(_template, {
         content,
-        menu: data.menu,
+        // menu: data.menu,
         rootsId: data.rootsId,
         title: data.title,
         version: data.version,

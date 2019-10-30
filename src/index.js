@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 const genMenuTree = require('./util/genMenuTree');
-const parseMenu = require('./util/parseMenu');
 const createMdHtml = require('./util/createMdHtml');
 const fileUtils = require('./util/fileUtils');
 
@@ -8,7 +7,7 @@ const configDev = require('./config.dev');
 
 const run = async config => {
     const {
-        input, test, template, exProps, output, copy,
+        input, test, template, exProps, output, copy, homeUrl,
     } = config;
     console.log(`\n input: ${input} \n output: ${output} \n template: ${template} \n`);
 
@@ -18,23 +17,29 @@ const run = async config => {
 
     // 生成目录信息，和扫描到的文章列表
     const { catalog, articles } = await genMenuTree(input, test, exProps);
+    catalog.unshift({
+        id: '0',
+        url: homeUrl,
+        title: '首页',
+    });
     console.log('md articles list has been found...');
-
-    // 生成目录html
-    const menu = parseMenu(catalog);
 
     // 清理已有的文件
     await fileUtils.clearDir(output);
     console.log('output dir has been clear...');
 
+    // 生成目录html
+    await fileUtils.createFile(`${output}/catalog.json`, JSON.stringify(catalog));
+    console.log(`catalog has been created to ${output}/catalog.json...`);
+
     // 生成首页
-    const home = await createMdHtml.fromStr('欢迎来到菲尼莫斯的博客', { ...config, menu, title: 'Home', rootsId: '[]' });
+    const home = await createMdHtml.fromStr('欢迎来到菲尼莫斯的博客', { ...config, title: 'Home', rootsId: '0' });
     await fileUtils.createFile(`${output}/index.html`, home);
     console.log(`home has been created to ${output}/index.html...`);
 
     // 生成子页面
     await Promise.all(articles.map(async art => {
-        const html = await createMdHtml.fromFile(art.path, { ...config, ...art, menu });
+        const html = await createMdHtml.fromFile(art.path, { ...config, ...art });
         await fileUtils.createFile(art.output, html);
         console.log(`file has been created: ${art.output} `);
     }));
