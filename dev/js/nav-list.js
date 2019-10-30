@@ -3,7 +3,7 @@ const opened = new Set();
 export function genNav() {
     const navList = document.getElementById('nav-list');
     const selected = document.getElementById('markdown-body')
-        .dataset.rootsId.split(',');
+        .dataset.rootsid.split(',');
 
     // 上一页中展开的项
     const openedArr = JSON.parse(sessionStorage.getItem('opened'));
