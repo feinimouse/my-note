@@ -1,33 +1,67 @@
-import { opened } from './storage.js';
+const opened = new Set();
 
-export const handelHistoryOpen = () => {
+export function genNav() {
     const navList = document.getElementById('nav-list');
-    // 从url读取当前应该的选中项
-    // const selected = document.URL.split('/').pop().split('.').shift();
     const selected = document.getElementById('markdown-body')
         .dataset.rootsId.split(',');
+
+    // 上一页中展开的项
+    const openedArr = JSON.parse(sessionStorage.getItem('opened'));
+    if (Array.isArray(openedArr)) {
+        openedArr.forEach(open => opened.add(open));
+    }
     // 将当前地址所在目录添加到需要展开的目录中
     if (Array.isArray(selected)) {
         selected.forEach(open => opened.add(open));
     }
-    // home的菜单项
-    const navHome = document.getElementById('nav-home');
-    // 遍历所有菜单项
-    [].slice.call(navList.getElementsByTagName('li'))
-        .forEach(li => {
-            // 展开需要展开的目录
-            if (opened.has(li.dataset.id)) {
+
+    // 生成导航菜单
+    function genNavDOM(catalog) {
+        const fra = document.createDocumentFragment();
+        catalog.forEach(({ id, children, url, title }) => {
+            const li = document.createElement('li');
+            if (opened.has(id)) {
                 li.classList.add('nav-open');
             }
-            // 标记选择项
-            if (selected === li.dataset.id) {
-                navHome.classList.remove('nav-select');
+            if (selected === id) {
                 li.classList.add('nav-select');
             }
+            li.dataset.id = id;
+            if (children) {
+                const span = document.createElement('span');
+                span.innerText = title;
+                const ul = document.createElement('ul');
+                li.append(span);
+                li.append(ul);
+                ul.append(genNavDOM(children));
+                fra.append(li);
+            } else {
+                const a = document.createElement('a');
+                a.setAttribute('href', url);
+                a.innerText = title;
+                li.append(a);
+                fra.append(li);
+            }
         });
-};
+        return fra;
+    }
 
-export const handelOpenListener = () => {
+    const catalog = JSON.parse(sessionStorage.getItem('catalog'));
+    if (Array.isArray(catalog) && catalog.length > 0) {
+        navList.append(genNavDOM(catalog));
+        return;
+    }
+    fetch(new Request('/catalog.json')).then(res => {
+        if (res.status === 200) {
+            res.json().then(data => {
+                sessionStorage.setItem('catalog', JSON.stringify(data));
+                navList.append(genNavDOM(data));
+            });
+        }
+    });
+}
+
+export function genNavListListener() {
     const navList = document.getElementById('nav-list');
     navList.addEventListener('click', e => {
         // 打开菜单
@@ -49,4 +83,4 @@ export const handelOpenListener = () => {
             sessionStorage.setItem('opened', JSON.stringify(Array.from(opened)));
         }
     });
-};
+}

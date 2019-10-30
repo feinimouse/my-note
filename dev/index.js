@@ -1,11 +1,9 @@
-import { handelHistoryOpen, handelOpenListener } from './js/nav-list.js';
-import { init as storage } from './js/storage.js';
+import { genNav, genNavListListener } from './js/nav-list.js';
 
 window.onload = () => {
     const taskList = [
-        storage,
-        handelOpenListener,
-        handelHistoryOpen,
+        genNav,
+        genNavListListener,
     ];
-    taskList.forEach(task => task());
+    taskList.forEach(task => (typeof task === 'function' ? task() : ''));
 };
