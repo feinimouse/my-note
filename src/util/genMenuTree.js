@@ -1,5 +1,10 @@
 const { findFileTree } = require('./fileUtils');
 
+const genCatalog = catalog => catalog.map(({ id, url, title, children }) => ({
+    id, url, title,
+    children: Array.isArray(children) ? genCatalog(children) : undefined,
+}));
+
 module.exports = async (path = './', test = /\.md$/, exProps = {}) => {
     // 将所有文章整理到一个数组中
     const articles = [];
@@ -14,6 +19,6 @@ module.exports = async (path = './', test = /\.md$/, exProps = {}) => {
     });
     return {
         articles,
-        catalog,
+        catalog: genCatalog(catalog),
     };
 };
