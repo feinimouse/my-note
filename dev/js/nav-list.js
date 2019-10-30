@@ -23,7 +23,7 @@ export function genNav() {
             if (opened.has(id)) {
                 li.classList.add('nav-open');
             }
-            if (selected === id) {
+            if (selected[selected.length - 1] === id) {
                 li.classList.add('nav-select');
             }
             li.dataset.id = id;

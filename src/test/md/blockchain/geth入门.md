@@ -11,10 +11,11 @@ by 菲尼莫斯 2019年01月29日
 * 本地编译需要有go语言环境以及c++编译环境
 
 * 最简安装方法：
+
 ```bash
 git clone https://github.com/ethereum/go-ethereum.git
 
-cd  go-ethereum
+cd go-ethereum
 
 # master是最新的不稳定版本
 # git checkout {你想要的版本}
