@@ -1,3 +1,6 @@
+# vimrc常用配置
+
+```
 " 使用空格代替tab
  set expandtab
  set tabstop=4
@@ -17,3 +20,4 @@
  highlight LineNr ctermfg=white
  highlight LineNr ctermbg=240
 
+```

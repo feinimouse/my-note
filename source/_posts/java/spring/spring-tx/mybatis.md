@@ -1,0 +1,12 @@
+## MyBatis的事务
+
+MyBatis有自己的TransactionFactory
+
+在使用SqlSessionFactoryBean配置MyBatis时，默认创建了SpringManagedTransactionFactory
+
+该对象在spring事务管理的线程上下文中获取连接，而不是直接从datasource创建，保证了同线程中连接的一致性
+
+## DataSourceUtils
+
+使用该util获取数据库连接，可以保证连接被spring纳管，从而保证同线程中连接的一致性
+
